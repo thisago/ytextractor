@@ -1,10 +1,10 @@
 #[
   Created at: 08/03/2021 19:58:57 Tuesday
-  Modified at: 08/03/2021 09:33:05 PM Tuesday
+  Modified at: 08/04/2021 03:31:37 PM Wednesday
 ]#
 
 ##[
-  ytdata
+  ytextractor
 ]##
 
 from std/times import DateTime, Duration, initDuration, now, parse
@@ -128,7 +128,7 @@ proc update*(self: var YoutubeVideo) =
   self.status.lastUpdate = now()
   self.status.error = YoutubeVideoError.None
 
-proc ytCode*(url: string): YoutubeVideoCode =
+proc videoCode*(url: string): YoutubeVideoCode =
   const
     startIndexFinder = "v="
     endIndexFinder = "&"
@@ -148,9 +148,9 @@ proc extractVideo(video: string): YoutubeVideo =
   ##
   ## Just an alias of:
   ## .. code-block:: nim
-  ##   var vid = initVideo("jjEQ-yKVPMg".ytCode)
+  ##   var vid = initVideo("jjEQ-yKVPMg".videoCode)
   ##   vid.update()
-  result = initYoutubeVideo(video.ytCode)
+  result = initYoutubeVideo(video.videoCode)
   result.update()
 
 

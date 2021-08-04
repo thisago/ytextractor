@@ -2,11 +2,11 @@
 
 version       = "0.1.0"
 author        = "Thiago Navarro"
-description   = "Youtube data parser"
+description   = "Youtube data extractor"
 license       = "MIT"
 srcDir        = "src"
 
 
 # Dependencies
 
-requires "nim >= 1.5.1"
+requires "nim >= 1.4.0"

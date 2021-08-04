@@ -1,16 +1,21 @@
 <!--
   Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 08/03/2021 09:12:41 PM Tuesday
+  Modified at: 08/04/2021 03:37:30 PM Wednesday
 -->
 
-# ytdata
+# ytextractor
 
-**Y**ou**t**ube **data** parser
+**Y**ou**t**ube data **extractor**
 
 ## Features
 
 This parser gets:
 - [x] Common video info
+- Channel
+  - [ ] Likes/dislikes
+  - [ ] Subscribers
+  - [ ] Channel thumb
+
 - Video data
   - [ ] Subtitles
   - [ ] Comments
@@ -21,6 +26,32 @@ This parser gets:
 - [ ] Search results
 - [ ] All videos from channel/user
 - [ ] All videos of playlist (a seq of videos)
+
+## Installation
+
+Please choice one installation method:
+
+- Automatically with nimble
+  <!-- ```bash
+  nimble install ytextractor
+  ```
+  or -->
+  ```bash
+  nimble install https://github.com/thisago/ytextractor
+  ```
+
+Or
+
+- Manually
+  ```bash
+  git clone https://github.com/thisago/ytextractor
+  cd ytextractor/
+  nimble install
+  ```
+
+## TODO
+
+Usage guide (not only Nim)
 
 ## Useful links
 
