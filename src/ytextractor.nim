@@ -1,6 +1,6 @@
 #[
   Created at: 08/03/2021 19:58:57 Tuesday
-  Modified at: 08/04/2021 03:31:37 PM Wednesday
+  Modified at: 08/04/2021 05:39:52 PM Wednesday
 ]#
 
 ##[
@@ -36,7 +36,7 @@ type
     width*, height*: int
   YoutubeVideoChannel* = object
     url*, name*, id*: string
-  YoutubeVideoCategories {.pure.} = enum
+  YoutubeVideoCategories* {.pure.} = enum
     Unknown, FilmAndAnimation, AutosAndVehicles, Music, PetsAndAnimals, Sports,
     TravelAndEvents, Gaming, PeopleAndBlogs, Comedy, Entertainment,
     NewsAndPolitics, HowtoAndStyle, Education, ScienceAndTechnology,
@@ -69,7 +69,7 @@ proc parseCategory*(str: string): YoutubeVideoCategories =
   else: return Unknown
 
 proc `$`*(code: YoutubeVideoCode): string =
-  cast[string](code)
+  code.string
 
 proc initYoutubeVideo*(code: YoutubeVideoCode): YoutubeVideo =
   ## Initialize a new `YoutubeVideo` instance
@@ -90,15 +90,17 @@ proc getYtJsonData(code: YoutubeVideoCode): JsonNode =
   if res.code == Http200:
     return res.body.getVideoData()
 
-proc update*(self: var YoutubeVideo) =
+proc update*(self: var YoutubeVideo): bool =
   ## Update all `YoutubeVideo` data
+  ## Returns `false` on error.
+  result = true
   let
     jsonData = getYtJsonData(self.code)
     microformat = jsonData{"microformat", "playerMicroformatRenderer"}
 
   if microformat.isNil:
     self.status.error = YoutubeVideoError.NotExist
-    return
+    return false
 
   self.title = microformat{"title", "simpleText"}.getStr
   self.description = microformat{"description", "simpleText"}.getStr
@@ -141,7 +143,7 @@ proc videoCode*(url: string): YoutubeVideoCode =
   if endIndex == startIndex - 1: endIndex = url.len - 1
   return url[startIndex..endIndex].YoutubeVideoCode
 
-proc extractVideo(video: string): YoutubeVideo =
+proc extractVideo*(video: string): YoutubeVideo =
   ## Extract all data from youtube video.
   ##
   ## `video` can be the video URL or code
@@ -151,12 +153,12 @@ proc extractVideo(video: string): YoutubeVideo =
   ##   var vid = initVideo("jjEQ-yKVPMg".videoCode)
   ##   vid.update()
   result = initYoutubeVideo(video.videoCode)
-  result.update()
+  discard result.update()
 
 
 when isMainModule:
   var vid = initYoutubeVideo "jjEQ-yKVPMg".YoutubeVideoCode
-  vid.update()
+  discard vid.update()
   echo vid
 
   echo extractVideo("_o2y1SxprA0")
