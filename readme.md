@@ -1,6 +1,6 @@
 <!--
   Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 08/03/2021 08:27:56 PM Tuesday
+  Modified at: 08/03/2021 09:12:41 PM Tuesday
 -->
 
 # ytdata
@@ -10,11 +10,7 @@
 ## Features
 
 This parser gets:
-- Video info
-  - [ ] Title
-  - [ ] Description
-  - [ ] Publish date
-  - [ ] Channel name
+- [x] Common video info
 - Video data
   - [ ] Subtitles
   - [ ] Comments
