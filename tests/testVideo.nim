@@ -1,6 +1,6 @@
 #[
   Created at: 08/04/2021 16:25:48 Wednesday
-  Modified at: 08/04/2021 07:14:47 PM Wednesday
+  Modified at: 08/04/2021 07:22:52 PM Wednesday
 ]#
 
 ##[
@@ -39,5 +39,6 @@ suite "Youtube video":
   test "Channel url": check videoData.channel.url == "http://www.youtube.com/channel/UC3aGq0eFrvrjM4F1dLUo87A"
   test "Channel id": check videoData.channel.id == "UC3aGq0eFrvrjM4F1dLUo87A"
   test "Channel subscribers": check videoData.channel.subscribers > 29
+  test "Channel icons": check videoData.channel.icons.len == 3
   test "Likes": check videoData.likes > 25
   test "Dislikes": check videoData.dislikes < 1_000

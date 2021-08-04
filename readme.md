@@ -1,6 +1,6 @@
 <!--
   Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 08/04/2021 07:15:44 PM Wednesday
+  Modified at: 08/04/2021 07:22:14 PM Wednesday
 -->
 
 # ytextractor
@@ -14,7 +14,7 @@ This parser gets:
 - Channel
   - [x] Likes/dislikes
   - [x] Subscribers
-  - [ ] Channel thumb
+  - [x] Channel thumb
 
 - Video data
   - [ ] Subtitles

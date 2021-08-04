@@ -1,6 +1,6 @@
 #[
   Created at: 08/03/2021 19:58:57 Tuesday
-  Modified at: 08/04/2021 07:15:31 PM Wednesday
+  Modified at: 08/04/2021 07:22:08 PM Wednesday
 ]#
 
 ##[
@@ -8,7 +8,7 @@
 ]##
 
 from std/times import DateTime, Duration, initDuration, now, parse
-from std/json import parseJson, JsonNode, `{}`, getStr, getInt, getBool, newJObject
+from std/json import parseJson, JsonNode, `{}`, getStr, getInt, getBool, newJObject, items
 from std/strutils import find, parseInt, multiReplace
 from std/strformat import fmt
 from std/httpclient import newHttpClient, get, Http200, body, code, `==`, newHttpHeaders
@@ -38,6 +38,7 @@ type
   YoutubeVideoChannel* = object
     url*, name*, id*: string
     subscribers*: int ## This value is not prescise, the Youtube round the value
+    icons*: seq[YoutubeVideoUrl]
   YoutubeVideoCategories* {.pure.} = enum
     Unknown, FilmAndAnimation, AutosAndVehicles, Music, PetsAndAnimals, Sports,
     TravelAndEvents, Gaming, PeopleAndBlogs, Comedy, Entertainment,
@@ -147,12 +148,24 @@ proc update*(self: var YoutubeVideo): bool =
     self.channel.id = microformat{"externalChannelId"}.getStr
     self.channel.name = microformat{"ownerChannelName"}.getStr
 
-    self.channel.subscribers =  contents{"twoColumnWatchNextResults",
+    self.channel.subscribers = contents{"twoColumnWatchNextResults",
                   "results", "results", "contents"}{1}{
                   "videoSecondaryInfoRenderer", "owner",
                   "videoOwnerRenderer",
                   "subscriberCountText", "accessibility",
-                  "accessibilityData", "label"}.getStr.multiReplace({"K": "000", " subscribers": ""}).parseInt
+                  "accessibilityData", "label"}.
+      getStr.multiReplace({"K": "000"," subscribers": ""}).parseInt
+
+    block channelIcons:
+      for icon in contents{"twoColumnWatchNextResults", "results", "results",
+                          "contents"}{1}{"videoSecondaryInfoRenderer",
+                          "owner", "videoOwnerRenderer", "thumbnail",
+                          "thumbnails"}:
+        self.channel.icons.add YoutubeVideoUrl(
+          url: icon{"url"}.getStr,
+          width: icon{"width"}.getInt,
+          height: icon{"height"}.getInt,
+        )
 
   block likes:
     let data = contents{"twoColumnWatchNextResults", "results", "results",
@@ -168,6 +181,7 @@ proc update*(self: var YoutubeVideo): bool =
         }).parseInt
     self.likes = data.get 0
     self.dislikes = data.get 1
+
 
   self.status.lastUpdate = now()
   self.status.error = YoutubeVideoError.None
@@ -199,9 +213,8 @@ proc extractVideo*(video: string): YoutubeVideo =
 
 
 when isMainModule:
-  # var vid = initYoutubeVideo "jjEQ-yKVPMg".YoutubeVideoCode
-  # discard vid.update()
-  # echo vid
+  var vid = initYoutubeVideo "jjEQ-yKVPMg".YoutubeVideoCode
+  discard vid.update()
+  echo vid
 
-  # echo extractVideo("_o2y1SxprA0")
-  echo extractVideo("9FezBnmr_Us")
+  echo extractVideo("_o2y1SxprA0")
