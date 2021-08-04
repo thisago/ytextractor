@@ -1,6 +1,6 @@
 #[
   Created at: 08/03/2021 19:58:57 Tuesday
-  Modified at: 08/04/2021 07:22:08 PM Wednesday
+  Modified at: 08/04/2021 07:36:52 PM Wednesday
 ]#
 
 ##[
@@ -8,7 +8,8 @@
 ]##
 
 from std/times import DateTime, Duration, initDuration, now, parse
-from std/json import parseJson, JsonNode, `{}`, getStr, getInt, getBool, newJObject, items
+from std/json import parseJson, JsonNode, `{}`, getStr, getInt, getBool,
+    newJObject, items
 from std/strutils import find, parseInt, multiReplace
 from std/strformat import fmt
 from std/httpclient import newHttpClient, get, Http200, body, code, `==`, newHttpHeaders
@@ -23,14 +24,16 @@ type
     status*: YoutubeVideoStatus
     code*: YoutubeVideoCode
     title*, description*: string
-    thumbnail*, embed*: YoutubeVideoUrl
+    thumbnails*: seq[YoutubeVideoUrl]
+    embed*: YoutubeVideoUrl
     publishDate*, uploadDate*: DateTime
     length*: Duration
-    familyFriendly*, unlisted*: bool
+    familyFriendly*, unlisted*, private*, live*: bool
     channel*: YoutubeVideoChannel
     views*: int
     category*: YoutubeVideoCategories
     likes*, dislikes*: int
+    keywords*: seq[string]
 
   YoutubeVideoUrl* = object
     url*: string
@@ -116,8 +119,8 @@ proc update*(self: var YoutubeVideo): bool =
   let
     jsonData = getYtJsonData(self.code)
     microformat = jsonData.ytInitialPlayerResponse{"microformat", "playerMicroformatRenderer"}
+    videoDetails = jsonData.ytInitialPlayerResponse{"videoDetails"}
     contents = jsonData.ytInitialData{"contents"}
-  writeFile "out", $jsondata
 
   if microformat.isNil:
     self.status.error = YoutubeVideoError.NotExist
@@ -126,10 +129,12 @@ proc update*(self: var YoutubeVideo): bool =
   self.title = microformat{"title", "simpleText"}.getStr
   self.description = microformat{"description", "simpleText"}.getStr
   block thumbnail:
-    let data = microformat{"thumbnail", "thumbnails"}{0}
-    self.thumbnail.url = data{"url"}.getStr
-    self.thumbnail.width = data{"width"}.getInt
-    self.thumbnail.height = data{"height"}.getInt
+    for thumb in videoDetails{"thumbnail", "thumbnails"}:
+      self.thumbnails.add YoutubeVideoUrl(
+        url: thumb{"url"}.getStr,
+        width: thumb{"width"}.getInt,
+        height: thumb{"height"}.getInt,
+      )
   block embed:
     let data = microformat{"embed"}
     self.embed.url = data{"iframeUrl"}.getStr
@@ -154,7 +159,7 @@ proc update*(self: var YoutubeVideo): bool =
                   "videoOwnerRenderer",
                   "subscriberCountText", "accessibility",
                   "accessibilityData", "label"}.
-      getStr.multiReplace({"K": "000"," subscribers": ""}).parseInt
+      getStr.multiReplace({"K": "000", " subscribers": ""}).parseInt
 
     block channelIcons:
       for icon in contents{"twoColumnWatchNextResults", "results", "results",
@@ -182,6 +187,12 @@ proc update*(self: var YoutubeVideo): bool =
     self.likes = data.get 0
     self.dislikes = data.get 1
 
+  block keywords:
+    for keyword in videoDetails{"keywords"}:
+      self.keywords.add keyword.getStr
+
+  self.private = videoDetails{"isPrivate"}.getBool
+  self.live = videoDetails{"isLiveContent"}.getBool
 
   self.status.lastUpdate = now()
   self.status.error = YoutubeVideoError.None
@@ -213,8 +224,9 @@ proc extractVideo*(video: string): YoutubeVideo =
 
 
 when isMainModule:
-  var vid = initYoutubeVideo "jjEQ-yKVPMg".YoutubeVideoCode
-  discard vid.update()
-  echo vid
+  # var vid = initYoutubeVideo "jjEQ-yKVPMg".YoutubeVideoCode
+  # discard vid.update()
+  # echo vid
 
+  # echo extractVideo("_o2y1SxprA0").thumbnails
   echo extractVideo("_o2y1SxprA0")

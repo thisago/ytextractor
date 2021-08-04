@@ -1,6 +1,6 @@
 #[
   Created at: 08/04/2021 16:25:48 Wednesday
-  Modified at: 08/04/2021 07:22:52 PM Wednesday
+  Modified at: 08/04/2021 07:25:14 PM Wednesday
 ]#
 
 ##[
@@ -24,10 +24,8 @@ suite "Youtube video":
   test "Views": check videoData.views > 170
   test "Video length": check videoData.length == initDuration(seconds = 202)
   test "Description": check videoData.description[0..3] == "Oie!"
-  test "Thumbnail":
-    check videoData.thumbnail.url.len > 0
-    check videoData.thumbnail.width == 1280
-    check videoData.thumbnail.height == 720
+  test "Thumbnails":
+    check videoData.thumbnails.len > 0
   test "Embed":
     check videoData.embed.url == "https://www.youtube.com/embed/jjEQ-yKVPMg"
     check videoData.embed.width == 1280
