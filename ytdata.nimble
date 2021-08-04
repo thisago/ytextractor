@@ -2,7 +2,7 @@
 
 version       = "0.1.0"
 author        = "Thiago Navarro"
-description   = "Youtube parser"
+description   = "Youtube data parser"
 license       = "MIT"
 srcDir        = "src"
 
