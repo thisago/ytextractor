@@ -1,6 +1,6 @@
 #[
   Created at: 08/03/2021 19:58:57 Tuesday
-  Modified at: 08/04/2021 05:39:52 PM Wednesday
+  Modified at: 08/04/2021 07:15:31 PM Wednesday
 ]#
 
 ##[
@@ -9,9 +9,9 @@
 
 from std/times import DateTime, Duration, initDuration, now, parse
 from std/json import parseJson, JsonNode, `{}`, getStr, getInt, getBool, newJObject
-from std/strutils import find, parseInt
+from std/strutils import find, parseInt, multiReplace
 from std/strformat import fmt
-from std/httpclient import newHttpClient, get, Http200, body, code, `==`
+from std/httpclient import newHttpClient, get, Http200, body, code, `==`, newHttpHeaders
 
 when isMainModule:
   # debug purposes
@@ -30,12 +30,14 @@ type
     channel*: YoutubeVideoChannel
     views*: int
     category*: YoutubeVideoCategories
+    likes*, dislikes*: int
 
   YoutubeVideoUrl* = object
     url*: string
     width*, height*: int
   YoutubeVideoChannel* = object
     url*, name*, id*: string
+    subscribers*: int ## This value is not prescise, the Youtube round the value
   YoutubeVideoCategories* {.pure.} = enum
     Unknown, FilmAndAnimation, AutosAndVehicles, Music, PetsAndAnimals, Sports,
     TravelAndEvents, Gaming, PeopleAndBlogs, Comedy, Entertainment,
@@ -75,17 +77,33 @@ proc initYoutubeVideo*(code: YoutubeVideoCode): YoutubeVideo =
   ## Initialize a new `YoutubeVideo` instance
   YoutubeVideo(code: code)
 
-proc getYtJsonData(code: YoutubeVideoCode): JsonNode =
-  proc getVideoData(html: string): JsonNode =
-    const
-      startIndexFinder = "var ytInitialPlayerResponse = "
-      endIndexFinder = "};"
-    let
-      startIndex = startIndexFinder.len + html.find startIndexFinder
-      endIndex = startIndex + html[startIndex..^1].find endIndexFinder
-    return html[startIndex..endIndex].parseJson
+proc getYtJsonData(
+  code: YoutubeVideoCode
+): tuple[ytInitialPlayerResponse: JsonNode, ytInitialData: JsonNode] =
+  proc getVideoData(
+    html: string
+  ): tuple[ytInitialPlayerResponse: JsonNode, ytInitialData: JsonNode] =
+    block ytInitialPlayerResponse:
+      const
+        startIndexFinder = "var ytInitialPlayerResponse = "
+        endIndexFinder = "};"
+      let
+        startIndex = startIndexFinder.len + html.find startIndexFinder
+        endIndex = startIndex + html[startIndex..^1].find endIndexFinder
+      result.ytInitialPlayerResponse = html[startIndex..endIndex].parseJson
+    block ytInitialData:
+      const
+        startIndexFinder = "var ytInitialData = "
+        endIndexFinder = "};"
+      let
+        startIndex = startIndexFinder.len + html.find startIndexFinder
+        endIndex = startIndex + html[startIndex..^1].find endIndexFinder
+      result.ytInitialData = html[startIndex..endIndex].parseJson
 
   var client = newHttpClient()
+  client.headers = newHttpHeaders({
+    "accept-language": "en-US,en;q=0.9"
+  })
   let res = client.get(fmt"https://www.youtube.com/watch?v={code}")
   if res.code == Http200:
     return res.body.getVideoData()
@@ -96,7 +114,9 @@ proc update*(self: var YoutubeVideo): bool =
   result = true
   let
     jsonData = getYtJsonData(self.code)
-    microformat = jsonData{"microformat", "playerMicroformatRenderer"}
+    microformat = jsonData.ytInitialPlayerResponse{"microformat", "playerMicroformatRenderer"}
+    contents = jsonData.ytInitialData{"contents"}
+  writeFile "out", $jsondata
 
   if microformat.isNil:
     self.status.error = YoutubeVideoError.NotExist
@@ -126,6 +146,28 @@ proc update*(self: var YoutubeVideo): bool =
     self.channel.url = microformat{"ownerProfileUrl"}.getStr
     self.channel.id = microformat{"externalChannelId"}.getStr
     self.channel.name = microformat{"ownerChannelName"}.getStr
+
+    self.channel.subscribers =  contents{"twoColumnWatchNextResults",
+                  "results", "results", "contents"}{1}{
+                  "videoSecondaryInfoRenderer", "owner",
+                  "videoOwnerRenderer",
+                  "subscriberCountText", "accessibility",
+                  "accessibilityData", "label"}.getStr.multiReplace({"K": "000", " subscribers": ""}).parseInt
+
+  block likes:
+    let data = contents{"twoColumnWatchNextResults", "results", "results",
+                        "contents"}{0}{"videoPrimaryInfoRenderer",
+                        "videoActions", "menuRenderer", "topLevelButtons"}
+    proc get(data: JsonNode; i: int): int {.inline.} =
+      data{0}{"toggleButtonRenderer", "defaultText", "accessibility",
+              "accessibilityData", "label"}.
+        getStr.multiReplace({
+          ",": "",
+          " likes": "",
+          " dislikes": ""
+        }).parseInt
+    self.likes = data.get 0
+    self.dislikes = data.get 1
 
   self.status.lastUpdate = now()
   self.status.error = YoutubeVideoError.None
@@ -157,8 +199,9 @@ proc extractVideo*(video: string): YoutubeVideo =
 
 
 when isMainModule:
-  var vid = initYoutubeVideo "jjEQ-yKVPMg".YoutubeVideoCode
-  discard vid.update()
-  echo vid
+  # var vid = initYoutubeVideo "jjEQ-yKVPMg".YoutubeVideoCode
+  # discard vid.update()
+  # echo vid
 
-  echo extractVideo("_o2y1SxprA0")
+  # echo extractVideo("_o2y1SxprA0")
+  echo extractVideo("9FezBnmr_Us")
