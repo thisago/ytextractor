@@ -1,6 +1,6 @@
 #[
   Created at: 08/04/2021 16:25:48 Wednesday
-  Modified at: 08/04/2021 07:25:14 PM Wednesday
+  Modified at: 08/04/2021 07:38:25 PM Wednesday
 ]#
 
 ##[
@@ -30,8 +30,12 @@ suite "Youtube video":
     check videoData.embed.url == "https://www.youtube.com/embed/jjEQ-yKVPMg"
     check videoData.embed.width == 1280
     check videoData.embed.height == 720
+
   test "Family friendly": check videoData.familyFriendly == true
   test "Unlisted": check videoData.unlisted == false
+  test "Private": check videoData.private == false
+  test "Live": check videoData.live == false
+
   test "Category": check videoData.category == YoutubeVideoCategories.PeopleAndBlogs
   test "Channel name": check videoData.channel.name == "Antes do Almoço"
   test "Channel url": check videoData.channel.url == "http://www.youtube.com/channel/UC3aGq0eFrvrjM4F1dLUo87A"
