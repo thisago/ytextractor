@@ -1,6 +1,6 @@
 #[
   Created at: 08/03/2021 19:58:57 Tuesday
-  Modified at: 08/05/2021 12:15:27 PM Thursday
+  Modified at: 08/04/2021 11:12:46 PM Wednesday
 ]#
 
 ##[
@@ -159,7 +159,13 @@ proc update*(self: var YoutubeVideo): bool =
                   "videoOwnerRenderer",
                   "subscriberCountText", "accessibility",
                   "accessibilityData", "label"}.
-      getStr.multiReplace({"K": "000", " subscribers": ""}).parseInt
+      getStr.multiReplace({
+        "K": "000",
+        "M": "000000",
+        "B": "000000000",
+        " subscribers": "",
+        ".": ""
+      }).parseInt
 
     block channelIcons:
       for icon in contents{"twoColumnWatchNextResults", "results", "results",
