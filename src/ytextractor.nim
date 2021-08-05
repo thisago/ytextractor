@@ -1,6 +1,6 @@
 #[
   Created at: 08/03/2021 19:58:57 Tuesday
-  Modified at: 08/05/2021 12:14:44 PM Thursday
+  Modified at: 08/05/2021 12:15:27 PM Thursday
 ]#
 
 ##[
@@ -17,7 +17,7 @@ from std/httpclient import newHttpClient, get, Http200, body, code, `==`, newHtt
 when isMainModule:
   # debug purposes
   from std/times import `$`
-  from std/json import `$`, pretty
+  from std/json import `$`
 
 type
   YoutubeVideo* = object
@@ -121,10 +121,6 @@ proc update*(self: var YoutubeVideo): bool =
     microformat = jsonData.ytInitialPlayerResponse{"microformat", "playerMicroformatRenderer"}
     videoDetails = jsonData.ytInitialPlayerResponse{"videoDetails"}
     contents = jsonData.ytInitialData{"contents"}
-
-  when isMainModule:
-    writefile "ytInitialData.json", jsonData.ytInitialData.pretty
-    writefile "ytInitialPlayerResponse.json", jsonData.ytInitialPlayerResponse.pretty
 
   if microformat.isNil:
     self.status.error = YoutubeVideoError.NotExist
