@@ -1,6 +1,6 @@
 #[
   Created at: 08/03/2021 19:58:57 Tuesday
-  Modified at: 08/04/2021 11:12:46 PM Wednesday
+  Modified at: 08/04/2021 11:52:57 PM Wednesday
 ]#
 
 ##[
@@ -52,7 +52,7 @@ type
     lastUpdate*: DateTime
     error*: YoutubeVideoError
   YoutubeVideoError* {.pure.} = enum
-    None, NotExist
+    None, NotExist, ParseError
 
 
 proc parseCategory*(str: string): YoutubeVideoCategories =
@@ -112,6 +112,14 @@ proc getYtJsonData(
   if res.code == Http200:
     return res.body.getVideoData()
 
+proc find(nodes: JsonNode; key: string): JsonNode =
+  ## Gets an json array and returns a object
+  ## If not found, returns a empty one
+  result = newJObject()
+  for node in nodes:
+    if node.hasKey key:
+      return node{key}
+
 proc update*(self: var YoutubeVideo): bool =
   ## Update all `YoutubeVideo` data
   ## Returns `false` on error.
@@ -126,85 +134,89 @@ proc update*(self: var YoutubeVideo): bool =
     self.status.error = YoutubeVideoError.NotExist
     return false
 
-  self.title = microformat{"title", "simpleText"}.getStr
-  self.description = microformat{"description", "simpleText"}.getStr
-  block thumbnail:
-    for thumb in videoDetails{"thumbnail", "thumbnails"}:
-      self.thumbnails.add YoutubeVideoUrl(
-        url: thumb{"url"}.getStr,
-        width: thumb{"width"}.getInt,
-        height: thumb{"height"}.getInt,
-      )
-  block embed:
-    let data = microformat{"embed"}
-    self.embed.url = data{"iframeUrl"}.getStr
-    self.embed.width = data{"width"}.getInt
-    self.embed.height = data{"height"}.getInt
-  self.publishDate = microformat{"publishDate"}.getStr.parse("yyyy-MM-dd")
-  self.uploadDate = microformat{"uploadDate"}.getStr.parse("yyyy-MM-dd")
-  self.length =
-    initDuration(seconds = microformat{"lengthSeconds"}.getStr.parseInt)
-  self.views = microformat{"viewCount"}.getStr.parseInt
-  self.familyFriendly = microformat{"isFamilySafe"}.getBool
-  self.unlisted = microformat{"isUnlisted"}.getBool
-  self.category = microformat{"category"}.getStr.parseCategory
-  block channel:
-    self.channel.url = microformat{"ownerProfileUrl"}.getStr
-    self.channel.id = microformat{"externalChannelId"}.getStr
-    self.channel.name = microformat{"ownerChannelName"}.getStr
-
-    self.channel.subscribers = contents{"twoColumnWatchNextResults",
-                  "results", "results", "contents"}{1}{
-                  "videoSecondaryInfoRenderer", "owner",
-                  "videoOwnerRenderer",
-                  "subscriberCountText", "accessibility",
-                  "accessibilityData", "label"}.
-      getStr.multiReplace({
-        "K": "000",
-        "M": "000000",
-        "B": "000000000",
-        " subscribers": "",
-        ".": ""
-      }).parseInt
-
-    block channelIcons:
-      for icon in contents{"twoColumnWatchNextResults", "results", "results",
-                          "contents"}{1}{"videoSecondaryInfoRenderer",
-                          "owner", "videoOwnerRenderer", "thumbnail",
-                          "thumbnails"}:
-        self.channel.icons.add YoutubeVideoUrl(
-          url: icon{"url"}.getStr,
-          width: icon{"width"}.getInt,
-          height: icon{"height"}.getInt,
+  try:
+    self.title = microformat{"title", "simpleText"}.getStr
+    self.description = microformat{"description", "simpleText"}.getStr
+    block thumbnail:
+      for thumb in videoDetails{"thumbnail", "thumbnails"}:
+        self.thumbnails.add YoutubeVideoUrl(
+          url: thumb{"url"}.getStr,
+          width: thumb{"width"}.getInt,
+          height: thumb{"height"}.getInt,
         )
+    block embed:
+      let data = microformat{"embed"}
+      self.embed.url = data{"iframeUrl"}.getStr
+      self.embed.width = data{"width"}.getInt
+      self.embed.height = data{"height"}.getInt
+    self.publishDate = microformat{"publishDate"}.getStr.parse("yyyy-MM-dd")
+    self.uploadDate = microformat{"uploadDate"}.getStr.parse("yyyy-MM-dd")
+    self.length =
+      initDuration(seconds = microformat{"lengthSeconds"}.getStr.parseInt)
+    self.views = microformat{"viewCount"}.getStr.parseInt
+    self.familyFriendly = microformat{"isFamilySafe"}.getBool
+    self.unlisted = microformat{"isUnlisted"}.getBool
+    self.category = microformat{"category"}.getStr.parseCategory
+    block channel:
+      self.channel.url = microformat{"ownerProfileUrl"}.getStr
+      self.channel.id = microformat{"externalChannelId"}.getStr
+      self.channel.name = microformat{"ownerChannelName"}.getStr
 
-  block likes:
-    let data = contents{"twoColumnWatchNextResults", "results", "results",
-                        "contents"}{0}{"videoPrimaryInfoRenderer",
-                        "videoActions", "menuRenderer", "topLevelButtons"}
-    proc get(data: JsonNode; i: int): int {.inline.} =
-      data{i}{"toggleButtonRenderer", "defaultText", "accessibility",
-              "accessibilityData", "label"}.
-        getStr.multiReplace({
-          ",": "",
-          " likes": "",
-          " dislikes": "",
-          "No dislikes": "0",
-          "No likes": "0"
-        }).parseInt
-    self.likes = data.get 0
-    self.dislikes = data.get 1
+      self.channel.subscribers = contents{"twoColumnWatchNextResults",
+                                          "results", "results", "contents"}.
+        find("videoSecondaryInfoRenderer"){"owner", "videoOwnerRenderer",
+            "subscriberCountText", "accessibility", "accessibilityData", "label"}.
+          getStr.multiReplace({
+              "K": "000",
+              "M": "000000",
+              "B": "000000000",
+              " subscribers": "",
+              ".": ""
+            }).parseInt
 
-  block keywords:
-    if videoDetails.hasKey "keyword":
-      for keyword in videoDetails{"keywords"}:
-        self.keywords.add keyword.getStr
+      block channelIcons:
+        for icon in contents{"twoColumnWatchNextResults", "results", "results",
+                            "contents"}.
+          find("videoSecondaryInfoRenderer"){"owner", "videoOwnerRenderer",
+              "thumbnail", "thumbnails"}:
+          self.channel.icons.add YoutubeVideoUrl(
+            url: icon{"url"}.getStr,
+            width: icon{"width"}.getInt,
+            height: icon{"height"}.getInt,
+          )
 
-  self.private = videoDetails{"isPrivate"}.getBool
-  self.live = videoDetails{"isLiveContent"}.getBool
+    block likes:
+      let data = contents{"twoColumnWatchNextResults", "results", "results",
+                          "contents"}.
+        find("videoPrimaryInfoRenderer"){"videoActions", "menuRenderer",
+            "topLevelButtons"}
+      proc get(data: JsonNode; i: int): int {.inline.} =
+        data{i}{"toggleButtonRenderer", "defaultText", "accessibility",
+                "accessibilityData", "label"}.
+          getStr.multiReplace({
+            ",": "",
+            " likes": "",
+            " dislikes": "",
+            "No dislikes": "0",
+            "No likes": "0"
+          }).parseInt
+      self.likes = data.get 0
+      self.dislikes = data.get 1
 
-  self.status.lastUpdate = now()
-  self.status.error = YoutubeVideoError.None
+    block keywords:
+      if videoDetails.hasKey "keyword":
+        for keyword in videoDetails{"keywords"}:
+          self.keywords.add keyword.getStr
+
+    self.private = videoDetails{"isPrivate"}.getBool
+    self.live = videoDetails{"isLiveContent"}.getBool
+
+    self.status.lastUpdate = now()
+    self.status.error = YoutubeVideoError.None
+  except:
+    self.status.error = YoutubeVideoError.ParseError
+    return false
+
 
 proc videoCode*(url: string): YoutubeVideoCode =
   const
