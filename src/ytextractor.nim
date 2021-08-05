@@ -1,6 +1,6 @@
 #[
   Created at: 08/03/2021 19:58:57 Tuesday
-  Modified at: 08/04/2021 07:36:52 PM Wednesday
+  Modified at: 08/05/2021 12:14:44 PM Thursday
 ]#
 
 ##[
@@ -9,7 +9,7 @@
 
 from std/times import DateTime, Duration, initDuration, now, parse
 from std/json import parseJson, JsonNode, `{}`, getStr, getInt, getBool,
-    newJObject, items
+    newJObject, items, hasKey
 from std/strutils import find, parseInt, multiReplace
 from std/strformat import fmt
 from std/httpclient import newHttpClient, get, Http200, body, code, `==`, newHttpHeaders
@@ -17,7 +17,7 @@ from std/httpclient import newHttpClient, get, Http200, body, code, `==`, newHtt
 when isMainModule:
   # debug purposes
   from std/times import `$`
-  from std/json import `$`
+  from std/json import `$`, pretty
 
 type
   YoutubeVideo* = object
@@ -57,22 +57,22 @@ type
 
 proc parseCategory*(str: string): YoutubeVideoCategories =
   case str:
-  of "Film & Animation": return FilmAndAnimation
-  of "Autos & Vehicles": return AutosAndVehicles
-  of "Music": return Music
-  of "Pets & Animals": return PetsAndAnimals
-  of "Sports": return Sports
-  of "Travel & Events": return TravelAndEvents
-  of "Gaming": return Gaming
-  of "People & Blogs": return PeopleAndBlogs
-  of "Comedy": return Comedy
-  of "Entertainment": return Entertainment
-  of "News & Politics": return NewsAndPolitics
-  of "Howto & Style": return HowtoAndStyle
-  of "Education": return Education
-  of "Science & Technology": return ScienceAndTechnology
-  of "Nonprofits & Activism": return NonprofitsAndActivism
-  else: return Unknown
+  of "Film & Animation": FilmAndAnimation
+  of "Autos & Vehicles": AutosAndVehicles
+  of "Music": Music
+  of "Pets & Animals": PetsAndAnimals
+  of "Sports": Sports
+  of "Travel & Events": TravelAndEvents
+  of "Gaming": Gaming
+  of "People & Blogs": PeopleAndBlogs
+  of "Comedy": Comedy
+  of "Entertainment": Entertainment
+  of "News & Politics": NewsAndPolitics
+  of "Howto & Style": HowtoAndStyle
+  of "Education": Education
+  of "Science & Technology": ScienceAndTechnology
+  of "Nonprofits & Activism": NonprofitsAndActivism
+  else: Unknown
 
 proc `$`*(code: YoutubeVideoCode): string =
   code.string
@@ -121,6 +121,10 @@ proc update*(self: var YoutubeVideo): bool =
     microformat = jsonData.ytInitialPlayerResponse{"microformat", "playerMicroformatRenderer"}
     videoDetails = jsonData.ytInitialPlayerResponse{"videoDetails"}
     contents = jsonData.ytInitialData{"contents"}
+
+  when isMainModule:
+    writefile "ytInitialData.json", jsonData.ytInitialData.pretty
+    writefile "ytInitialPlayerResponse.json", jsonData.ytInitialPlayerResponse.pretty
 
   if microformat.isNil:
     self.status.error = YoutubeVideoError.NotExist
@@ -177,19 +181,22 @@ proc update*(self: var YoutubeVideo): bool =
                         "contents"}{0}{"videoPrimaryInfoRenderer",
                         "videoActions", "menuRenderer", "topLevelButtons"}
     proc get(data: JsonNode; i: int): int {.inline.} =
-      data{0}{"toggleButtonRenderer", "defaultText", "accessibility",
+      data{i}{"toggleButtonRenderer", "defaultText", "accessibility",
               "accessibilityData", "label"}.
         getStr.multiReplace({
           ",": "",
           " likes": "",
-          " dislikes": ""
+          " dislikes": "",
+          "No dislikes": "0",
+          "No likes": "0"
         }).parseInt
     self.likes = data.get 0
     self.dislikes = data.get 1
 
   block keywords:
-    for keyword in videoDetails{"keywords"}:
-      self.keywords.add keyword.getStr
+    if videoDetails.hasKey "keyword":
+      for keyword in videoDetails{"keywords"}:
+        self.keywords.add keyword.getStr
 
   self.private = videoDetails{"isPrivate"}.getBool
   self.live = videoDetails{"isLiveContent"}.getBool
@@ -224,9 +231,8 @@ proc extractVideo*(video: string): YoutubeVideo =
 
 
 when isMainModule:
-  # var vid = initYoutubeVideo "jjEQ-yKVPMg".YoutubeVideoCode
+  # var vid = initYoutubeVideo "jjEQ-yKVPMg".videoCode
   # discard vid.update()
   # echo vid
 
-  # echo extractVideo("_o2y1SxprA0").thumbnails
-  echo extractVideo("_o2y1SxprA0")
+  echo extractVideo "_o2y1SxprA0"
