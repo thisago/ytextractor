@@ -1,6 +1,6 @@
 <!--
   Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 08/04/2021 11:19:31 PM Wednesday
+  Modified at: 08/07/2021 06:00:15 AM Saturday
 -->
 
 # ytextractor
@@ -37,6 +37,7 @@ This parser gets:
   - [x] Url
   - [x] Id
   - [x] Name
+  - [x] Hidden subscribers (bool)
 
 - Video data
   - [ ] Subtitles
@@ -72,10 +73,10 @@ echo extractVideo "_o2y1SxprA0"
 Please choice one installation method:
 
 - Automatically with nimble
-  <!-- ```bash
+  ```bash
   nimble install ytextractor
   ```
-  or -->
+  or
   ```bash
   nimble install https://github.com/thisago/ytextractor
   ```

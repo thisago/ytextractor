@@ -1,6 +1,6 @@
 #[
   Created at: 08/03/2021 19:58:57 Tuesday
-  Modified at: 08/04/2021 11:52:57 PM Wednesday
+  Modified at: 08/07/2021 05:59:56 AM Saturday
 ]#
 
 ##[
@@ -42,6 +42,7 @@ type
     url*, name*, id*: string
     subscribers*: int ## This value is not prescise, the Youtube round the value
     icons*: seq[YoutubeVideoUrl]
+    hiddenSubscribers*: bool
   YoutubeVideoCategories* {.pure.} = enum
     Unknown, FilmAndAnimation, AutosAndVehicles, Music, PetsAndAnimals, Sports,
     TravelAndEvents, Gaming, PeopleAndBlogs, Comedy, Entertainment,
@@ -162,8 +163,8 @@ proc update*(self: var YoutubeVideo): bool =
       self.channel.id = microformat{"externalChannelId"}.getStr
       self.channel.name = microformat{"ownerChannelName"}.getStr
 
-      self.channel.subscribers = contents{"twoColumnWatchNextResults",
-                                          "results", "results", "contents"}.
+      let subs = contents{"twoColumnWatchNextResults", "results", "results",
+                          "contents"}.
         find("videoSecondaryInfoRenderer"){"owner", "videoOwnerRenderer",
             "subscriberCountText", "accessibility", "accessibilityData", "label"}.
           getStr.multiReplace({
@@ -172,7 +173,12 @@ proc update*(self: var YoutubeVideo): bool =
               "B": "000000000",
               " subscribers": "",
               ".": ""
-            }).parseInt
+            })
+
+      if subs.len == 0:
+        self.channel.hiddenSubscribers = true
+      else:
+        self.channel.subscribers = subs.parseInt
 
       block channelIcons:
         for icon in contents{"twoColumnWatchNextResults", "results", "results",
@@ -215,6 +221,7 @@ proc update*(self: var YoutubeVideo): bool =
     self.status.error = YoutubeVideoError.None
   except:
     self.status.error = YoutubeVideoError.ParseError
+    echo getCurrentExceptionMsg()
     return false
 
 
