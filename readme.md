@@ -1,6 +1,6 @@
 <!--
   Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 08/08/2021 05:02:35 AM Sunday
+  Modified at: 08/08/2021 05:07:34 AM Sunday
 -->
 
 # ytextractor
@@ -18,13 +18,13 @@ This parser gets:
   - [x] Description
   - [x] Thumbnails
   - [x] Embed
-  - [x] PublishDate
-  - [x] UploadDate
+  - [x] Publish date
+  - [x] Upload date
   - [x] Length
-  - [x] FamilyFriendly
+  - [x] Family friendly
   - [x] Unlisted
   - [x] Private
-  - [x] Live
+  - [x] Live (is live)
   - [x] Channel
   - [x] Views
   - [x] Category
