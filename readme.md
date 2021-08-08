@@ -1,6 +1,6 @@
 <!--
   Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 08/08/2021 05:59:06 PM Sunday
+  Modified at: 08/08/2021 06:39:31 PM Sunday
 -->
 
 # ytextractor
@@ -111,6 +111,14 @@ Usage guide (not only Nim)
 
 Python3 parser\
 With a "How it works" section
+
+---
+
+## FAQ
+
+### What is these videos?
+
+Is a recently initiated cooking channel from one of my relatives
 
 ---
 
