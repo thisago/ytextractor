@@ -1,6 +1,6 @@
 #[
   Created at: 08/04/2021 16:25:48 Wednesday
-  Modified at: 08/08/2021 04:47:08 AM Sunday
+  Modified at: 08/09/2021 05:35:22 AM Monday
 ]#
 
 ##[
@@ -20,7 +20,7 @@ suite "Youtube video":
     check videoData.update()
     check videoData.status.error == YoutubeVideoError.None
   test "Video title":
-    check videoData.title == "Bolachinhas de GERGELIM com CEBOLA super CROCANTE"
+    check videoData.title == "Bolachinhas de GERGELIM com CEBOLA - super CROCANTE"
   test "Views": check videoData.views > 170
   test "Video length": check videoData.length == initDuration(seconds = 202)
   test "Description": check videoData.description[0..3] == "Oie!"
