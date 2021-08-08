@@ -1,6 +1,6 @@
 <!--
   Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 08/08/2021 08:24:54 PM Sunday
+  Modified at: 08/08/2021 08:38:33 PM Sunday
 -->
 
 # ytextractor
@@ -12,7 +12,7 @@ but more will be added soon!
 
 The objective is extract every data that don't need authentication
 
-This lib is WIP, but quite usable.\
+This lib is WIP, but quite usable.
 
 ---
 
