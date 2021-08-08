@@ -1,6 +1,6 @@
 #[
   Created at: 08/04/2021 16:25:48 Wednesday
-  Modified at: 08/09/2021 05:35:22 AM Monday
+  Modified at: 08/08/2021 06:05:39 PM Sunday
 ]#
 
 ##[
@@ -8,7 +8,7 @@
 ]##
 
 import unittest
-from times import initDuration
+from times import initDuration, `$`
 
 import ytextractor
 
@@ -25,7 +25,7 @@ suite "Youtube video":
   test "Video length": check videoData.length == initDuration(seconds = 202)
   test "Description": check videoData.description[0..3] == "Oie!"
   test "Thumbnails":
-    check videoData.thumbnails.len > 0
+    check videoData.thumbnails.len > 1
   test "Embed":
     check videoData.embed.url == "https://www.youtube.com/embed/jjEQ-yKVPMg"
     check videoData.embed.width == 1280
@@ -45,3 +45,7 @@ suite "Youtube video":
   test "Channel icons": check videoData.channel.icons.len == 3
   test "Likes": check videoData.likes > 25
   test "Dislikes": check videoData.dislikes < 1_000
+  test "Keywords": check "bolachinhas de gergelim" in videoData.keywords
+
+  test "Publish date": check $videoData.publishDate == "2021-07-30T00:00:00+00:00"
+  test "Upload date": check $videoData.uploadDate == "2021-07-30T00:00:00+00:00"

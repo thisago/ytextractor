@@ -1,6 +1,6 @@
 #[
   Created at: 08/03/2021 19:58:57 Tuesday
-  Modified at: 08/07/2021 05:59:56 AM Saturday
+  Modified at: 08/08/2021 05:58:41 PM Sunday
 ]#
 
 ##[
@@ -211,7 +211,7 @@ proc update*(self: var YoutubeVideo): bool =
       self.dislikes = data.get 1
 
     block keywords:
-      if videoDetails.hasKey "keyword":
+      if videoDetails.hasKey "keywords":
         for keyword in videoDetails{"keywords"}:
           self.keywords.add keyword.getStr
 
@@ -222,7 +222,9 @@ proc update*(self: var YoutubeVideo): bool =
     self.status.error = YoutubeVideoError.None
   except:
     self.status.error = YoutubeVideoError.ParseError
-    echo getCurrentExceptionMsg()
+    when isMainModule:
+      # debug purposes
+      echo getCurrentExceptionMsg()
     return false
 
 
@@ -257,4 +259,4 @@ when isMainModule:
   # discard vid.update()
   # echo vid
 
-  echo extractVideo "_o2y1SxprA0"
+  echo extractVideo("_o2y1SxprA0")
