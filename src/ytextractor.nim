@@ -12,7 +12,7 @@ from std/json import parseJson, JsonNode, `{}`, getStr, getInt, getBool,
     newJObject, items, hasKey
 from std/strutils import find, parseInt, multiReplace
 from std/strformat import fmt
-from std/httpclient import newHttpClient, get, Http200, body, code, `==`, newHttpHeaders
+from std/httpclient import newHttpClient, close, get, Http200, body, code, `==`, newHttpHeaders
 
 when isMainModule:
   # debug purposes
@@ -111,7 +111,8 @@ proc getYtJsonData(
   })
   let res = client.get(fmt"https://www.youtube.com/watch?v={code}")
   if res.code == Http200:
-    return res.body.getVideoData()
+    result = res.body.getVideoData()
+  client.close()
 
 proc find(nodes: JsonNode; key: string): JsonNode =
   ## Gets an json array and returns a object
