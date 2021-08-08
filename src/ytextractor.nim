@@ -1,6 +1,6 @@
 #[
   Created at: 08/03/2021 19:58:57 Tuesday
-  Modified at: 08/08/2021 05:58:41 PM Sunday
+  Modified at: 08/08/2021 08:22:03 PM Sunday
 ]#
 
 ##[
@@ -13,6 +13,8 @@ from std/json import parseJson, JsonNode, `{}`, getStr, getInt, getBool,
 from std/strutils import find, parseInt, multiReplace
 from std/strformat import fmt
 from std/httpclient import newHttpClient, close, get, Http200, body, code, `==`, newHttpHeaders
+
+const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
 
 when isMainModule:
   # debug purposes
@@ -107,7 +109,8 @@ proc getYtJsonData(
 
   var client = newHttpClient()
   client.headers = newHttpHeaders({
-    "accept-language": "en-US,en;q=0.9"
+    "accept-language": "en-US,en;q=0.9",
+    "user-agent": userAgent
   })
   let res = client.get(fmt"https://www.youtube.com/watch?v={code}")
   if res.code == Http200:
@@ -224,7 +227,7 @@ proc update*(self: var YoutubeVideo): bool =
     self.status.error = YoutubeVideoError.ParseError
     when isMainModule:
       # debug purposes
-      echo getCurrentExceptionMsg()
+      doAssert false, getCurrentExceptionMsg()
     return false
 
 

@@ -1,11 +1,20 @@
 <!--
   Created at: 08/05/2021 14:16:41 Thursday
-  Modified at: 08/08/2021 06:06:40 PM Sunday
+  Modified at: 08/08/2021 08:36:32 PM Sunday
 -->
 
 # Changelog
 
 A verbose logging of every change.
+
+## Version 0.2.4 (08/08/2021 20:36:32 Sunday)
+
+- Added user-agent to not be blocked
+- Added a description to lib
+- When lib is main module, an parsing error will stop program
+- Reduced minimun Nim version to `1.2.2`
+
+---
 
 ## Version 0.2.3 (08/08/2021 18:06:39 Sunday)
 

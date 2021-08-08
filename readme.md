@@ -1,11 +1,18 @@
 <!--
   Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 08/08/2021 06:39:31 PM Sunday
+  Modified at: 08/08/2021 08:24:54 PM Sunday
 -->
 
 # ytextractor
 
 **Y**ou**t**ube data **extractor**
+
+Extracts the data of a Youtube url. Now it just parses a video url (watch page)
+but more will be added soon!
+
+The objective is extract every data that don't need authentication
+
+This lib is WIP, but quite usable.\
 
 ---
 
@@ -76,6 +83,8 @@ echo vid
 ---
 
 ## Installation
+
+Minimum [Nim](https://nim-lang.org) version is `1.2.2`
 
 Please choice one installation method:
 
