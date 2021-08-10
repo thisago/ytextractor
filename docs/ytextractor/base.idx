@@ -1,0 +1,3 @@
+base	ytextractor/base.html#base	 base	
+parseYoutubeJson	ytextractor/base.html#parseYoutubeJson,string	base: parseYoutubeJson(html: string): tuple[ytInitialPlayerResponse: JsonNode,\n                                      ytInitialData: JsonNode]	
+fetch	ytextractor/base.html#fetch,string	base: fetch(url: string): string	

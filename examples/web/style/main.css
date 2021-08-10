@@ -1,0 +1,32 @@
+/*
+  Created at: 08/09/2021 14:17:18 Monday
+  Modified at: 08/09/2021 02:22:07 PM Monday
+*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container > *{
+  margin: .5em;
+  padding: .5em;
+  border-radius: 1em;
+}
+
+.container .buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.container .buttons > * {
+  margin: .5em
+}

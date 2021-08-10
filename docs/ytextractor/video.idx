@@ -1,0 +1,14 @@
+video	ytextractor/video.html#video	 video	
+YoutubeVideo	ytextractor/video.html#YoutubeVideo	video: YoutubeVideo	
+YoutubeVideoUrl	ytextractor/video.html#YoutubeVideoUrl	video: YoutubeVideoUrl	
+YoutubeVideoChannel	ytextractor/video.html#YoutubeVideoChannel	video: YoutubeVideoChannel	
+YoutubeVideoCategories	ytextractor/video.html#YoutubeVideoCategories	video: YoutubeVideoCategories	
+YoutubeVideoId	ytextractor/video.html#YoutubeVideoId	video: YoutubeVideoId	
+YoutubeVideoStatus	ytextractor/video.html#YoutubeVideoStatus	video: YoutubeVideoStatus	
+YoutubeVideoError	ytextractor/video.html#YoutubeVideoError	video: YoutubeVideoError	
+parseCategory	ytextractor/video.html#parseCategory,string	video: parseCategory(str: string): YoutubeVideoCategories	
+`$`	ytextractor/video.html#$,YoutubeVideoId	video: `$`(id: YoutubeVideoId): string	
+initYoutubeVideo	ytextractor/video.html#initYoutubeVideo,YoutubeVideoId	video: initYoutubeVideo(id: YoutubeVideoId): YoutubeVideo	
+update	ytextractor/video.html#update,YoutubeVideo	video: update(self: var YoutubeVideo): bool	
+videoId	ytextractor/video.html#videoId,string	video: videoId(url: string): YoutubeVideoId	
+extractVideo	ytextractor/video.html#extractVideo,string	video: extractVideo(video: string): YoutubeVideo	

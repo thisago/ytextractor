@@ -1,11 +1,23 @@
 <!--
   Created at: 08/05/2021 14:16:41 Thursday
-  Modified at: 08/08/2021 08:36:32 PM Sunday
+  Modified at: 08/10/2021 03:32:13 PM Tuesday
 -->
 
 # Changelog
 
 A verbose logging of every change.
+
+## Version 0.3.0 (08/10/2021 15:32:13 Tuesday)
+
+- Renamed video `code` to `id`
+- Added a task to generate docs
+- Splitted all video extracting to another file
+- Added compatibility with JS backend in browser
+- Added optional proxy
+- Changed the video data's `lastUpdate` to top in case of parse error show the last update time
+- Fixed subs parsing
+
+---
 
 ## Version 0.2.4 (08/08/2021 20:36:32 Sunday)
 

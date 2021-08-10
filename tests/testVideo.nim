@@ -1,6 +1,6 @@
 #[
   Created at: 08/04/2021 16:25:48 Wednesday
-  Modified at: 08/08/2021 06:05:39 PM Sunday
+  Modified at: 08/10/2021 12:54:37 PM Tuesday
 ]#
 
 ##[
@@ -13,9 +13,9 @@ from times import initDuration, `$`
 import ytextractor
 
 suite "Youtube video":
-  var videoData = initYoutubeVideo("https://www.youtube.com/watch?v=jjEQ-yKVPMg".videoCode)
+  var videoData = initYoutubeVideo("https://www.youtube.com/watch?v=jjEQ-yKVPMg".videoId)
 
-  test "Video Code": check "jjEQ-yKVPMg" == $videoData.code
+  test "Video Id": check "jjEQ-yKVPMg" == $videoData.id
   test "Get data":
     check videoData.update()
     check videoData.status.error == YoutubeVideoError.None

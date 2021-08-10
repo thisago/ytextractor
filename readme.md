@@ -1,7 +1,11 @@
 <!--
   Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 08/08/2021 08:38:33 PM Sunday
+  Modified at: 08/10/2021 03:11:35 PM Tuesday
 -->
+
+[![Build Status](https://nimble.directory/ci/badges/ytextractor/nimdevel/docstatus.svg)](https://nimble.directory/ci/badges/ytextractor/nimdevel/doc_build_output.html)
+[![Build Status](https://nimble.directory/ci/badges/ytextractor/nimdevel/status.svg)](https://nimble.directory/ci/badges/ytextractor/nimdevel/output.html)
+
 
 # ytextractor
 
@@ -14,13 +18,14 @@ The objective is extract every data that don't need authentication
 
 This lib is WIP, but quite usable.
 
+
 ---
 
 ## Features
 
 This parser gets:
 - Common video info
-  - [x] Code
+  - [x] Id (video code)
   - [x] Title
   - [x] Description
   - [x] Thumbnails
@@ -56,6 +61,12 @@ This parser gets:
 - [ ] Search results
 - [ ] All videos from channel/user
 - [ ] All videos of playlist (a seq of videos)
+
+### JS (browser) target avaliable!
+
+An example can be found in [`examples/web/`](examples/web).
+
+Unfortunately the implementation isn't async, soon will be fixed
 
 ---
 
@@ -110,7 +121,8 @@ Or
 
 ## TODO
 
-Usage guide (not only Nim)
+[ ] Usage guide (not only Nim)
+[ ] Make requests async
 
 ---
 
