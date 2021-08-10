@@ -1,6 +1,6 @@
 <!--
   Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 08/10/2021 03:11:35 PM Tuesday
+  Modified at: 08/10/2021 10:01:35 PM Tuesday
 -->
 
 [![Build Status](https://nimble.directory/ci/badges/ytextractor/nimdevel/docstatus.svg)](https://nimble.directory/ci/badges/ytextractor/nimdevel/doc_build_output.html)
@@ -17,7 +17,6 @@ but more will be added soon!
 The objective is extract every data that don't need authentication
 
 This lib is WIP, but quite usable.
-
 
 ---
 
@@ -64,7 +63,7 @@ This parser gets:
 
 ### JS (browser) target avaliable!
 
-An example can be found in [`examples/web/`](examples/web).
+An example can be found in [`examples/web`](examples/web).
 
 Unfortunately the implementation isn't async, soon will be fixed
 
@@ -107,9 +106,7 @@ Please choice one installation method:
   ```bash
   nimble install https://github.com/thisago/ytextractor
   ```
-
 Or
-
 - Manually
   ```bash
   git clone https://github.com/thisago/ytextractor
@@ -119,10 +116,16 @@ Or
 
 ---
 
+## Docs
+
+A online docs is hosted in [Github Pages](https://thisago.github.io/ytextractor/ytextractor.html)
+
+---
+
 ## TODO
 
-[ ] Usage guide (not only Nim)
-[ ] Make requests async
+- [ ] Usage guide (not only Nim)
+- [ ] Make requests async
 
 ---
 
