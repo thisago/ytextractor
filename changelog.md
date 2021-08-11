@@ -1,11 +1,19 @@
 <!--
   Created at: 08/05/2021 14:16:41 Thursday
-  Modified at: 08/11/2021 01:13:30 PM Wednesday
+  Modified at: 08/11/2021 03:03:21 PM Wednesday
 -->
 
 # Changelog
 
 A verbose logging of every change.
+
+## Version 0.3.2 (08/11/2021 15:03:21 Wednesday)
+
+- Removed the "build status" shields from `readme.md`
+- Added a length verification for video ID
+- Added `InvalidId` error
+
+---
 
 ## Version 0.3.1 (08/11/2021 13:13:29 Wednesday)
 

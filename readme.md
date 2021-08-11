@@ -1,11 +1,7 @@
 <!--
   Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 08/10/2021 10:01:35 PM Tuesday
+  Modified at: 08/11/2021 02:30:51 PM Wednesday
 -->
-
-[![Build Status](https://nimble.directory/ci/badges/ytextractor/nimdevel/docstatus.svg)](https://nimble.directory/ci/badges/ytextractor/nimdevel/doc_build_output.html)
-[![Build Status](https://nimble.directory/ci/badges/ytextractor/nimdevel/status.svg)](https://nimble.directory/ci/badges/ytextractor/nimdevel/output.html)
-
 
 # ytextractor
 

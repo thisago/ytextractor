@@ -1,6 +1,6 @@
 #[
   Created at: 08/09/2021 12:10:05 Monday
-  Modified at: 08/11/2021 01:12:02 PM Wednesday
+  Modified at: 08/11/2021 03:01:36 PM Wednesday
 ]#
 
 ##[
@@ -10,11 +10,13 @@
   Parser for `https://www.youtube.com/watch?v=VIDEOID`
 ]##
 
+{.experimental: "codeReordering".}
+
 from std/times import DateTime, Duration, initDuration, now
 from std/json import JsonNode, newJObject, items, hasKey, `{}`, getStr, getInt,
                      getBool
 from std/strformat import fmt
-from std/strutils import parseInt, multiReplace, find
+from std/strutils import parseInt, multiReplace, find, strip
 
 import ytextractor/base
 
@@ -60,12 +62,12 @@ type
     error*: YoutubeVideoError
   YoutubeVideoError* {.pure.} = enum
     ## Parsing error
-    None, NotExist, ParseError
+    None, NotExist, ParseError, InvalidId
 
 proc parseCategory*(str: string): YoutubeVideoCategories =
   ## Parses the category to `YoutubeVideoCategories`
   runnableExamples:
-    assert parseCategory("People & Blogs") == YoutubeVideoCategories.PeopleAndBlogs
+    doAssert parseCategory("People & Blogs") == YoutubeVideoCategories.PeopleAndBlogs
   case str:
   of "Film & Animation": FilmAndAnimation
   of "Autos & Vehicles": AutosAndVehicles
@@ -112,6 +114,11 @@ proc update*(self: var YoutubeVideo; proxy = ""): bool =
   ##     echo "Error to update: " & $vid.status.error
   ##   echo vid
   result = true
+
+  if not self.id.valid:
+    self.status.error = YoutubeVideoError.InvalidId
+    return false
+
   let
     jsonData = fetch(fmt"{proxy}https://www.youtube.com/watch?v={self.id}").
       parseYoutubeJson()
@@ -219,19 +226,42 @@ proc videoId*(url: string): YoutubeVideoId =
   ## Parses the video ID from url
   ## If gave a code instead url, it will return itself
   runnableExamples:
-    assert $"https://www.youtube.com/watch?v=jjEQ-yKVPMg".videoId == "jjEQ-yKVPMg"
-    assert $"jjEQ-yKVPMg".videoId == "jjEQ-yKVPMg"
-  const
-    startIndexFinder = "v="
-    endIndexFinder = "&"
-  var startIndex = url.find startIndexFinder
-  if startIndex > -1: inc startIndex, startIndexFinder.len
-  else: return url.YoutubeVideoId
+    doAssert $"https://www.youtube.com/watch?v=jjEQ-yKVPMg".videoId == "jjEQ-yKVPMg"
+    doAssert $"jjEQ-yKVPMg".videoId == "jjEQ-yKVPMg"
+  var id = ""
+  block:
+    const
+      startIndexFinder = "v="
+      endIndexFinder = "&"
+    var startIndex = url.find startIndexFinder
+    if startIndex > -1:
+      inc startIndex, startIndexFinder.len
+    else:
+      id = url
+      break
 
-  var endIndex = startIndex + url[startIndex..^1].find endIndexFinder
+    var endIndex = startIndex + url[startIndex..^1].find endIndexFinder
+    if endIndex == startIndex - 1:
+      endIndex = url.len - 1
+    id = url[startIndex..endIndex]
+  result = id.strip.YoutubeVideoId
 
-  if endIndex == startIndex - 1: endIndex = url.len - 1
-  return url[startIndex..endIndex].YoutubeVideoId
+proc valid*(id: YoutubeVideoId): bool =
+  ## Checks if this `YoutubeVideoId` instance is a valid youtube id
+  ##
+  ## Currently is just checking the length, but later will be added more checks
+  runnableExamples:
+    doAssert "invalid".YoutubeVideoId.valid == false
+    doAssert "   Dx4eelwPGaQ".YoutubeVideoId.valid == false
+    doAssert "Dx4eelwPGaQ".YoutubeVideoId.valid
+  proc check(id: string): bool =
+    result = true
+    if id.len != 11: return false
+
+  let strId = $id
+  result = check(strId) and
+           check(strId.strip)
+
 
 proc extractVideo*(url: string; proxy = ""): YoutubeVideo =
   ## Extract all data from youtube video.
