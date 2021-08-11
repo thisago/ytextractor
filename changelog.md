@@ -1,11 +1,18 @@
 <!--
   Created at: 08/05/2021 14:16:41 Thursday
-  Modified at: 08/10/2021 03:32:13 PM Tuesday
+  Modified at: 08/11/2021 01:13:30 PM Wednesday
 -->
 
 # Changelog
 
 A verbose logging of every change.
+
+## Version 0.3.1 (08/11/2021 13:13:29 Wednesday)
+
+- Added missing `src/ytextractor`...
+- Added some examples do docs
+
+---
 
 ## Version 0.3.0 (08/10/2021 15:32:13 Tuesday)
 

@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.3.0"
+version       = "0.3.1"
 author        = "Thiago Navarro"
 description   = "Youtube data extractor"
 license       = "MIT"
@@ -15,4 +15,4 @@ requires "nim >= 1.2.2"
 requires "ajax >= 0.1.1"
 
 task genDocs, "Generate documentations":
-  exec "nim doc --project --out:docs ./src/ytextractor.nim"
+  exec "nim doc --project -d:ssl --out:docs ./src/ytextractor.nim"
