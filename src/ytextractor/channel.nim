@@ -1,6 +1,6 @@
 #[
   Created at: 08/09/2021 12:10:05 Monday
-  Modified at: 08/14/2021 11:22:19 PM Saturday
+  Modified at: 08/14/2021 11:25:06 PM Saturday
 ]#
 
 ##[
@@ -171,6 +171,7 @@ proc valid*(self: YoutubeChannelId): bool =
   ##
   ## Currently is just checking the length, but later will be added more checks
   runnableExamples:
+    import ytextractor/core/types
     doAssert "https://www.youtube.com/channel/UC3aGq0eFrvrjM4F1dLUo87A".channelId.valid == true
     doAssert "https://domain-doesn't-matters/channel/UC3aGq0eFrvrjM4F1dLUo87A".channelId.valid == true
     doAssert "https://www.youtube.com/channel/UCARj2eHnsYMuCZDmYZ5q4_g".channelId.valid == true

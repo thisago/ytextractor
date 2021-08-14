@@ -1,11 +1,18 @@
 <!--
   Created at: 08/05/2021 14:16:41 Thursday
-  Modified at: 08/14/2021 11:23:52 PM Saturday
+  Modified at: 08/14/2021 11:25:43 PM Saturday
 -->
 
 # Changelog
 
 A verbose logging of every change.
+
+## Version 0.4.1 (08/14/2021 23:25:42 Saturday)
+
+- Fixed docs
+- Generated docs
+
+---
 
 ## Version 0.4.0 (08/14/2021 23:23:51 Saturday)
 

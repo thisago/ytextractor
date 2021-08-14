@@ -1,6 +1,5 @@
-YoutubeChannelIdKind	ytextractor/channel.html#YoutubeChannelIdKind	channel: YoutubeChannelIdKind	
-YoutubeChannelId	ytextractor/channel.html#YoutubeChannelId	channel: YoutubeChannelId	
 YoutubeChannelBanners	ytextractor/channel.html#YoutubeChannelBanners	channel: YoutubeChannelBanners	
+YoutubeChannelVideos	ytextractor/channel.html#YoutubeChannelVideos	channel: YoutubeChannelVideos	
 YoutubeChannel	ytextractor/channel.html#YoutubeChannel	channel: YoutubeChannel	
 YoutubeChannelPage	ytextractor/channel.html#YoutubeChannelPage	channel: YoutubeChannelPage	
 initYoutubeChannel	ytextractor/channel.html#initYoutubeChannel,YoutubeChannelId	channel: initYoutubeChannel(id: YoutubeChannelId): YoutubeChannel	
