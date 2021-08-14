@@ -70,10 +70,26 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="ytextractor/base.html">ytextractor/base</a>, <a href="ytextractor/video.html">ytextractor/video</a>.<br/><p /><h2>API symbols</h2>
+    Modules: <a href="ytextractor/base.html">ytextractor/base</a>, <a href="ytextractor/channel.html">ytextractor/channel</a>, <a href="ytextractor/video.html">ytextractor/video</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="%60%24%60" href="#%60%24%60"><span>`$`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="video: `$`(id: YoutubeVideoId): string" href="ytextractor/video.html#%24%2CYoutubeVideoId">video: `$`(id: YoutubeVideoId): string</a></li>
+          </ul></dd>
+<dt><a name="channelId" href="#channelId"><span>channelId:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="channel: channelId(url: string): YoutubeChannelId" href="ytextractor/channel.html#channelId%2Cstring">channel: channelId(url: string): YoutubeChannelId</a></li>
+          </ul></dd>
+<dt><a name="extractChannel" href="#extractChannel"><span>extractChannel:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="channel: extractChannel(url: string; proxy = &quot;&quot;): YoutubeChannel" href="ytextractor/channel.html#extractChannel%2Cstring%2Cstring">channel: extractChannel(url: string; proxy = &quot;&quot;): YoutubeChannel</a></li>
+          </ul></dd>
+<dt><a name="ExtractError" href="#ExtractError"><span>ExtractError:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="base: ExtractError" href="ytextractor/base.html#ExtractError">base: ExtractError</a></li>
+          </ul></dd>
+<dt><a name="ExtractStatus" href="#ExtractStatus"><span>ExtractStatus:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="base: ExtractStatus" href="ytextractor/base.html#ExtractStatus">base: ExtractStatus</a></li>
           </ul></dd>
 <dt><a name="extractVideo" href="#extractVideo"><span>extractVideo:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -83,6 +99,18 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="base: fetch(url: string): string" href="ytextractor/base.html#fetch%2Cstring">base: fetch(url: string): string</a></li>
           </ul></dd>
+<dt><a name="findInJson" href="#findInJson"><span>findInJson:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="base: findInJson(nodes: JsonNode; key: string): JsonNode" href="ytextractor/base.html#findInJson%2CJsonNode%2Cstring">base: findInJson(nodes: JsonNode; key: string): JsonNode</a></li>
+          </ul></dd>
+<dt><a name="getUrl" href="#getUrl"><span>getUrl:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="channel: getUrl(self: YoutubeChannelId; proxy: string): string" href="ytextractor/channel.html#getUrl%2CYoutubeChannelId%2Cstring">channel: getUrl(self: YoutubeChannelId; proxy: string): string</a></li>
+          </ul></dd>
+<dt><a name="initYoutubeChannel" href="#initYoutubeChannel"><span>initYoutubeChannel:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="channel: initYoutubeChannel(id: YoutubeChannelId): YoutubeChannel" href="ytextractor/channel.html#initYoutubeChannel%2CYoutubeChannelId">channel: initYoutubeChannel(id: YoutubeChannelId): YoutubeChannel</a></li>
+          </ul></dd>
 <dt><a name="initYoutubeVideo" href="#initYoutubeVideo"><span>initYoutubeVideo:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="video: initYoutubeVideo(id: YoutubeVideoId): YoutubeVideo" href="ytextractor/video.html#initYoutubeVideo%2CYoutubeVideoId">video: initYoutubeVideo(id: YoutubeVideoId): YoutubeVideo</a></li>
@@ -90,6 +118,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="parseCategory" href="#parseCategory"><span>parseCategory:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="video: parseCategory(str: string): YoutubeVideoCategories" href="ytextractor/video.html#parseCategory%2Cstring">video: parseCategory(str: string): YoutubeVideoCategories</a></li>
+          </ul></dd>
+<dt><a name="parseSubs" href="#parseSubs"><span>parseSubs:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="base: parseSubs(str: string): string" href="ytextractor/base.html#parseSubs%2Cstring">base: parseSubs(str: string): string</a></li>
           </ul></dd>
 <dt><a name="parseYoutubeJson" href="#parseYoutubeJson"><span>parseYoutubeJson:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -99,15 +131,43 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="update" href="#update"><span>update:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="channel: update(self: var YoutubeChannel; page: YoutubeChannelPage; proxy = &quot;&quot;): bool" href="ytextractor/channel.html#update%2CYoutubeChannel%2CYoutubeChannelPage%2Cstring">channel: update(self: var YoutubeChannel; page: YoutubeChannelPage; proxy = &quot;&quot;): bool</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="video: update(self: var YoutubeVideo; proxy = &quot;&quot;): bool" href="ytextractor/video.html#update%2CYoutubeVideo%2Cstring">video: update(self: var YoutubeVideo; proxy = &quot;&quot;): bool</a></li>
+          </ul></dd>
+<dt><a name="UrlAndSize" href="#UrlAndSize"><span>UrlAndSize:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="base: UrlAndSize" href="ytextractor/base.html#UrlAndSize">base: UrlAndSize</a></li>
           </ul></dd>
 <dt><a name="valid" href="#valid"><span>valid:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="channel: valid(self: YoutubeChannelId): bool" href="ytextractor/channel.html#valid%2CYoutubeChannelId">channel: valid(self: YoutubeChannelId): bool</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="video: valid(id: YoutubeVideoId): bool" href="ytextractor/video.html#valid%2CYoutubeVideoId">video: valid(id: YoutubeVideoId): bool</a></li>
           </ul></dd>
 <dt><a name="videoId" href="#videoId"><span>videoId:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="video: videoId(url: string): YoutubeVideoId" href="ytextractor/video.html#videoId%2Cstring">video: videoId(url: string): YoutubeVideoId</a></li>
+          </ul></dd>
+<dt><a name="YoutubeChannel" href="#YoutubeChannel"><span>YoutubeChannel:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="channel: YoutubeChannel" href="ytextractor/channel.html#YoutubeChannel">channel: YoutubeChannel</a></li>
+          </ul></dd>
+<dt><a name="YoutubeChannelBanners" href="#YoutubeChannelBanners"><span>YoutubeChannelBanners:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="channel: YoutubeChannelBanners" href="ytextractor/channel.html#YoutubeChannelBanners">channel: YoutubeChannelBanners</a></li>
+          </ul></dd>
+<dt><a name="YoutubeChannelId" href="#YoutubeChannelId"><span>YoutubeChannelId:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="channel: YoutubeChannelId" href="ytextractor/channel.html#YoutubeChannelId">channel: YoutubeChannelId</a></li>
+          </ul></dd>
+<dt><a name="YoutubeChannelIdKind" href="#YoutubeChannelIdKind"><span>YoutubeChannelIdKind:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="channel: YoutubeChannelIdKind" href="ytextractor/channel.html#YoutubeChannelIdKind">channel: YoutubeChannelIdKind</a></li>
+          </ul></dd>
+<dt><a name="YoutubeChannelPage" href="#YoutubeChannelPage"><span>YoutubeChannelPage:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="channel: YoutubeChannelPage" href="ytextractor/channel.html#YoutubeChannelPage">channel: YoutubeChannelPage</a></li>
           </ul></dd>
 <dt><a name="YoutubeVideo" href="#YoutubeVideo"><span>YoutubeVideo:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -121,28 +181,16 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="video: YoutubeVideoChannel" href="ytextractor/video.html#YoutubeVideoChannel">video: YoutubeVideoChannel</a></li>
           </ul></dd>
-<dt><a name="YoutubeVideoError" href="#YoutubeVideoError"><span>YoutubeVideoError:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="video: YoutubeVideoError" href="ytextractor/video.html#YoutubeVideoError">video: YoutubeVideoError</a></li>
-          </ul></dd>
 <dt><a name="YoutubeVideoId" href="#YoutubeVideoId"><span>YoutubeVideoId:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="video: YoutubeVideoId" href="ytextractor/video.html#YoutubeVideoId">video: YoutubeVideoId</a></li>
-          </ul></dd>
-<dt><a name="YoutubeVideoStatus" href="#YoutubeVideoStatus"><span>YoutubeVideoStatus:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="video: YoutubeVideoStatus" href="ytextractor/video.html#YoutubeVideoStatus">video: YoutubeVideoStatus</a></li>
-          </ul></dd>
-<dt><a name="YoutubeVideoUrl" href="#YoutubeVideoUrl"><span>YoutubeVideoUrl:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="video: YoutubeVideoUrl" href="ytextractor/video.html#YoutubeVideoUrl">video: YoutubeVideoUrl</a></li>
           </ul></dd>
 </dl>
     <div class="row">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-11 15:01:41 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-14 21:08:24 UTC</small>
       </div>
     </div>
   </div>

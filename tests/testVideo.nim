@@ -1,6 +1,6 @@
 #[
   Created at: 08/04/2021 16:25:48 Wednesday
-  Modified at: 08/10/2021 12:54:37 PM Tuesday
+  Modified at: 08/14/2021 11:23:03 PM Saturday
 ]#
 
 ##[
@@ -18,7 +18,7 @@ suite "Youtube video":
   test "Video Id": check "jjEQ-yKVPMg" == $videoData.id
   test "Get data":
     check videoData.update()
-    check videoData.status.error == YoutubeVideoError.None
+    check videoData.status.error == ExtractError.None
   test "Video title":
     check videoData.title == "Bolachinhas de GERGELIM com CEBOLA - super CROCANTE"
   test "Views": check videoData.views > 170
@@ -38,8 +38,7 @@ suite "Youtube video":
 
   test "Category": check videoData.category == YoutubeVideoCategories.PeopleAndBlogs
   test "Channel name": check videoData.channel.name == "Antes do Almoço"
-  test "Channel url": check videoData.channel.url == "http://www.youtube.com/channel/UC3aGq0eFrvrjM4F1dLUo87A"
-  test "Channel id": check videoData.channel.id == "UC3aGq0eFrvrjM4F1dLUo87A"
+  test "Channel id": check videoData.channel.id.id == "UC3aGq0eFrvrjM4F1dLUo87A"
   test "Channel subscribers": check videoData.channel.subscribers > 29
   test "Channel hiddenSubscribers": check videoData.channel.hiddenSubscribers == false
   test "Channel icons": check videoData.channel.icons.len == 3

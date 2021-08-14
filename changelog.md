@@ -1,11 +1,47 @@
 <!--
   Created at: 08/05/2021 14:16:41 Thursday
-  Modified at: 08/11/2021 03:03:21 PM Wednesday
+  Modified at: 08/14/2021 11:23:52 PM Saturday
 -->
 
 # Changelog
 
 A verbose logging of every change.
+
+## Version 0.4.0 (08/14/2021 23:23:51 Saturday)
+
+Incomplete update.
+
+Mostly of `Moved` actions is to use in `channel` module too
+
+- Url doc fix in `ytextractor/video.nim`
+- Moved `video.YoutubeVideoError` to `base.ExtractError`
+- Moved `video.YoutubeVideoStatus` to `base.ExtractStatus`
+- Moved `video.find` to `base.findInJson`
+- Removed test comment line in `video.extractVideo`
+- Added a exception discarding to `base.parseYoutubeJson`
+- Channel Extractor
+  - Added url
+    - Extractor (`channel.channelId`)
+    - Validator (`channel.valid`)
+    - Generator (`channel.genUrl`)
+  - Extracted data
+    - Name
+    - Tags
+    - Family safe
+    - Description (about)
+    - Subscribers
+    - Hidden Subscribers (bool)
+    - Banners
+    - Icons
+- Moved `ytextractor/video.nim` subscribers parsing to `base` module
+- Fixed and added more extracted data to the `readme.md` features list
+- Moved `video.YoutubeVideoUrl` to `base.UrlAndSize`
+- Added cookie handling to Youtube not block
+- Fixed tests
+- Moved `ytextractor/base.nim` to `ytextractor/core/core.nim`
+- Moved some types from `ytextractor/base.nim` to `ytextractor/core/types.nim`
+
+---
 
 ## Version 0.3.2 (08/11/2021 15:03:21 Wednesday)
 

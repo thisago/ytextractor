@@ -1,6 +1,6 @@
 <!--
   Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 08/11/2021 02:30:51 PM Wednesday
+  Modified at: 08/14/2021 02:25:48 PM Saturday
 -->
 
 # ytextractor
@@ -19,32 +19,44 @@ This lib is WIP, but quite usable.
 ## Features
 
 This parser gets:
-- Common video info
-  - [x] Id (video code)
-  - [x] Title
-  - [x] Description
-  - [x] Thumbnails
-  - [x] Embed
-  - [x] Publish date
-  - [x] Upload date
-  - [x] Length
-  - [x] Family friendly
-  - [x] Unlisted
-  - [x] Private
-  - [x] Live (is live)
-  - [x] Channel
-  - [x] Views
-  - [x] Category
-  - [x] Likes
-  - [x] Dislikes
-  - [x] Keywords
-- Channel
+- Video url
+  - Video info
+    - [x] Id (video code)
+    - [x] Title
+    - [x] Description
+    - [x] Thumbnails
+    - [x] Embed
+    - [x] Publish date
+    - [x] Upload date
+    - [x] Length
+    - [x] Family friendly
+    - [x] Unlisted
+    - [x] Private
+    - [x] Live (is live)
+    - [x] Channel
+    - [x] Views
+    - [x] Category
+    - [x] Likes
+    - [x] Dislikes
+    - [x] Keywords
+  - Channel
+    - [x] Name
+    - [x] Id
+    - [x] Url
+    - [x] Subscribers
+    - [x] Channel icons
+    - [x] Hidden subscribers (bool)
+- Channel url
+  - [x] Id
+  - [x] Url
+  - [x] Name
   - [x] Subscribers
   - [x] Channel icons
-  - [x] Url
-  - [x] Id
-  - [x] Name
   - [x] Hidden subscribers (bool)
+  - [x] Family safe
+  - [x] Tags
+  - [x] Description (about)
+  - [x] Banners
 
 - Video data
   - [ ] Subtitles
@@ -122,6 +134,8 @@ A online docs is hosted in [Github Pages](https://thisago.github.io/ytextractor/
 
 - [ ] Usage guide (not only Nim)
 - [ ] Make requests async
+- [ ] Use API https://www.youtube.com/youtubei/v1/browse to get channel data
+      instead using simple page request
 
 ---
 
