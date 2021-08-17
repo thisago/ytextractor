@@ -1,6 +1,6 @@
 <!--
   Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 08/17/2021 02:38:35 PM Tuesday
+  Modified at: 08/17/2021 02:40:28 PM Tuesday
 -->
 
 # ytextractor
@@ -65,10 +65,9 @@ This parser gets:
     - [x] Id (video code)
     - [x] Title
     - [x] Description
-    - [] Thumbnails
+    - [ ] Thumbnails
     - [x] Views
     - [x] Rounded publish date
-
 
 - Video data
   - [ ] Subtitles

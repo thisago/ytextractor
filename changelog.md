@@ -1,11 +1,17 @@
 <!--
   Created at: 08/05/2021 14:16:41 Thursday
-  Modified at: 08/17/2021 02:39:25 PM Tuesday
+  Modified at: 08/17/2021 02:41:47 PM Tuesday
 -->
 
 # Changelog
 
 A verbose logging of every change.
+
+## Version 0.5.1 (08/17/2021 14:41:47 Tuesday)
+
+- Fixed readme checkbox
+
+---
 
 ## Version 0.5.0 (08/17/2021 14:39:20 Tuesday)
 
