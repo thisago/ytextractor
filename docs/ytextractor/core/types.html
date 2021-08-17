@@ -127,6 +127,9 @@ window.addEventListener('DOMContentLoaded', main);
   subscribers*: int          ## This value is not prescise, the Youtube round the value
   icons*: seq[UrlAndSize]
   hiddenSubscribers*: bool">YoutubeChannelPreview</a></li>
+  <li><a class="reference" href="#YoutubePlaylistPreview"
+    title="YoutubePlaylistPreview = object of RootObj
+  name*: string">YoutubePlaylistPreview</a></li>
   <li><a class="reference" href="#YoutubeVideoId"
     title="YoutubeVideoId = distinct string">YoutubeVideoId</a></li>
   <li><a class="reference" href="#YoutubeVideoPreview"
@@ -228,6 +231,16 @@ Simple data of channel extracted from video
 
 </dd>
 </div>
+<div id="YoutubePlaylistPreview">
+<dt><pre><a href="types.html#YoutubePlaylistPreview"><span class="Identifier">YoutubePlaylistPreview</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">RootObj</span>
+  <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="YoutubeVideoId">
 <dt><pre><a href="types.html#YoutubeVideoId"><span class="Identifier">YoutubeVideoId</span></a> <span class="Other">=</span> <span class="Keyword">distinct</span> <span class="Identifier">string</span></pre></dt>
 <dd>
@@ -274,7 +287,7 @@ Convert <tt class="docutils literal"><span class="pre"><span class="Identifier">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-17 14:42:40 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-17 22:45:44 UTC</small>
       </div>
     </div>
   </div>

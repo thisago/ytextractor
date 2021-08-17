@@ -2,6 +2,7 @@ YoutubeChannelLinks	ytextractor/channel.html#YoutubeChannelLinks	channel: Youtub
 YoutubeChannelBanners	ytextractor/channel.html#YoutubeChannelBanners	channel: YoutubeChannelBanners	
 YoutubeChannelVideo	ytextractor/channel.html#YoutubeChannelVideo	channel: YoutubeChannelVideo	
 YoutubeChannelHighlightVideo	ytextractor/channel.html#YoutubeChannelHighlightVideo	channel: YoutubeChannelHighlightVideo	
+YoutubeChannelPlaylist	ytextractor/channel.html#YoutubeChannelPlaylist	channel: YoutubeChannelPlaylist	
 YoutubeChannelVideos	ytextractor/channel.html#YoutubeChannelVideos	channel: YoutubeChannelVideos	
 YoutubeChannel	ytextractor/channel.html#YoutubeChannel	channel: YoutubeChannel	
 YoutubeChannelPage	ytextractor/channel.html#YoutubeChannelPage	channel: YoutubeChannelPage	

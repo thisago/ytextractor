@@ -6,5 +6,6 @@ YoutubeVideoPreview	ytextractor/core/types.html#YoutubeVideoPreview	types: Youtu
 YoutubeChannelId	ytextractor/core/types.html#YoutubeChannelId	types: YoutubeChannelId	
 YoutubeChannelIdKind	ytextractor/core/types.html#YoutubeChannelIdKind	types: YoutubeChannelIdKind	
 YoutubeChannelPreview	ytextractor/core/types.html#YoutubeChannelPreview	types: YoutubeChannelPreview	
+YoutubePlaylistPreview	ytextractor/core/types.html#YoutubePlaylistPreview	types: YoutubePlaylistPreview	
 `$`	ytextractor/core/types.html#$,YoutubeVideoId	types: `$`(id: YoutubeVideoId): string	
 types	ytextractor/core/types.html#types	 types	
