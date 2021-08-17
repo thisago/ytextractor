@@ -115,16 +115,29 @@ window.addEventListener('DOMContentLoaded', main);
   banners*: YoutubeChannelBanners
   familySafe*: bool
   tags*: seq[string]
-  videos*: YoutubeChannelVideos">YoutubeChannel</a></li>
+  videos*: YoutubeChannelVideos
+  links*: YoutubeChannelLinks">YoutubeChannel</a></li>
   <li><a class="reference" href="#YoutubeChannelBanners"
     title="YoutubeChannelBanners = object
   desktop*, mobile*, tv*: seq[UrlAndSize]">YoutubeChannelBanners</a></li>
+  <li><a class="reference" href="#YoutubeChannelHighlightVideo"
+    title="YoutubeChannelHighlightVideo = object of YoutubeChannelVideo
+  description*: string">YoutubeChannelHighlightVideo</a></li>
+  <li><a class="reference" href="#YoutubeChannelLinks"
+    title="YoutubeChannelLinks = object
+  primary*, secondary*: seq[string]">YoutubeChannelLinks</a></li>
   <li><a class="reference" href="#YoutubeChannelPage"
     title="YoutubeChannelPage {.pure.} = enum
   home, videos, playlists, community, channels, about">YoutubeChannelPage</a></li>
+  <li><a class="reference" href="#YoutubeChannelVideo"
+    title="YoutubeChannelVideo = object of YoutubeVideoPreview
+  roundedPublishedDate*: string">YoutubeChannelVideo</a></li>
   <li><a class="reference" href="#YoutubeChannelVideos"
     title="YoutubeChannelVideos = object
-  all: seq[YoutubeVideoPreview]">YoutubeChannelVideos</a></li>
+  all: seq[YoutubeChannelVideo]
+  playlists: Table[string, seq[YoutubeChannelVideo]]
+  homePlaylists: Table[string, seq[YoutubeChannelVideo]]
+  highlighted: YoutubeChannelHighlightVideo">YoutubeChannelVideos</a></li>
 
   </ul>
 </li>
@@ -142,8 +155,8 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">getUrl
-      <li><a class="reference" href="#getUrl%2CYoutubeChannelId%2Cstring"
-    title="getUrl(self: YoutubeChannelId; proxy: string): string">getUrl(self: YoutubeChannelId; proxy: string): string</a></li>
+      <li><a class="reference" href="#getUrl%2CYoutubeChannelId%2CYoutubeChannelPage%2Cstring"
+    title="getUrl(self: YoutubeChannelId; page: YoutubeChannelPage; proxy: string): string">getUrl(self: YoutubeChannelId; page: YoutubeChannelPage; proxy: string): string</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">initYoutubeChannel
@@ -164,6 +177,12 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
 </li>
+<li>
+  <a class="reference reference-toplevel" href="#19" id="69">Exports</a>
+  <ul class="simple simple-toc-section">
+    
+  </ul>
+</li>
 
 </ul>
 
@@ -178,7 +197,7 @@ window.addEventListener('DOMContentLoaded', main);
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="core/core.html">core/core</a>
+<a class="reference external" href="core/types.html">core/types</a>, <a class="reference external" href="core/core.html">core/core</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
@@ -191,6 +210,7 @@ window.addEventListener('DOMContentLoaded', main);
   <span class="Identifier">familySafe</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">tags</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
   <span class="Identifier">videos</span><span class="Operator">*</span><span class="Other">:</span> <a href="channel.html#YoutubeChannelVideos"><span class="Identifier">YoutubeChannelVideos</span></a>
+  <span class="Identifier">links</span><span class="Operator">*</span><span class="Other">:</span> <a href="channel.html#YoutubeChannelLinks"><span class="Identifier">YoutubeChannelLinks</span></a>
 </pre></dt>
 <dd>
 
@@ -208,6 +228,26 @@ Channel banners
 
 </dd>
 </div>
+<div id="YoutubeChannelHighlightVideo">
+<dt><pre><a href="channel.html#YoutubeChannelHighlightVideo"><span class="Identifier">YoutubeChannelHighlightVideo</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="channel.html#YoutubeChannelVideo"><span class="Identifier">YoutubeChannelVideo</span></a>
+  <span class="Identifier">description</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
+<div id="YoutubeChannelLinks">
+<dt><pre><a href="channel.html#YoutubeChannelLinks"><span class="Identifier">YoutubeChannelLinks</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">primary</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">secondary</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
+</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="YoutubeChannelPage">
 <dt><pre><a href="channel.html#YoutubeChannelPage"><span class="Identifier">YoutubeChannelPage</span></a> {.<span class="Identifier">pure</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">home</span><span class="Other">,</span> <span class="Identifier">videos</span><span class="Other">,</span> <span class="Identifier">playlists</span><span class="Other">,</span> <span class="Identifier">community</span><span class="Other">,</span> <span class="Identifier">channels</span><span class="Other">,</span> <span class="Identifier">about</span></pre></dt>
@@ -219,9 +259,22 @@ Channel banners
 
 </dd>
 </div>
+<div id="YoutubeChannelVideo">
+<dt><pre><a href="channel.html#YoutubeChannelVideo"><span class="Identifier">YoutubeChannelVideo</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="core/types.html#YoutubeVideoPreview"><span class="Identifier">YoutubeVideoPreview</span></a>
+  <span class="Identifier">roundedPublishedDate</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+</pre></dt>
+<dd>
+
+
+
+</dd>
+</div>
 <div id="YoutubeChannelVideos">
 <dt><pre><a href="channel.html#YoutubeChannelVideos"><span class="Identifier">YoutubeChannelVideos</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">all</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="core/types.html#YoutubeVideoPreview"><span class="Identifier">YoutubeVideoPreview</span></a><span class="Other">]</span>
+  <span class="Identifier">all</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="channel.html#YoutubeChannelVideo"><span class="Identifier">YoutubeChannelVideo</span></a><span class="Other">]</span>
+  <span class="Identifier">playlists</span><span class="Other">:</span> <span class="Identifier">Table</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="channel.html#YoutubeChannelVideo"><span class="Identifier">YoutubeChannelVideo</span></a><span class="Other">]</span><span class="Other">]</span>
+  <span class="Identifier">homePlaylists</span><span class="Other">:</span> <span class="Identifier">Table</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="channel.html#YoutubeChannelVideo"><span class="Identifier">YoutubeChannelVideo</span></a><span class="Other">]</span><span class="Other">]</span>
+  <span class="Identifier">highlighted</span><span class="Other">:</span> <a href="channel.html#YoutubeChannelHighlightVideo"><span class="Identifier">YoutubeChannelHighlightVideo</span></a>
 </pre></dt>
 <dd>
 
@@ -272,8 +325,8 @@ The extracted videos of channel
 
 </dd>
 </div>
-<div id="getUrl,YoutubeChannelId,string">
-<dt><pre><span class="Keyword">proc</span> <a href="#getUrl%2CYoutubeChannelId%2Cstring"><span class="Identifier">getUrl</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="core/types.html#YoutubeChannelId"><span class="Identifier">YoutubeChannelId</span></a><span class="Other">;</span> <span class="Identifier">proxy</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.
+<div id="getUrl,YoutubeChannelId,YoutubeChannelPage,string">
+<dt><pre><span class="Keyword">proc</span> <a href="#getUrl%2CYoutubeChannelId%2CYoutubeChannelPage%2Cstring"><span class="Identifier">getUrl</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="core/types.html#YoutubeChannelId"><span class="Identifier">YoutubeChannelId</span></a><span class="Other">;</span> <span class="Identifier">page</span><span class="Other">:</span> <a href="channel.html#YoutubeChannelPage"><span class="Identifier">YoutubeChannelPage</span></a><span class="Other">;</span> <span class="Identifier">proxy</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
@@ -342,6 +395,11 @@ Update all <tt class="docutils literal"><span class="pre"><span class="Identifie
 </div>
 
 </dl></div>
+<div class="section" id="19">
+<h1><a class="toc-backref" href="#19">Exports</a></h1>
+<dl class="item">
+<a href="core/types.html#$,YoutubeVideoId"><span class="Identifier">$</span></a>, <a href="core/types.html#YoutubeChannelPreview"><span class="Identifier">YoutubeChannelPreview</span></a>, <a href="core/types.html#YoutubeChannelId"><span class="Identifier">YoutubeChannelId</span></a>, <a href="core/types.html#YoutubeVideoPreview"><span class="Identifier">YoutubeVideoPreview</span></a>, <a href="core/types.html#ExtractError"><span class="Identifier">ExtractError</span></a>, <a href="core/types.html#ExtractStatus"><span class="Identifier">ExtractStatus</span></a>, <a href="core/types.html#UrlAndSize"><span class="Identifier">UrlAndSize</span></a>, <a href="core/types.html#YoutubeVideoId"><span class="Identifier">YoutubeVideoId</span></a>, <a href="core/types.html#YoutubeChannelIdKind"><span class="Identifier">YoutubeChannelIdKind</span></a>
+</dl></div>
 
   </div>
 </div>
@@ -350,7 +408,7 @@ Update all <tt class="docutils literal"><span class="pre"><span class="Identifie
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-14 23:25:11 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-17 14:42:42 UTC</small>
       </div>
     </div>
   </div>

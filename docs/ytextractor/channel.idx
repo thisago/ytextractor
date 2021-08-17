@@ -1,9 +1,12 @@
+YoutubeChannelLinks	ytextractor/channel.html#YoutubeChannelLinks	channel: YoutubeChannelLinks	
 YoutubeChannelBanners	ytextractor/channel.html#YoutubeChannelBanners	channel: YoutubeChannelBanners	
+YoutubeChannelVideo	ytextractor/channel.html#YoutubeChannelVideo	channel: YoutubeChannelVideo	
+YoutubeChannelHighlightVideo	ytextractor/channel.html#YoutubeChannelHighlightVideo	channel: YoutubeChannelHighlightVideo	
 YoutubeChannelVideos	ytextractor/channel.html#YoutubeChannelVideos	channel: YoutubeChannelVideos	
 YoutubeChannel	ytextractor/channel.html#YoutubeChannel	channel: YoutubeChannel	
 YoutubeChannelPage	ytextractor/channel.html#YoutubeChannelPage	channel: YoutubeChannelPage	
 initYoutubeChannel	ytextractor/channel.html#initYoutubeChannel,YoutubeChannelId	channel: initYoutubeChannel(id: YoutubeChannelId): YoutubeChannel	
-getUrl	ytextractor/channel.html#getUrl,YoutubeChannelId,string	channel: getUrl(self: YoutubeChannelId; proxy: string): string	
+getUrl	ytextractor/channel.html#getUrl,YoutubeChannelId,YoutubeChannelPage,string	channel: getUrl(self: YoutubeChannelId; page: YoutubeChannelPage; proxy: string): string	
 channelId	ytextractor/channel.html#channelId,string	channel: channelId(url: string): YoutubeChannelId	
 valid	ytextractor/channel.html#valid,YoutubeChannelId	channel: valid(self: YoutubeChannelId): bool	
 update	ytextractor/channel.html#update,YoutubeChannel,YoutubeChannelPage,string	channel: update(self: var YoutubeChannel; page: YoutubeChannelPage; proxy = &quot;&quot;): bool	

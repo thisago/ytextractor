@@ -1,8 +1,6 @@
 YoutubeVideoCategories	ytextractor/video.html#YoutubeVideoCategories	video: YoutubeVideoCategories	
-YoutubeVideoId	ytextractor/video.html#YoutubeVideoId	video: YoutubeVideoId	
 YoutubeVideo	ytextractor/video.html#YoutubeVideo	video: YoutubeVideo	
 parseCategory	ytextractor/video.html#parseCategory,string	video: parseCategory(str: string): YoutubeVideoCategories	
-`$`	ytextractor/video.html#$,YoutubeVideoId	video: `$`(id: YoutubeVideoId): string	
 initYoutubeVideo	ytextractor/video.html#initYoutubeVideo,YoutubeVideoId	video: initYoutubeVideo(id: YoutubeVideoId): YoutubeVideo	
 valid	ytextractor/video.html#valid,YoutubeVideoId	video: valid(id: YoutubeVideoId): bool	
 update	ytextractor/video.html#update,YoutubeVideo,string	video: update(self: var YoutubeVideo; proxy = &quot;&quot;): bool	
