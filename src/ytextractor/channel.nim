@@ -1,6 +1,6 @@
 #[
   Created at: 08/09/2021 12:10:05 Monday
-  Modified at: 08/17/2021 02:38:44 PM Tuesday
+  Modified at: 08/17/2021 10:44:03 PM Tuesday
 ]#
 
 ##[
@@ -53,11 +53,13 @@ type
     roundedPublishedDate*: string
   YoutubeChannelHighlightVideo* = object of YoutubeChannelVideo
     description*: string
+  YoutubeChannelPlaylist* = object of YoutubePlaylistPreview
+    videos*: seq[YoutubeChannelVideo]
   YoutubeChannelVideos* = object
     ## The extracted videos of channel
     all: seq[YoutubeChannelVideo]
-    playlists: Table[string, seq[YoutubeChannelVideo]]
-    homePlaylists: Table[string, seq[YoutubeChannelVideo]]
+    playlists: seq[YoutubeChannelPlaylist]
+    homePlaylists: seq[YoutubeChannelPlaylist]
     highlighted: YoutubeChannelHighlightVideo
 
 proc initYoutubeChannel*(id: YoutubeChannelId): YoutubeChannel =
@@ -167,7 +169,9 @@ proc update*(self: var YoutubeChannel; page: YoutubeChannelPage; proxy = ""): bo
       if not playlistJson.isPlaylist:
         continue
 
-      var playlist: seq[YoutubeChannelVideo]
+      var playlist = YoutubeChannelPlaylist(
+        name: playlistJson{"title", "runs"}{0}{"text"}.getStr
+      )
       for video in playlistJson{"content", "horizontalListRenderer", "items"}:
         let video = video{"gridVideoRenderer"}
         var thumbs: seq[UrlAndSize]
@@ -177,23 +181,20 @@ proc update*(self: var YoutubeChannel; page: YoutubeChannelPage; proxy = ""): bo
             width: thumb{"width"}.getInt,
             height: thumb{"height"}.getInt,
           )
-        playlist.add YoutubeChannelVideo(
+        playlist.videos.add YoutubeChannelVideo(
           title: video{"title", "simpleText"}.getStr,
           roundedPublishedDate: video{"publishedTimeText", "simpleText"}.getStr,
           views: video{"viewCountText", "simpleText"}.getStr.parseViews,
           id: video{"videoId"}.getStr.YoutubeVideoId,
           thumbnails: thumbs
         )
-      self.videos.playlists[playlistJson{"title", "runs"}{0}{"text"}.getStr] = playlist
+      self.videos.playlists.add playlist
 
     # self.videos.homePlaylists.add
   proc getHighlightVideo(self: var YoutubeChannel): bool =
     result = false
-    let jsonObj = contents{"twoColumnBrowseResultsRenderer","tabs"}{0}{
-                           "tabRenderer","content","sectionListRenderer",
-                           "contents"}{0}{"itemSectionRenderer","contents"}{0}{
-                           "channelVideoPlayerRenderer"}
-    if jsonObj.hasKey "videoId":
+    var jsonObj = contents{"twoColumnBrowseResultsRenderer","tabs"}{0}{"tabRenderer","content","sectionListRenderer", "contents"}{0}{"itemSectionRenderer","contents"}{0}{"channelVideoPlayerRenderer"}
+    if not jsonObj.isNil and jsonObj.hasKey "videoId":
       result = true
       self.videos.highlighted.id = jsonObj{"videoId"}.getStr.YoutubeVideoId
       self.videos.highlighted.title = jsonObj{"title", "runs"}{0}{"text"}.getStr
@@ -213,7 +214,10 @@ proc update*(self: var YoutubeChannel; page: YoutubeChannelPage; proxy = ""): bo
             self.videos.highlighted.description.add desc{"text"}.getStr
   template getLinks =
     proc getLinks(res: var seq[string]; name: string) =
-      for link in header{"headerLinks", "channelHeaderLinksRenderer", name}:
+      let obj = header{"headerLinks", "channelHeaderLinksRenderer", name}
+      if obj.isNil:
+        return
+      for link in obj:
         res.add link{"navigationEndpoint", "commandMetadata",
                         "webCommandMetadata", "url"}.getStr.parseYtTrackingUrl
     self.links.primary.getLinks "primaryLinks"

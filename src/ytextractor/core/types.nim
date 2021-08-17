@@ -1,6 +1,6 @@
 #[
   Created at: 08/14/2021 23:17:25 Saturday
-  Modified at: 08/17/2021 02:14:41 PM Tuesday
+  Modified at: 08/17/2021 10:27:32 PM Tuesday
 ]#
 
 ##[
@@ -47,6 +47,8 @@ type
     subscribers*: int ## This value is not prescise, the Youtube round the value
     icons*: seq[UrlAndSize]
     hiddenSubscribers*: bool
+  YoutubePlaylistPreview* = object of RootObj
+    name*: string
 
 proc `$`*(id: YoutubeVideoId): string =
   ## Convert `YoutubeVideoId` to `string`

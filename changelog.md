@@ -1,11 +1,19 @@
 <!--
   Created at: 08/05/2021 14:16:41 Thursday
-  Modified at: 08/17/2021 02:41:47 PM Tuesday
+  Modified at: 08/17/2021 10:44:58 PM Tuesday
 -->
 
 # Changelog
 
 A verbose logging of every change.
+
+## Version 0.6.0 (08/17/2021 22:44:58 Tuesday)
+
+- Added `YoutubePlaylistPreview` type
+- Replaced the channel playlist preview from `table[string, seq[YoutubeChannelVideo]]`
+- Fix crash on parse channel without header links and/or without highlighted video
+
+---
 
 ## Version 0.5.1 (08/17/2021 14:41:47 Tuesday)
 
