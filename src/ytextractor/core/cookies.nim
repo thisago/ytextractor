@@ -1,6 +1,6 @@
 #[
   Created at: 08/14/2021 22:33:42 Saturday
-  Modified at: 08/14/2021 11:11:50 PM Saturday
+  Modified at: 08/15/2021 07:23:55 PM Sunday
 ]#
 
 ##[
@@ -21,7 +21,7 @@ export tables
 type
   Cookies* = Table[string, string]
 
-const cookieCachePath* {.strdefine.} = getTempDir() / "ytextractor_cookies"
+const cookieCachePath* {.strdefine.} = getTempDir() / "ytextractor_cookies.json"
 
 proc getCookies*: Cookies =
   try:

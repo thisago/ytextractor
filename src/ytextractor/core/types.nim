@@ -1,6 +1,6 @@
 #[
   Created at: 08/14/2021 23:17:25 Saturday
-  Modified at: 08/14/2021 11:21:56 PM Saturday
+  Modified at: 08/17/2021 02:14:41 PM Tuesday
 ]#
 
 ##[
@@ -19,13 +19,19 @@ type
     error*: ExtractError
   ExtractError* {.pure.} = enum
     ## Parsing error
-    None, NotExist, ParseError, InvalidId
+    None, FetchError, ParseError, InvalidId
   UrlAndSize* = object
     ## Stores thee url, width and height of image/frame
     url*: string
     width*, height*: int
+  YoutubeVideoId* = distinct string
+    ## Video Id is a distinct string just for disallow pass any string to parser
   YoutubeVideoPreview* = object of RootObj
     ## Simple data of video extracted from channel
+    id*: YoutubeVideoId
+    title*: string
+    views*: int
+    thumbnails*: seq[UrlAndSize]
 
   YoutubeChannelId* = object
     ## Channel Id is a object
@@ -41,3 +47,9 @@ type
     subscribers*: int ## This value is not prescise, the Youtube round the value
     icons*: seq[UrlAndSize]
     hiddenSubscribers*: bool
+
+proc `$`*(id: YoutubeVideoId): string =
+  ## Convert `YoutubeVideoId` to `string`
+  runnableExamples:
+    echo $"Dx4eelwPGaQ".YoutubeVideoId is string
+  id.string

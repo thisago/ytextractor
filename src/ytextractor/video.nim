@@ -1,6 +1,6 @@
 #[
   Created at: 08/09/2021 12:10:05 Monday
-  Modified at: 08/14/2021 11:21:29 PM Saturday
+  Modified at: 08/17/2021 02:14:34 PM Tuesday
 ]#
 
 ##[
@@ -20,19 +20,18 @@ from std/strutils import parseInt, multiReplace, find, strip
 import ytextractor/core/core
 from ytextractor/channel import channelId
 
+import ytextractor/core/types; export types
+
 type
   YoutubeVideo* = object of YoutubeVideoPreview
     ## Youtube video object
     status*: ExtractStatus
-    id*: YoutubeVideoId
-    title*, description*: string
-    thumbnails*: seq[UrlAndSize]
+    description*: string
     embed*: UrlAndSize
     publishDate*, uploadDate*: DateTime
     length*: Duration
     familyFriendly*, unlisted*, private*, live*: bool
     channel*: YoutubeChannelPreview
-    views*: int
     category*: YoutubeVideoCategories
     likes*, dislikes*: int
     keywords*: seq[string]
@@ -42,8 +41,6 @@ type
     TravelAndEvents, Gaming, PeopleAndBlogs, Comedy, Entertainment,
     NewsAndPolitics, HowtoAndStyle, Education, ScienceAndTechnology,
     NonprofitsAndActivism
-  YoutubeVideoId* = distinct string
-    ## Video Id is a distinct string just for disallow pass any string to parser
 
 proc parseCategory*(str: string): YoutubeVideoCategories =
   ## Parses the category to `YoutubeVideoCategories`
@@ -66,12 +63,6 @@ proc parseCategory*(str: string): YoutubeVideoCategories =
   of "Science & Technology": ScienceAndTechnology
   of "Nonprofits & Activism": NonprofitsAndActivism
   else: Unknown
-
-proc `$`*(id: YoutubeVideoId): string =
-  ## Convert `YoutubeVideoId` to `string`
-  runnableExamples:
-    echo $typeof($"Dx4eelwPGaQ".YoutubeVideoId) == "string"
-  id.string
 
 proc initYoutubeVideo*(id: YoutubeVideoId): YoutubeVideo =
   ## Initialize a new `YoutubeVideo` instance
@@ -100,7 +91,7 @@ proc update*(self: var YoutubeVideo; proxy = ""): bool =
     contents = jsonData.ytInitialData{"contents"}
 
   if microformat.isNil:
-    self.status.error = ExtractError.NotExist
+    self.status.error = ExtractError.FetchError
     return false
 
   self.status.lastUpdate = now()

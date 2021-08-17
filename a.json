@@ -1,0 +1,1368 @@
+{
+  "status": {
+    "lastUpdate": "2021-08-17T14:36:21+00:00",
+    "error": "None"
+  },
+  "description": "High-intensity ⚡ code tutorials to help you build & ship your app faster. Subscribe for new videos every week covering intermediate to advanced lessons about JavaScript, Flutter, Firebase, and modern app development.\n\nThe original home of #100SecondsOfCode and #CodeThisNotThat. Created by Jeff Delaney. \n\nBuilding an app? Get project support, advanced full courses, and more at https://fireship.io",
+  "banners": {
+    "desktop": [
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w1060-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj",
+        "width": 1060,
+        "height": 175
+      },
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w1138-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj",
+        "width": 1138,
+        "height": 188
+      },
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj",
+        "width": 1707,
+        "height": 283
+      },
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w2120-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj",
+        "width": 2120,
+        "height": 351
+      },
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w2276-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj",
+        "width": 2276,
+        "height": 377
+      },
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj",
+        "width": 2560,
+        "height": 424
+      }
+    ],
+    "mobile": [
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w320-fcrop64=1,32b75a57cd48a5a8-k-c0xffffffff-no-nd-rj",
+        "width": 320,
+        "height": 88
+      },
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w640-fcrop64=1,32b75a57cd48a5a8-k-c0xffffffff-no-nd-rj",
+        "width": 640,
+        "height": 175
+      },
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w960-fcrop64=1,32b75a57cd48a5a8-k-c0xffffffff-no-nd-rj",
+        "width": 960,
+        "height": 263
+      },
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w1280-fcrop64=1,32b75a57cd48a5a8-k-c0xffffffff-no-nd-rj",
+        "width": 1280,
+        "height": 351
+      },
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w1440-fcrop64=1,32b75a57cd48a5a8-k-c0xffffffff-no-nd-rj",
+        "width": 1440,
+        "height": 395
+      }
+    ],
+    "tv": [
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w320-fcrop64=1,00000000ffffffff-k-c0xffffffff-no-nd-rj",
+        "width": 320,
+        "height": 180
+      },
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w854-fcrop64=1,00000000ffffffff-k-c0xffffffff-no-nd-rj",
+        "width": 854,
+        "height": 480
+      },
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w1280-fcrop64=1,00000000ffffffff-k-c0xffffffff-no-nd-rj",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w1920-fcrop64=1,00000000ffffffff-k-c0xffffffff-no-nd-rj",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "url": "https://yt3.ggpht.com/ck2RpMx__gA4Gtx6aS0TWCwPO9XerK_AKTanViJAWv-cHnZeKahprcSgniHuXgTjsgOCXasTXA=w2120-fcrop64=1,00000000ffffffff-k-c0xffffffff-no-nd-rj",
+        "width": 2120,
+        "height": 1192
+      }
+    ]
+  },
+  "familySafe": true,
+  "tags": [
+    "angular",
+    "firebase",
+    "web",
+    "development",
+    "javascript",
+    "typescript"
+  ],
+  "videos": {
+    "all": [],
+    "playlists": {
+      "Shorts": [
+        {
+          "roundedPublishedDate": "1 week ago",
+          "id": "BQBMbwfC6TY",
+          "title": "This weird skill helps you learn to code faster",
+          "views": 100420,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/BQBMbwfC6TY/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCxfREDe3OSHxmw9QjZNj2eVq6K9g",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/BQBMbwfC6TY/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDQwJjfabj0FxBt8LJ_stARDnc64Q",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/BQBMbwfC6TY/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDtmMFc-VqA4j6kUJ50z-UsMt4kFw",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/BQBMbwfC6TY/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDS9qNM6iRNtxwl1nfstLbSO9JipA",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "2 weeks ago",
+          "id": "OAuZGexox5s",
+          "title": "Quick overview of CSS",
+          "views": 66960,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/OAuZGexox5s/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLD0zUS6bdUTBoy9MRoKXNKkpAiEQQ",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/OAuZGexox5s/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCju95zxN9VVio2IOfE6B9HL5fkeQ",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/OAuZGexox5s/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB11MTwMc1rlV_YVDjhZj7CUjPY7Q",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/OAuZGexox5s/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCpTTFC7SfiIOCmPaXrN0XusssUYg",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "1 month ago",
+          "id": "B1t4Fjlomi8",
+          "title": "Why do computers use RGB for colors, and not RBY?",
+          "views": 81676,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/B1t4Fjlomi8/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBJ8N6OFUR_uQteHRmtDYwLjONj6w",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/B1t4Fjlomi8/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAW52rqXJ07PuhjHoItY9bm9cTsxw",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/B1t4Fjlomi8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBh6_2NNVbNUZnr_NIQVKjNEiQ4mQ",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/B1t4Fjlomi8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDHH6f-PuzLoXobxvAF34ESMs2Qyw",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "1 month ago",
+          "id": "XQMVOoPZLYs",
+          "title": "Is your memory leaking?",
+          "views": 116917,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/XQMVOoPZLYs/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDbWyQKKeYE2c9hojah55KMHBlwYg",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/XQMVOoPZLYs/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDWw5JmotBCP4oR0mJ3_BbJ14yTJA",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/XQMVOoPZLYs/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC9FhdCipMVKLYAa80gQbb5wuc90A",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/XQMVOoPZLYs/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCMknUfIkiAQsy9nL9im2O6rSKnQQ",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "1 month ago",
+          "id": "5JqzCjg4YRU",
+          "title": "TypeScript is Literal Magic",
+          "views": 195675,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/5JqzCjg4YRU/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAMKM0187RtBfSH5RHbI2yhV_rsKg",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/5JqzCjg4YRU/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAXEinxI7fIs9udsfOaDoVx_O71HQ",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/5JqzCjg4YRU/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBCjyrQ0nyY0QtatKKmzKAb2nWkiw",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/5JqzCjg4YRU/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCXoPBQtaHvu-2MxRT_rKPOAsOauQ",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "1 month ago",
+          "id": "ZtyMdRzvi0w",
+          "title": "God Tier HTML Programming",
+          "views": 280249,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/ZtyMdRzvi0w/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDgAkCYVvbrehpKGQVT-MpkAVrqYg",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/ZtyMdRzvi0w/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAhFrjNDqFvBmrJsRa9UR7vO1rD0Q",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/ZtyMdRzvi0w/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAV93GzQ7E4lPu_NEr-oTfrt_Dh5g",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/ZtyMdRzvi0w/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBc40QZBcNSB5I7SGFjg10UQsBxyA",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "2 months ago",
+          "id": "s9F8pu5KfyM",
+          "title": "Why do computers suck at math?",
+          "views": 1661217,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/s9F8pu5KfyM/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLALiLQ2siKII5nqwU1CHc1t0PWpEg",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/s9F8pu5KfyM/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCiH0R8b7DfltPzZ_Yy0fcmrgm86Q",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/s9F8pu5KfyM/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCes4ADpJvbPuWG0jrjYo28eLuKgg",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/s9F8pu5KfyM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBtXY8o9WsgtwizEq6ABWe9ResucA",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "2 months ago",
+          "id": "ITogH7lJTyE",
+          "title": "Async Await try-catch hell",
+          "views": 300193,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/ITogH7lJTyE/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDaUeM8_SIUslMT1KVNbBJlfoM84Q",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/ITogH7lJTyE/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBmxytLe2NoVxpio6n3rKZMgsB5gg",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/ITogH7lJTyE/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBf0XVv_JjbErYLqVGpzJrs_rL6lA",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/ITogH7lJTyE/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDz4uasGflIqowN_mLbp0oTXzw2dA",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "2 months ago",
+          "id": "JMWNYfPIF2U",
+          "title": "Fullstack Development Iceberg #Shorts",
+          "views": 328256,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/JMWNYfPIF2U/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBWjyAGuUtg3DlURbCGrzcjROPn9w",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/JMWNYfPIF2U/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBEH-uc8l0J6qA0IsV4orTjiBpHcw",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/JMWNYfPIF2U/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBZDjivhcNbtEcf70MPtYw7aHEDzg",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/JMWNYfPIF2U/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBpcoMHIqIoBve15J6TIHVnsmvRFQ",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "3 months ago",
+          "id": "epH4QvLUXlY",
+          "title": "I've become my own Arch Enemy #shorts",
+          "views": 113985,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/epH4QvLUXlY/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCLHJC94AtaF4L49ob_5pANsf_h7g",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/epH4QvLUXlY/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDTd1TR29_0vlq9PVJ6_C9cHuufHw",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/epH4QvLUXlY/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBxgvQesGO6iawbRmdgRKY920WYoQ",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/epH4QvLUXlY/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBJM8PoV740O5Z50iSRxTjAdcjsrQ",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "4 months ago",
+          "id": "kt0bfw4YkFk",
+          "title": "TODO: Write Good Code Comments #Shorts",
+          "views": 210855,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/kt0bfw4YkFk/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDLD0QkYtwgbGZHYhNpROOpNGnpwQ",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/kt0bfw4YkFk/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDHjKhIKXW5p85PlPoawpt9ENgh1w",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/kt0bfw4YkFk/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCV6SZszYyYBlC8Ubk85HLLvYuHeQ",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/kt0bfw4YkFk/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA3qlKJVjGPcIqNEdDK11rPAQx4bA",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "4 months ago",
+          "id": "LuWdeuPMHps",
+          "title": "Easy Hand-Drawn SVG Animation #Shorts",
+          "views": 161278,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/LuWdeuPMHps/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLC17J3u_NCwcwaGD6BU6jYeVMDVzw",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/LuWdeuPMHps/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCmoegl80Mk_wOfKePtsax0MsDHvA",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/LuWdeuPMHps/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCOBLTU6_ZI2BEsu3dvwEzFeIRTuw",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/LuWdeuPMHps/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBGLeTKuYRaop1azpWa56aRNSvabw",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "4 months ago",
+          "id": "njdJeu95p6s",
+          "title": "Top 3 Ways to Center a DIV with CSS #Shorts",
+          "views": 358133,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/njdJeu95p6s/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLB_2jJWaTzgPepGQrCFYWf5B-UKKw",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/njdJeu95p6s/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDE6ps6QbxG99VbnCTHuizduMhfpQ",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/njdJeu95p6s/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAzACK8hphjc_TXMdI0-KF-DXo36g",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/njdJeu95p6s/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD0cfx1FELM0EnBcpXMLiib4OsvAw",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "4 months ago",
+          "id": "qOSH2pYg6m8",
+          "title": "Delete node_modules like a Pro #Shorts",
+          "views": 256818,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/qOSH2pYg6m8/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLD47lX1BpNsktUBPlvi1TAkRyWt8A",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/qOSH2pYg6m8/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCJc08qh0VHtSq0E3oWxC1onKtBrA",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/qOSH2pYg6m8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD6QCwpDzn64nT_Yfd8WWqJUlTZeA",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/qOSH2pYg6m8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBA2tHQzczPu3jGUAVzR_KWYDxALA",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "4 months ago",
+          "id": "nKwIDjiyXnA",
+          "title": "Roko's Basilisk (skip this one) #Shorts",
+          "views": 41312,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/nKwIDjiyXnA/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBd9YMDIaqsfItKPQY1rAxu-pin7A",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/nKwIDjiyXnA/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA6cOZ78jrl5zC09-7cF38k8NsHwA",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/nKwIDjiyXnA/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAe6O-VKzeNXFtZVsnuNwA2rDJlJQ",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/nKwIDjiyXnA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBNOhOxMZFkOJVR5Oei5eM_yslOcw",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "4 months ago",
+          "id": "ecl-eCbYFPM",
+          "title": "Reverse Engineer CSS Animations #Shorts",
+          "views": 288025,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/ecl-eCbYFPM/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDaAnOc1o4G4w38doX8ChFf2Vli4g",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/ecl-eCbYFPM/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAxNVEqdycFZDrUpFsBoK9n8csaZg",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/ecl-eCbYFPM/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLByHYzS0kI2DFMH2C44y4zHMf_eYA",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/ecl-eCbYFPM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAQNfBj0-XoasD1Bc6b2jNXe6WZ9w",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "4 months ago",
+          "id": "nvlizC6koSc",
+          "title": "4 Steps to Become a Developer #Shorts",
+          "views": 154221,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/nvlizC6koSc/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBVcKBVLd2cEqU_xg5BdAArf5AhLg",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/nvlizC6koSc/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLB35q4JQ9zqBw5paGPTbwlcXrxgmQ",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/nvlizC6koSc/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCepGjtNNumhTgxbPf3krOA9T1byA",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/nvlizC6koSc/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBChZx3zskk-r7J6tEt1fyrCQm8zw",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "4 months ago",
+          "id": "WpgZKBtW_t8",
+          "title": "VS Code Path Trick w/ JavaScript #Shorts",
+          "views": 215301,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/WpgZKBtW_t8/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCwatJo2FsyTN690FncVj69XhSgzA",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/WpgZKBtW_t8/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA-FI5l0srqP7oIJcX4I1sMuIsutQ",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/WpgZKBtW_t8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC5EUz7rJmn6j43-D1G82O-hgrYDg",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/WpgZKBtW_t8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB2N_TznqM4G0dZGrxQaYFu0o6O4A",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "4 months ago",
+          "id": "pL7h1tUzrBs",
+          "title": "7 Linux Things You Say WRONG #Shorts",
+          "views": 67559,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/pL7h1tUzrBs/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDRI0Vj0esHNF4b_bGeUbppoj96pQ",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/pL7h1tUzrBs/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDBHLWo7Rxl8pb6g9tF6Fsw_2K9TQ",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/pL7h1tUzrBs/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD2XWTAYZ8JxVKoJCh1Hbc3treoug",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/pL7h1tUzrBs/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAz661P8wdhVZRzgF_ozElZ9Vq5ig",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        }
+      ],
+      "Popular uploads": [
+        {
+          "roundedPublishedDate": "2 years ago",
+          "id": "Mus_vwhTCq0",
+          "title": "JavaScript Pro Tips - Code This, NOT That",
+          "views": 1791663,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/Mus_vwhTCq0/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDrY06eIvzuePXm58qI7OMTpvW9EQ",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/Mus_vwhTCq0/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCKK3Dg6khf5vE8VnYyMWbFoR2SZg",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/Mus_vwhTCq0/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDQjBlpFjsQBL6orkHCItYnoNPjUw",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/Mus_vwhTCq0/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCP3rZ4QbRl0ZUi-TkRyo9j7MsXfw",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "3 years ago",
+          "id": "u21W_tfPVrY",
+          "title": "VS Code Top-Ten Pro Tips",
+          "views": 1627174,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/u21W_tfPVrY/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCIA7AGKoGf74QHoa4aJhWvEOJjcA",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/u21W_tfPVrY/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAqZMFQinuFJy1J963nQed20K9Irg",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/u21W_tfPVrY/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCS3PJzIjvc-morZPiDZW5Kf354PQ",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/u21W_tfPVrY/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDX8mU-yrtiP4a_4O1uYuG6j93XLw",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "2 years ago",
+          "id": "U_gANjtv28g",
+          "title": "7 Amazing Developer Tools that you're not using yet",
+          "views": 1563137,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/U_gANjtv28g/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAzD7lvHRXQt55NC6R5QmH1tvME0A",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/U_gANjtv28g/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBoUiJmj2h597_yVGQsGBNLKVu3gQ",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/U_gANjtv28g/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAmVjBSTGNGbhP1xJpcF7wlsRnH_w",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/U_gANjtv28g/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBFukyMAiXXKqMqGr84mxAeEnL0cw",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "2 years ago",
+          "id": "ahCwqrYpIuM",
+          "title": "TypeScript - The Basics",
+          "views": 821121,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/ahCwqrYpIuM/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCvdXDct71MwOBpBK4onRlaNdKlmg",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/ahCwqrYpIuM/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAga3Hy57wprZesTVrEZ0GY1StMpw",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/ahCwqrYpIuM/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAzo1HGzCYEk5tGEGU4egHoP2kCYg",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/ahCwqrYpIuM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAIhBzi3EcgItrP0kbNHhABCA7BZw",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "2 years ago",
+          "id": "Sh6lK57Cuk4",
+          "title": "The Weird History of JavaScript",
+          "views": 684259,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/Sh6lK57Cuk4/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLD0acFsmpwfKOVEbKd7qFBbrraqCg",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/Sh6lK57Cuk4/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDLBLlGrZdlGdZ5ov7wWKH4nLG4Sw",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/Sh6lK57Cuk4/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAKIepibYNWNiShqxBOEuIQW9sihw",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/Sh6lK57Cuk4/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB2Riuy5UfF970MoDv0tPTUpC_tiA",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "1 year ago",
+          "id": "biOMz4puGt8",
+          "title": "Animated Responsive Navbar with CSS - Plus Other Useful Tricks",
+          "views": 682481,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/biOMz4puGt8/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBt1av0W0thcr40tgQfWGRpHlO3Kw",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/biOMz4puGt8/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDd0WCQRvvcRilyPvpy0mEC2Am01A",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/biOMz4puGt8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAIYMdyRVkbQZMGBF58vQGQR44NTA",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/biOMz4puGt8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA6kxT4wL8vc79fBOAGpJGq7-X2Pg",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "2 years ago",
+          "id": "vn3tm0quoqE",
+          "title": "The Async Await Episode I Promised",
+          "views": 661111,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/vn3tm0quoqE/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCgWoH_XoUhnu92dkKPEm5iSZ2MKA",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/vn3tm0quoqE/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBzAcdILevmJIUqeeyimh5CiCHZLw",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/vn3tm0quoqE/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBBGtybbpJDRuz16ZZAll_GK1n04w",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/vn3tm0quoqE/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD1MH09Mia_Bp68I1exD8fiUrbLkQ",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "3 years ago",
+          "id": "9kRgVxULbag",
+          "title": "Firebase - Ultimate Beginner's Guide",
+          "views": 651220,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/9kRgVxULbag/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCZ206iSIzdiCPIJNbcnjPVQg5tJQ",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/9kRgVxULbag/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDSKifukY-TPZl-7PVzECQkwlUkmQ",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/9kRgVxULbag/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCgiT86cRlmsvrZZ7f4vurbcrD9Sg",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/9kRgVxULbag/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCEBTuzBMCgzmgMA9_poqYALjHOgQ",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "11 months ago",
+          "id": "W2Z7fbCLSTw",
+          "title": "7 Database Paradigms",
+          "views": 618309,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/W2Z7fbCLSTw/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAjPdYlF-pOfjAXaBgYaw63S9k7iA",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/W2Z7fbCLSTw/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCeFvdq6_Banl4eXuqidnrSkZ3ACw",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/W2Z7fbCLSTw/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAfPmf0kzqSWJyNy_tKBB64i8ujew",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/W2Z7fbCLSTw/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAElOVlW1urpK8f6oeNB48H81uLdw",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "1 year ago",
+          "id": "nhBVL41-_Cw",
+          "title": "Vue.js Explained in 100 Seconds",
+          "views": 560306,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/nhBVL41-_Cw/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBopf5bc3ZSW-nvQIsBVHQk9eVFbA",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/nhBVL41-_Cw/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBSKljKeGmqxP7xHY3T1y-k1NbzqA",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/nhBVL41-_Cw/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDgGzlj7WzBJPt5TlWrcV_HSyTReQ",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/nhBVL41-_Cw/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCYd-AFf1Z420_htswt70QvQn5RWQ",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "3 months ago",
+          "id": "vqs_0W-MSB0",
+          "title": "How a CPU Works in 100 Seconds // Apple Silicon M1 vs Intel i9",
+          "views": 561019,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/vqs_0W-MSB0/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDsXnIxxuSw4rrmZ974yovKKhuiag",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/vqs_0W-MSB0/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBuBoIOqwgXBJYrZLBbH3yv_iiHCA",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/vqs_0W-MSB0/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDaJIpzPy5kv7lomEb9m4gG8w_kSQ",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/vqs_0W-MSB0/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDXhVKsu1P1_sYBFk_de298JM3kIg",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "10 months ago",
+          "id": "zQyrwxMPm88",
+          "title": "I built a chat app in 7 minutes with React & Firebase",
+          "views": 552126,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/zQyrwxMPm88/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCaB6Y9tbC2DdwasagmQn9H8-COXw",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/zQyrwxMPm88/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDU0BN-2FkBGBpvDOKlf5iVeCLrCw",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/zQyrwxMPm88/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC_uz0XHAkjmEkgjhUFR0tFSpvAFg",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/zQyrwxMPm88/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLATCgLkk3sDyE6XlaFJifVlycwzTw",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        }
+      ],
+      "Uploads": [
+        {
+          "roundedPublishedDate": "5 days ago",
+          "id": "cuHDQhDhvPE",
+          "title": "I built the same app 10 times // Which JS Framework is best?",
+          "views": 218596,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/cuHDQhDhvPE/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDZ3v8nGlydPVX2jy9OsAyiwJ4IBQ",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/cuHDQhDhvPE/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCdlXBUoAfujN14SVG8LQepZPlm2g",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/cuHDQhDhvPE/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAJD7T_3MBy1mkG7Du7q7shAeHjfg",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/cuHDQhDhvPE/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCHwnoH9-IXMclSes9kpPgekA4xSg",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "1 week ago",
+          "id": "zd6ffqoK_EU",
+          "title": "The Decline of Firebase (bundle sizes) // New JavaScript SDK First Look",
+          "views": 86138,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/zd6ffqoK_EU/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLC9rMbjD0Sg8bJKK4gauRqG2Nd6bQ",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/zd6ffqoK_EU/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAadHr52j0HE8SyELUB988LHvzN7Q",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/zd6ffqoK_EU/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC6lDAQ3DddCjFlWyd_p6HHpwjc3Q",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/zd6ffqoK_EU/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA5CrMdqT6svlMyqeYnGVpPLWQ7Lw",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "2 weeks ago",
+          "id": "0M8AYU_hPas",
+          "title": "NestJS in 100 Seconds",
+          "views": 117931,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/0M8AYU_hPas/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBwPmVzSGO19srp1tTqmPkuZqmv4g",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/0M8AYU_hPas/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLABHXlV1pEcqi4LrnZOFh4kbVatZg",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/0M8AYU_hPas/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAZVaJnjwz7F7_9F4My2zfNO0Cnfg",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/0M8AYU_hPas/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCEbOyY0j4s7dB9FUxk3ejSQKKnhQ",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "2 weeks ago",
+          "id": "tomUWcQ0P3k",
+          "title": "Terraform in 100 Seconds",
+          "views": 104739,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/tomUWcQ0P3k/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAV9xB0zLSHigLylchCf6cncPrO0Q",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/tomUWcQ0P3k/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBTa_wo1TkVMR5qS56oMTlxc4rYcQ",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/tomUWcQ0P3k/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCSLHET58QcCHzVXQWrDhgpl4v9hw",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/tomUWcQ0P3k/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB7s3UT5JI4QCfN42TzIC9P4bV40A",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "3 weeks ago",
+          "id": "uEVmD6n8Il0",
+          "title": "7 Ways to Deploy a Node.js App",
+          "views": 105122,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/uEVmD6n8Il0/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCrmYEvyNnb4NMUJURHlGKonP0IcQ",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/uEVmD6n8Il0/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA1bpxDLuBIZ0RxFq-fnV5UIO02bQ",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/uEVmD6n8Il0/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLChVAmThThKzy48kEmPJdjwC5GFlA",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/uEVmD6n8Il0/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAH47DZ_YBYQAH-ngwm9HMniBz4Tw",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "1 month ago",
+          "id": "dsTXcSeAZq8",
+          "title": "Astro in 100 Seconds",
+          "views": 141398,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/dsTXcSeAZq8/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCrWZZePXqcgoXA4-0lziQQLjPxug",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/dsTXcSeAZq8/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDv_Dbh082QWgUWiLNu3d2jJTt1lg",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/dsTXcSeAZq8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAEQWAXhic92lTv-x5PsXaeSPp52Q",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/dsTXcSeAZq8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBIir1wn6haFh5PG_wFhUCYx8RRbA",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "1 month ago",
+          "id": "-bt_y4Loofg",
+          "title": "MongoDB in 100 Seconds",
+          "views": 144371,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/-bt_y4Loofg/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAsugWDLpKFlpRYznNxu3_CzzK2Rw",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/-bt_y4Loofg/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDf7jTu6lWdWzmzSLh3KnoarZ0Alw",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/-bt_y4Loofg/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCKz5QFbiYLvF4y6f7s2DJXK1HEjw",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/-bt_y4Loofg/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDN_IouDF2ptPATpyVTbv6-GjZ_ew",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "1 month ago",
+          "id": "TcTSqhpm80Y",
+          "title": "21+ Browser Dev Tools & Tips You Need To Know",
+          "views": 131675,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/TcTSqhpm80Y/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDal5FzJajcBM1nrtryXTBYEHinrg",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/TcTSqhpm80Y/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBPBV4GecQ812R41jl8n3a1KlTXXg",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/TcTSqhpm80Y/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA3NT1AC8KmfolxYyhKdcz3aEnEnA",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/TcTSqhpm80Y/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD4DfdHbtmfS2lDtLxd4wJ2SNPKjg",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "1 month ago",
+          "id": "G1rOthIU-uo",
+          "title": "Redis in 100 Seconds",
+          "views": 164259,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/G1rOthIU-uo/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDMGQNgEwXaeAZOVs8d9binI9ij6g",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/G1rOthIU-uo/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBB5Bh8N6RTU2C1B45du-CPbrGkCw",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/G1rOthIU-uo/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB3pqbJznS0ycsTEoS-wpbrsbN-Rg",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/G1rOthIU-uo/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCDjqpkZ6RSGAdtIpW6qhTY5YGwtA",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "1 month ago",
+          "id": "UVR9lhUGAyU",
+          "title": "DNS Explained in 100 Seconds",
+          "views": 83621,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/UVR9lhUGAyU/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCBqDcRc9nWmMx5NdLxWVaibMEkzw",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/UVR9lhUGAyU/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAj2ojjWWVeVlRUR9MQOHa2K0V6Zw",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/UVR9lhUGAyU/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAVKoMFAzMnlaiAKzCDK28Kww8KsQ",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/UVR9lhUGAyU/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAWad2rn0X0j_WfMXrQUJHjklxyOA",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "1 month ago",
+          "id": "4duqI8WyfqE",
+          "title": "The Truth about Github Copilot // AI Programming First Look",
+          "views": 542762,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/4duqI8WyfqE/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDC94h5xwVpiC_c45fyR_3Zdw8CRQ",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/4duqI8WyfqE/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLALx3M3GANFWnG_S6GI7r7HdHQmEQ",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/4duqI8WyfqE/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAM6a1mMmcY-3HYmBqjbtemtFLWCQ",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/4duqI8WyfqE/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBuyx2PknWClpeUIz-V5hZj4TMNng",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        },
+        {
+          "roundedPublishedDate": "1 month ago",
+          "id": "JIbIYCM48to",
+          "title": "Top 50+ AWS Services Explained in 10 Minutes",
+          "views": 243969,
+          "thumbnails": [
+            {
+              "url": "https://i.ytimg.com/vi/JIbIYCM48to/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAbbJe8Dm_wec5u21KscwThCb6TnA",
+              "width": 168,
+              "height": 94
+            },
+            {
+              "url": "https://i.ytimg.com/vi/JIbIYCM48to/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBCdecDVJzS1c1-0tE7yhzGz6n_Ew",
+              "width": 196,
+              "height": 110
+            },
+            {
+              "url": "https://i.ytimg.com/vi/JIbIYCM48to/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB3dZQuTQ95c7Jq5S63GWhaSkX80Q",
+              "width": 246,
+              "height": 138
+            },
+            {
+              "url": "https://i.ytimg.com/vi/JIbIYCM48to/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBQ5u_6yaCydnfZ0rdmq7zeg4PJug",
+              "width": 336,
+              "height": 188
+            }
+          ]
+        }
+      ]
+    },
+    "homePlaylists": {},
+    "highlighted": {
+      "description": "What are Scalable Vector Graphics 🤏? How are vector images different than raster images? Learn the fundamentals of SVG in 100 seconds!\n\nLearn more about web design, SVG, and CSS in this tutorial: https://fireship.io/lessons/css-cards-animated/\n\nReferences: \n\nStar Wars Animation https://codepen.io/nerdmanship/pen/ZLoyPG\nPath Docs https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths\n\n  \n\nInstall the quiz app 🤓\n\niOS https://itunes.apple.com/us/app/fireship/id1462592372?mt=8\nAndroid https://play.google.com/store/apps/details?id=io.fireship.quizapp\n\nUpgrade to Fireship PRO at https://fireship.io/pro\nUse code lORhwXd2 for 25% off your first payment. \n\nMy VS Code Theme\n\n- Atom One Dark \n- vscode-icons\n- Fira Code Font",
+      "roundedPublishedDate": "4 months ago",
+      "id": "emFMHH2Bfvo",
+      "title": "SVG Explained in 100 Seconds",
+      "views": 275705,
+      "thumbnails": []
+    }
+  },
+  "links": {
+    "primary": [
+      "https://fireship.io"
+    ],
+    "secondary": [
+      "https://github.com/codediodeio",
+      "https://fireship.page.link/slack",
+      "https://www.instagram.com/fireship_dev/",
+      "https://twitter.com/fireship_dev"
+    ]
+  },
+  "id": {
+    "id": "UCsBjURrPoezykLs9EqgamOA",
+    "kind": "channel"
+  },
+  "name": "Fireship",
+  "subscribers": 781000,
+  "icons": [
+    {
+      "url": "https://yt3.ggpht.com/ytc/AKedOLTcIl6kKt3lEPJEySUf_hpHiKDKiFeo9eWPReLysQ=s48-c-k-c0x00ffffff-no-rj",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "url": "https://yt3.ggpht.com/ytc/AKedOLTcIl6kKt3lEPJEySUf_hpHiKDKiFeo9eWPReLysQ=s88-c-k-c0x00ffffff-no-rj",
+      "width": 88,
+      "height": 88
+    },
+    {
+      "url": "https://yt3.ggpht.com/ytc/AKedOLTcIl6kKt3lEPJEySUf_hpHiKDKiFeo9eWPReLysQ=s176-c-k-c0x00ffffff-no-rj",
+      "width": 176,
+      "height": 176
+    },
+    {
+      "url": "https://yt3.ggpht.com/ytc/AKedOLTcIl6kKt3lEPJEySUf_hpHiKDKiFeo9eWPReLysQ=s900-c-k-c0x00ffffff-no-rj",
+      "width": 900,
+      "height": 900
+    }
+  ],
+  "hiddenSubscribers": false
+}

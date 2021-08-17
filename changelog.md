@@ -1,11 +1,26 @@
 <!--
   Created at: 08/05/2021 14:16:41 Thursday
-  Modified at: 08/14/2021 11:25:43 PM Saturday
+  Modified at: 08/17/2021 02:39:25 PM Tuesday
 -->
 
 # Changelog
 
 A verbose logging of every change.
+
+## Version 0.5.0 (08/17/2021 14:39:20 Tuesday)
+
+- Changed the example of `video.$` to use `is` proc to verify type
+- Changed cookie storage filename
+- Added the given `page` to `channel.getUrl` generateed url
+- Splitted all `channel` extracting to functions for call in correct pages
+- Configured extracting for `home` page
+- Rename `ExtractError.NotExist` error to `ExtractError.FetchError`
+- Added channel home page videos
+- Moved `video.YoutubeVideoId` to `base.YoutubeVideoId`
+- Added a function to parse channel to JSON
+- Added all missing channel data
+
+---
 
 ## Version 0.4.1 (08/14/2021 23:25:42 Saturday)
 

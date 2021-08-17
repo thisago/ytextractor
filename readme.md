@@ -1,6 +1,6 @@
 <!--
   Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 08/14/2021 02:25:48 PM Saturday
+  Modified at: 08/17/2021 02:38:35 PM Tuesday
 -->
 
 # ytextractor
@@ -57,6 +57,18 @@ This parser gets:
   - [x] Tags
   - [x] Description (about)
   - [x] Banners
+  - [x] Links
+    - [x] Primary
+    - [x] Secondary
+  - [x] Highlighted playlists videos
+  - [x] Highlighted video
+    - [x] Id (video code)
+    - [x] Title
+    - [x] Description
+    - [] Thumbnails
+    - [x] Views
+    - [x] Rounded publish date
+
 
 - Video data
   - [ ] Subtitles

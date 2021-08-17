@@ -1,13 +1,13 @@
 #[
   Created at: 08/09/2021 14:31:52 Monday
-  Modified at: 08/10/2021 02:58:12 PM Tuesday
+  Modified at: 08/17/2021 12:32:54 PM Tuesday
 ]#
 
 import std/json
 from times import DateTime, `$`
-import ytextractor/video
+import ytextractor/[video, channel]
 
-proc `%`*[T: DateTime | YoutubeVideoId](v: T): JsonNode =
+proc `%`*[T: DateTime or YoutubeVideoId](v: T): JsonNode =
   % $v
 
 {.push exportc.}
@@ -19,7 +19,14 @@ proc extractVideo*(url: cstring; proxy = "".cstring): YoutubeVideo =
 proc initYoutubeVideo*(id: YoutubeVideoId): YoutubeVideo =
   video.initYoutubeVideo id
 
-proc getJson*(self: YoutubeVideo): cstring =
+proc videoJson*(self: YoutubeVideo): cstring =
+  ## Parse the `YoutubeVideo` to JSON
   cstring($(%* self))
+proc channelJson*(self: YoutubeChannel): cstring =
+  ## Parse the `YoutubeChannel` to JSON
+  cstring($(%* self))
+
+# proc getJson*[T: YoutubeVideo or YoutubeChannel](self: T): cstring =
+#   cstring($(%* self))
 
 {.pop.}

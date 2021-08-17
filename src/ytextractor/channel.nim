@@ -1,6 +1,6 @@
 #[
   Created at: 08/09/2021 12:10:05 Monday
-  Modified at: 08/14/2021 11:25:06 PM Saturday
+  Modified at: 08/17/2021 02:38:44 PM Tuesday
 ]#
 
 ##[
@@ -17,10 +17,17 @@ from std/json import JsonNode, items, hasKey, `{}`, getStr, getInt, getBool
 from std/strformat import fmt
 from std/strutils import parseInt, multiReplace, find, strip, contains, parseEnum
 from std/uri import parseUri
+from std/tables import Table, `[]`, `[]=`
+from std/uri import parseUri, decodeUrl
+
+export tables
+
+import ytextractor/core/types; export types
+import ytextractor/core/core
+
+
 
 import json
-
-import ytextractor/core/core
 
 type
   YoutubeChannel* = object of YoutubeChannelPreview
@@ -31,7 +38,9 @@ type
     familySafe*: bool
     tags*: seq[string]
     videos*: YoutubeChannelVideos
-
+    links*: YoutubeChannelLinks
+  YoutubeChannelLinks* = object
+    primary*, secondary*: seq[string]
   YoutubeChannelBanners* = object
     ## Channel banners
     desktop*, mobile*, tv*: seq[UrlAndSize]
@@ -40,9 +49,16 @@ type
     ##
     ## Available: home
     home, videos, playlists, community, channels, about
+  YoutubeChannelVideo* = object of YoutubeVideoPreview
+    roundedPublishedDate*: string
+  YoutubeChannelHighlightVideo* = object of YoutubeChannelVideo
+    description*: string
   YoutubeChannelVideos* = object
     ## The extracted videos of channel
-    all: seq[YoutubeVideoPreview]
+    all: seq[YoutubeChannelVideo]
+    playlists: Table[string, seq[YoutubeChannelVideo]]
+    homePlaylists: Table[string, seq[YoutubeChannelVideo]]
+    highlighted: YoutubeChannelHighlightVideo
 
 proc initYoutubeChannel*(id: YoutubeChannelId): YoutubeChannel =
   ## Initialize a new `YoutubeChannel` instance
@@ -78,58 +94,154 @@ proc update*(self: var YoutubeChannel; page: YoutubeChannelPage; proxy = ""): bo
     return false
 
   let
-    jsonData = self.id.getUrl(proxy).fetch().parseYoutubeJson().ytInitialData
+    jsonData = self.id.getUrl(page, proxy).fetch().parseYoutubeJson().ytInitialData
     contents = jsonData{"contents"}
     header = jsonData{"header", "c4TabbedHeaderRenderer"}
     metadata = jsonData{"metadata", "channelMetadataRenderer"}
     microformat = jsonData{"microformat", "microformatDataRenderer"}
 
   if contents.isNil:
-    self.status.error = ExtractError.NotExist
+    self.status.error = ExtractError.FetchError
     return false
 
   self.status.lastUpdate = now()
 
-  try:
+  proc parseViews(views: string): int =
+    views.multiReplace({
+      " views": "",
+      ",": "",
+    }).parseInt
+  proc parseYtTrackingUrl(url: string): string =
+    const toFind = "&q="
+    let
+      url = url.parseUri
+      query = url.query.decodeUrl
+      i = query.find(toFind)
+    if i > 0:
+      result = query[i + toFind.len..^1]
+
+  template getName =
     self.name = header{"title"}.getStr
-
-    block iconsAndBanner:
-      proc getImages(res: var seq[UrlAndSize]; nodeObj: JsonNode; nodeName: string) =
-        for node in nodeObj{nodeName, "thumbnails"}:
-          res.add UrlAndSize(
-            url: node{"url"}.getStr,
-            width: node{"width"}.getInt,
-            height: node{"height"}.getInt
-          )
-      self.icons.getImages(header, "avatar")
-      self.icons.getImages(metadata, "avatar")
-      self.banners.desktop.getImages(header, "banner")
-      self.banners.mobile.getImages(header, "mobileBanner")
-      self.banners.tv.getImages(header, "tvBanner")
-
-    block subscribers:
-      var subs = header{"subscriberCountText", "simpleText"}.getStr.parseSubs
-      if subs.len == 0:
-        self.hiddenSubscribers = true
-      else:
-        self.subscribers = subs.parseInt
-
+  template getIconsAndBanners =
+    proc getImages(res: var seq[UrlAndSize]; nodeObj: JsonNode; nodeName: string) =
+      for node in nodeObj{nodeName, "thumbnails"}:
+        res.add UrlAndSize(
+          url: node{"url"}.getStr,
+          width: node{"width"}.getInt,
+          height: node{"height"}.getInt
+        )
+    self.icons.getImages(header, "avatar")
+    self.icons.getImages(metadata, "avatar")
+    self.banners.desktop.getImages(header, "banner")
+    self.banners.mobile.getImages(header, "mobileBanner")
+    self.banners.tv.getImages(header, "tvBanner")
+  template getSubscribers =
+    var subs = header{"subscriberCountText", "simpleText"}.getStr.parseSubs
+    if subs.len == 0:
+      self.hiddenSubscribers = true
+    else:
+      self.subscribers = subs.parseInt
+  template getFamilySafe =
     self.familySafe = metadata{"isFamilySafe"}.getBool
+  template getDescription =
     self.description = metadata{"description"}.getStr
+  template getKeywords =
+    if microformat.hasKey "tags":
+      for tag in microformat{"tags"}:
+        self.tags.add tag.getStr
+  proc isPlaylist(jsonNode: JsonNode): bool =
+    result = false
+    try:
+      if jsonNode{"content", "horizontalListRenderer", "items"}{0}{
+                  "gridVideoRenderer", "videoId"}.getStr != "":
+        return true
+    except: discard
+  template getHomePlaylists(startIndex: int) =
 
-    block keywords:
-      if microformat.hasKey "tags":
-        for tag in microformat{"tags"}:
-          self.tags.add tag.getStr
+    let jsonObj = contents{"twoColumnBrowseResultsRenderer","tabs"}{0}{
+                           "tabRenderer","content","sectionListRenderer",
+                           "contents"}
+    for i in startIndex..jsonObj.len:
+      let playlistJson = jsonObj{i}{"itemSectionRenderer","contents"}{0}{"shelfRenderer"}
 
+      if not playlistJson.isPlaylist:
+        continue
+
+      var playlist: seq[YoutubeChannelVideo]
+      for video in playlistJson{"content", "horizontalListRenderer", "items"}:
+        let video = video{"gridVideoRenderer"}
+        var thumbs: seq[UrlAndSize]
+        for thumb in video{"thumbnail", "thumbnails"}:
+          thumbs.add UrlAndSize(
+            url: thumb{"url"}.getStr,
+            width: thumb{"width"}.getInt,
+            height: thumb{"height"}.getInt,
+          )
+        playlist.add YoutubeChannelVideo(
+          title: video{"title", "simpleText"}.getStr,
+          roundedPublishedDate: video{"publishedTimeText", "simpleText"}.getStr,
+          views: video{"viewCountText", "simpleText"}.getStr.parseViews,
+          id: video{"videoId"}.getStr.YoutubeVideoId,
+          thumbnails: thumbs
+        )
+      self.videos.playlists[playlistJson{"title", "runs"}{0}{"text"}.getStr] = playlist
+
+    # self.videos.homePlaylists.add
+  proc getHighlightVideo(self: var YoutubeChannel): bool =
+    result = false
+    let jsonObj = contents{"twoColumnBrowseResultsRenderer","tabs"}{0}{
+                           "tabRenderer","content","sectionListRenderer",
+                           "contents"}{0}{"itemSectionRenderer","contents"}{0}{
+                           "channelVideoPlayerRenderer"}
+    if jsonObj.hasKey "videoId":
+      result = true
+      self.videos.highlighted.id = jsonObj{"videoId"}.getStr.YoutubeVideoId
+      self.videos.highlighted.title = jsonObj{"title", "runs"}{0}{"text"}.getStr
+      self.videos.highlighted.views = jsonObj{"viewCountText", "simpleText"}.
+                                        getStr.parseViews
+      self.videos.highlighted.roundedPublishedDate =
+        jsonObj{"publishedTimeText"}{"runs"}{0}{"text"}.getStr
+      block description:
+        for desc in jsonObj{"description", "runs"}:
+          if desc.hasKey "navigationEndpoint":
+            self.videos.highlighted.description.add desc{"navigationEndpoint",
+                                                         "commandMetadata",
+                                                         "webCommandMetadata",
+                                                         "url"}.getstr.
+                                                         parseYtTrackingUrl
+          else:
+            self.videos.highlighted.description.add desc{"text"}.getStr
+  template getLinks =
+    proc getLinks(res: var seq[string]; name: string) =
+      for link in header{"headerLinks", "channelHeaderLinksRenderer", name}:
+        res.add link{"navigationEndpoint", "commandMetadata",
+                        "webCommandMetadata", "url"}.getStr.parseYtTrackingUrl
+    self.links.primary.getLinks "primaryLinks"
+    self.links.secondary.getLinks "secondaryLinks"
+
+  try:
+    case page:
+    of home:
+      getName
+      getIconsAndBanners
+      getSubscribers
+      getFamilySafe
+      getDescription
+      getKeywords
+      if self.getHighlightVideo:
+        getHomePlaylists 1
+      else:
+        getHomePlaylists 0
+      getLinks
+    else:
+      doAssert false, "Page not implemented."
   except:
     self.status.error = ExtractError.ParseError
-    # doAssert false, getCurrentExceptionMsg()
+    doAssert false, getCurrentExceptionMsg()
     return false
 
-proc getUrl*(self: YoutubeChannelId; proxy: string): string =
-  result = fmt"https://www.youtube.com/{self.kind}/{self.id}"
-  result = proxy & result
+proc getUrl*(self: YoutubeChannelId; page: YoutubeChannelPage; proxy: string): string =
+  fmt"{proxy}https://www.youtube.com/{self.kind}/{self.id}/{page}"
 
 proc channelId*(url: string): YoutubeChannelId =
   ## Parses the video ID from url
