@@ -1,11 +1,17 @@
 <!--
   Created at: 08/05/2021 14:16:41 Thursday
-  Modified at: 08/18/2021 06:54:48 PM Wednesday
+  Modified at: 08/18/2021 07:12:09 PM Wednesday
 -->
 
 # Changelog
 
 A verbose logging of every change.
+
+## Version 0.6.2 (08/18/2021 19:11:49 Wednesday)
+
+- Added channel example in `web`
+
+---
 
 ## Version 0.6.1 (08/18/2021 18:54:47 Wednesday)
 

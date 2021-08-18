@@ -1,10 +1,11 @@
 #[
   Created at: 08/09/2021 14:31:52 Monday
-  Modified at: 08/17/2021 12:32:54 PM Tuesday
+  Modified at: 08/18/2021 07:09:43 PM Wednesday
 ]#
 
 import std/json
-from times import DateTime, `$`
+from std/times import DateTime, `$`
+from std/strutils import parseEnum
 import ytextractor/[video, channel]
 
 proc `%`*[T: DateTime or YoutubeVideoId](v: T): JsonNode =
@@ -12,12 +13,19 @@ proc `%`*[T: DateTime or YoutubeVideoId](v: T): JsonNode =
 
 {.push exportc.}
 
-proc update*(self: var YoutubeVideo; proxy = "".cstring): bool =
+proc updateVideo*(self: var YoutubeVideo; proxy = "".cstring): bool =
   video.update(self, $proxy)
 proc extractVideo*(url: cstring; proxy = "".cstring): YoutubeVideo =
   video.extractVideo($url, $proxy)
 proc initYoutubeVideo*(id: YoutubeVideoId): YoutubeVideo =
   video.initYoutubeVideo id
+
+proc updateChannel*(self: var YoutubeChannel; page: cstring; proxy = "".cstring): bool =
+  channel.update(self, parseEnum[YoutubeChannelPage]($page), $proxy)
+proc extractChannel*(url: cstring; proxy = "".cstring): YoutubeChannel =
+  channel.extractChannel($url, $proxy)
+proc initYoutubeChannel*(id: YoutubeChannelId): YoutubeChannel =
+  channel.initYoutubeChannel id
 
 proc videoJson*(self: YoutubeVideo): cstring =
   ## Parse the `YoutubeVideo` to JSON

@@ -18,9 +18,15 @@ const
 
 urlEl.value = "https://www.youtube.com/watch?v=Dx4eelwPGaQ"
 
-const parseVideo = () => {
-  const vidData = getJson(extractVideo(urlEl.value, "https://api.allorigins.win/raw?url="))
-  outEl.$html = vidData
-}
+const
+  parseVideo = () => {
+    const vidData = videoJson(extractVideo(urlEl.value, "https://api.allorigins.win/raw?url="))
+    outEl.$html = vidData
+  },
+  parseChannel = () => {
+    const vidData = channelJson(extractChannel(urlEl.value, "https://api.allorigins.win/raw?url="))
+    outEl.$html = vidData
+  }
 
 $qid("parseVideo").$evt("click", parseVideo)
+$qid("parseChannel").$evt("click", parseChannel)
