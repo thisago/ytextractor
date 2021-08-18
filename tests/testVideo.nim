@@ -1,6 +1,6 @@
 #[
   Created at: 08/04/2021 16:25:48 Wednesday
-  Modified at: 08/16/2021 01:51:18 PM Monday
+  Modified at: 08/18/2021 06:00:08 PM Wednesday
 ]#
 
 ##[
@@ -19,7 +19,6 @@ suite "Youtube video":
   test "Get data":
     check videoData.update()
     check videoData.status.error == ExtractError.None
-    echo channelData.status.error
   test "Video title":
     check videoData.title == "Bolachinhas de GERGELIM com CEBOLA - super CROCANTE"
   test "Views": check videoData.views > 170

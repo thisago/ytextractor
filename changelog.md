@@ -1,11 +1,18 @@
 <!--
   Created at: 08/05/2021 14:16:41 Thursday
-  Modified at: 08/17/2021 10:44:58 PM Tuesday
+  Modified at: 08/18/2021 06:54:48 PM Wednesday
 -->
 
 # Changelog
 
 A verbose logging of every change.
+
+## Version 0.6.1 (08/18/2021 18:54:47 Wednesday)
+
+- Fixed tests
+- Added test for more channel data
+
+---
 
 ## Version 0.6.0 (08/17/2021 22:44:58 Tuesday)
 

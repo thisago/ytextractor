@@ -1,6 +1,6 @@
 #[
   Created at: 08/15/2021 19:03:47 Sunday
-  Modified at: 08/16/2021 01:51:11 PM Monday
+  Modified at: 08/18/2021 06:54:07 PM Wednesday
 ]#
 
 ##[
@@ -29,3 +29,13 @@ suite "Youtube channel":
     check channelData.banners.tv.len > 1
   test "Family safe": check channelData.familySafe == true
   test "Tags": check channelData.tags.len == 0
+  test "Links":
+    check channelData.links.primary.len == 0
+    check channelData.links.secondary.len == 0
+  test "Home playlists":
+    check channelData.videos.homePlaylists.len >= 1
+    let playlist = channelData.videos.homePlaylists[0]
+    check playlist.name == "Uploads"
+    check playlist.videos.len > 3
+    let video = playlist.videos[^1]
+    check video.title == "Pasta de Berinjela com tahine"

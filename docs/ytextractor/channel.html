@@ -137,10 +137,10 @@ window.addEventListener('DOMContentLoaded', main);
   roundedPublishedDate*: string">YoutubeChannelVideo</a></li>
   <li><a class="reference" href="#YoutubeChannelVideos"
     title="YoutubeChannelVideos = object
-  all: seq[YoutubeChannelVideo]
-  playlists: seq[YoutubeChannelPlaylist]
-  homePlaylists: seq[YoutubeChannelPlaylist]
-  highlighted: YoutubeChannelHighlightVideo">YoutubeChannelVideos</a></li>
+  all*: seq[YoutubeChannelVideo]
+  playlists*: seq[YoutubeChannelPlaylist]
+  homePlaylists*: seq[YoutubeChannelPlaylist]
+  highlighted*: YoutubeChannelHighlightVideo">YoutubeChannelVideos</a></li>
 
   </ul>
 </li>
@@ -284,10 +284,10 @@ Channel banners
 </div>
 <div id="YoutubeChannelVideos">
 <dt><pre><a href="channel.html#YoutubeChannelVideos"><span class="Identifier">YoutubeChannelVideos</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">all</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="channel.html#YoutubeChannelVideo"><span class="Identifier">YoutubeChannelVideo</span></a><span class="Other">]</span>
-  <span class="Identifier">playlists</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="channel.html#YoutubeChannelPlaylist"><span class="Identifier">YoutubeChannelPlaylist</span></a><span class="Other">]</span>
-  <span class="Identifier">homePlaylists</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="channel.html#YoutubeChannelPlaylist"><span class="Identifier">YoutubeChannelPlaylist</span></a><span class="Other">]</span>
-  <span class="Identifier">highlighted</span><span class="Other">:</span> <a href="channel.html#YoutubeChannelHighlightVideo"><span class="Identifier">YoutubeChannelHighlightVideo</span></a>
+  <span class="Identifier">all</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="channel.html#YoutubeChannelVideo"><span class="Identifier">YoutubeChannelVideo</span></a><span class="Other">]</span>
+  <span class="Identifier">playlists</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="channel.html#YoutubeChannelPlaylist"><span class="Identifier">YoutubeChannelPlaylist</span></a><span class="Other">]</span>
+  <span class="Identifier">homePlaylists</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="channel.html#YoutubeChannelPlaylist"><span class="Identifier">YoutubeChannelPlaylist</span></a><span class="Other">]</span>
+  <span class="Identifier">highlighted</span><span class="Operator">*</span><span class="Other">:</span> <a href="channel.html#YoutubeChannelHighlightVideo"><span class="Identifier">YoutubeChannelHighlightVideo</span></a>
 </pre></dt>
 <dd>
 
@@ -421,7 +421,7 @@ Update all <tt class="docutils literal"><span class="pre"><span class="Identifie
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-17 22:45:47 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-18 18:55:33 UTC</small>
       </div>
     </div>
   </div>

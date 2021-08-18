@@ -1,6 +1,6 @@
-#[
+  #[
   Created at: 08/09/2021 12:10:05 Monday
-  Modified at: 08/17/2021 10:44:03 PM Tuesday
+  Modified at: 08/18/2021 06:50:11 PM Wednesday
 ]#
 
 ##[
@@ -57,10 +57,10 @@ type
     videos*: seq[YoutubeChannelVideo]
   YoutubeChannelVideos* = object
     ## The extracted videos of channel
-    all: seq[YoutubeChannelVideo]
-    playlists: seq[YoutubeChannelPlaylist]
-    homePlaylists: seq[YoutubeChannelPlaylist]
-    highlighted: YoutubeChannelHighlightVideo
+    all*: seq[YoutubeChannelVideo]
+    playlists*: seq[YoutubeChannelPlaylist]
+    homePlaylists*: seq[YoutubeChannelPlaylist]
+    highlighted*: YoutubeChannelHighlightVideo
 
 proc initYoutubeChannel*(id: YoutubeChannelId): YoutubeChannel =
   ## Initialize a new `YoutubeChannel` instance
@@ -159,7 +159,6 @@ proc update*(self: var YoutubeChannel; page: YoutubeChannelPage; proxy = ""): bo
         return true
     except: discard
   template getHomePlaylists(startIndex: int) =
-
     let jsonObj = contents{"twoColumnBrowseResultsRenderer","tabs"}{0}{
                            "tabRenderer","content","sectionListRenderer",
                            "contents"}
@@ -188,7 +187,7 @@ proc update*(self: var YoutubeChannel; page: YoutubeChannelPage; proxy = ""): bo
           id: video{"videoId"}.getStr.YoutubeVideoId,
           thumbnails: thumbs
         )
-      self.videos.playlists.add playlist
+      self.videos.homePlaylists.add playlist
 
     # self.videos.homePlaylists.add
   proc getHighlightVideo(self: var YoutubeChannel): bool =
