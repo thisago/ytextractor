@@ -1,6 +1,6 @@
 #[
   Created at: 08/03/2021 19:58:57 Tuesday
-  Modified at: 08/17/2021 10:29:54 PM Tuesday
+  Modified at: 08/20/2021 12:48:20 PM Friday
 ]#
 
 ##[
@@ -9,7 +9,6 @@
 
 import ytextractor/video; export video
 import ytextractor/channel; export channel
-
 
 when isMainModule and not defined js:
   # debug purposes

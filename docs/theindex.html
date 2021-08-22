@@ -34,6 +34,7 @@ function main() {
     }
   }
 
+  const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
   function switchTheme(e) {
       if (e.target.checked) {
           document.documentElement.setAttribute('data-theme', 'dark');
@@ -44,29 +45,21 @@ function main() {
       }
   }
 
-  const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-  if (toggleSwitch !== null) {
-    toggleSwitch.addEventListener('change', switchTheme, false);
-  }
+  toggleSwitch.addEventListener('change', switchTheme, false);
 
-  var currentTheme = localStorage.getItem('theme');
-  if (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    currentTheme = 'dark';
-  }
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
   if (currentTheme) {
     document.documentElement.setAttribute('data-theme', currentTheme);
 
-    if (currentTheme === 'dark' && toggleSwitch !== null) {
+    if (currentTheme === 'dark') {
       toggleSwitch.checked = true;
     }
   }
 }
-
-window.addEventListener('DOMContentLoaded', main);
 </script>
 
 </head>
-<body>
+<body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
@@ -81,10 +74,6 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="exports: `%`[T: DateTime or YoutubeVideoId](v: T): JsonNode" href="ytextractor/exports.html#%25%2CT">exports: `%`[T: DateTime or YoutubeVideoId](v: T): JsonNode</a></li>
           </ul></dd>
-<dt><a name="channelId" href="#channelId"><span>channelId:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="channel: channelId(url: string): YoutubeChannelId" href="ytextractor/channel.html#channelId%2Cstring">channel: channelId(url: string): YoutubeChannelId</a></li>
-          </ul></dd>
 <dt><a name="channelJson" href="#channelJson"><span>channelJson:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="exports: channelJson(self: YoutubeChannel): cstring" href="ytextractor/exports.html#channelJson%2CYoutubeChannel">exports: channelJson(self: YoutubeChannel): cstring</a></li>
@@ -96,10 +85,6 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="Cookies" href="#Cookies"><span>Cookies:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="cookies: Cookies" href="ytextractor/core/cookies.html#Cookies">cookies: Cookies</a></li>
-          </ul></dd>
-<dt><a name="extractChannel" href="#extractChannel"><span>extractChannel:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="channel: extractChannel(url: string; proxy = &quot;&quot;): YoutubeChannel" href="ytextractor/channel.html#extractChannel%2Cstring%2Cstring">channel: extractChannel(url: string; proxy = &quot;&quot;): YoutubeChannel</a></li>
           </ul></dd>
 <dt><a name="ExtractError" href="#ExtractError"><span>ExtractError:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -135,13 +120,9 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="cookies: getCookies(): Cookies" href="ytextractor/core/cookies.html#getCookies">cookies: getCookies(): Cookies</a></li>
           </ul></dd>
-<dt><a name="getUrl" href="#getUrl"><span>getUrl:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="channel: getUrl(self: YoutubeChannelId; page: YoutubeChannelPage; proxy: string): string" href="ytextractor/channel.html#getUrl%2CYoutubeChannelId%2CYoutubeChannelPage%2Cstring">channel: getUrl(self: YoutubeChannelId; page: YoutubeChannelPage; proxy: string): string</a></li>
-          </ul></dd>
 <dt><a name="initYoutubeChannel" href="#initYoutubeChannel"><span>initYoutubeChannel:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="channel: initYoutubeChannel(id: YoutubeChannelId): YoutubeChannel" href="ytextractor/channel.html#initYoutubeChannel%2CYoutubeChannelId">channel: initYoutubeChannel(id: YoutubeChannelId): YoutubeChannel</a></li>
+          data-doc-search-tag="exports: initYoutubeChannel(id: YoutubeChannelId): YoutubeChannel" href="ytextractor/exports.html#initYoutubeChannel%2CYoutubeChannelId">exports: initYoutubeChannel(id: YoutubeChannelId): YoutubeChannel</a></li>
           </ul></dd>
 <dt><a name="initYoutubeVideo" href="#initYoutubeVideo"><span>initYoutubeVideo:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -175,11 +156,15 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="update" href="#update"><span>update:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="channel: update(self: var YoutubeChannel; page: YoutubeChannelPage; proxy = &quot;&quot;): bool" href="ytextractor/channel.html#update%2CYoutubeChannel%2CYoutubeChannelPage%2Cstring">channel: update(self: var YoutubeChannel; page: YoutubeChannelPage; proxy = &quot;&quot;): bool</a></li>
-          <li><a class="reference external"
-          data-doc-search-tag="exports: update(self: var YoutubeVideo; proxy = &quot;&quot;.cstring): bool" href="ytextractor/exports.html#update%2CYoutubeVideo">exports: update(self: var YoutubeVideo; proxy = &quot;&quot;.cstring): bool</a></li>
-          <li><a class="reference external"
           data-doc-search-tag="video: update(self: var YoutubeVideo; proxy = &quot;&quot;): bool" href="ytextractor/video.html#update%2CYoutubeVideo%2Cstring">video: update(self: var YoutubeVideo; proxy = &quot;&quot;): bool</a></li>
+          </ul></dd>
+<dt><a name="updateChannel" href="#updateChannel"><span>updateChannel:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exports: updateChannel(self: var YoutubeChannel; page: cstring; proxy = &quot;&quot;.cstring): bool" href="ytextractor/exports.html#updateChannel%2CYoutubeChannel%2Ccstring">exports: updateChannel(self: var YoutubeChannel; page: cstring; proxy = &quot;&quot;.cstring): bool</a></li>
+          </ul></dd>
+<dt><a name="updateVideo" href="#updateVideo"><span>updateVideo:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="exports: updateVideo(self: var YoutubeVideo; proxy = &quot;&quot;.cstring): bool" href="ytextractor/exports.html#updateVideo%2CYoutubeVideo">exports: updateVideo(self: var YoutubeVideo; proxy = &quot;&quot;.cstring): bool</a></li>
           </ul></dd>
 <dt><a name="UrlAndSize" href="#UrlAndSize"><span>UrlAndSize:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -189,8 +174,6 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="valid" href="#valid"><span>valid:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="channel: valid(self: YoutubeChannelId): bool" href="ytextractor/channel.html#valid%2CYoutubeChannelId">channel: valid(self: YoutubeChannelId): bool</a></li>
-          <li><a class="reference external"
           data-doc-search-tag="video: valid(id: YoutubeVideoId): bool" href="ytextractor/video.html#valid%2CYoutubeVideoId">video: valid(id: YoutubeVideoId): bool</a></li>
           </ul></dd>
 <dt><a name="videoId" href="#videoId"><span>videoId:</span></a></dt><dd><ul class="simple">
@@ -201,18 +184,6 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="exports: videoJson(self: YoutubeVideo): cstring" href="ytextractor/exports.html#videoJson%2CYoutubeVideo">exports: videoJson(self: YoutubeVideo): cstring</a></li>
           </ul></dd>
-<dt><a name="YoutubeChannel" href="#YoutubeChannel"><span>YoutubeChannel:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="channel: YoutubeChannel" href="ytextractor/channel.html#YoutubeChannel">channel: YoutubeChannel</a></li>
-          </ul></dd>
-<dt><a name="YoutubeChannelBanners" href="#YoutubeChannelBanners"><span>YoutubeChannelBanners:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="channel: YoutubeChannelBanners" href="ytextractor/channel.html#YoutubeChannelBanners">channel: YoutubeChannelBanners</a></li>
-          </ul></dd>
-<dt><a name="YoutubeChannelHighlightVideo" href="#YoutubeChannelHighlightVideo"><span>YoutubeChannelHighlightVideo:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="channel: YoutubeChannelHighlightVideo" href="ytextractor/channel.html#YoutubeChannelHighlightVideo">channel: YoutubeChannelHighlightVideo</a></li>
-          </ul></dd>
 <dt><a name="YoutubeChannelId" href="#YoutubeChannelId"><span>YoutubeChannelId:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="types: YoutubeChannelId" href="ytextractor/core/types.html#YoutubeChannelId">types: YoutubeChannelId</a></li>
@@ -221,29 +192,9 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="types: YoutubeChannelIdKind" href="ytextractor/core/types.html#YoutubeChannelIdKind">types: YoutubeChannelIdKind</a></li>
           </ul></dd>
-<dt><a name="YoutubeChannelLinks" href="#YoutubeChannelLinks"><span>YoutubeChannelLinks:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="channel: YoutubeChannelLinks" href="ytextractor/channel.html#YoutubeChannelLinks">channel: YoutubeChannelLinks</a></li>
-          </ul></dd>
-<dt><a name="YoutubeChannelPage" href="#YoutubeChannelPage"><span>YoutubeChannelPage:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="channel: YoutubeChannelPage" href="ytextractor/channel.html#YoutubeChannelPage">channel: YoutubeChannelPage</a></li>
-          </ul></dd>
-<dt><a name="YoutubeChannelPlaylist" href="#YoutubeChannelPlaylist"><span>YoutubeChannelPlaylist:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="channel: YoutubeChannelPlaylist" href="ytextractor/channel.html#YoutubeChannelPlaylist">channel: YoutubeChannelPlaylist</a></li>
-          </ul></dd>
 <dt><a name="YoutubeChannelPreview" href="#YoutubeChannelPreview"><span>YoutubeChannelPreview:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="types: YoutubeChannelPreview" href="ytextractor/core/types.html#YoutubeChannelPreview">types: YoutubeChannelPreview</a></li>
-          </ul></dd>
-<dt><a name="YoutubeChannelVideo" href="#YoutubeChannelVideo"><span>YoutubeChannelVideo:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="channel: YoutubeChannelVideo" href="ytextractor/channel.html#YoutubeChannelVideo">channel: YoutubeChannelVideo</a></li>
-          </ul></dd>
-<dt><a name="YoutubeChannelVideos" href="#YoutubeChannelVideos"><span>YoutubeChannelVideos:</span></a></dt><dd><ul class="simple">
-<li><a class="reference external"
-          data-doc-search-tag="channel: YoutubeChannelVideos" href="ytextractor/channel.html#YoutubeChannelVideos">channel: YoutubeChannelVideos</a></li>
           </ul></dd>
 <dt><a name="YoutubePlaylistPreview" href="#YoutubePlaylistPreview"><span>YoutubePlaylistPreview:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -270,7 +221,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-18 18:55:34 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-20 12:58:03 UTC</small>
       </div>
     </div>
   </div>

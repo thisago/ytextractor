@@ -1,6 +1,6 @@
+cookies	ytextractor/core/cookies.html#cookies	 cookies	
 Cookies	ytextractor/core/cookies.html#Cookies	cookies: Cookies	
 cookieCachePath	ytextractor/core/cookies.html#cookieCachePath	cookies: cookieCachePath	
 getCookies	ytextractor/core/cookies.html#getCookies	cookies: getCookies(): Cookies	
 `$`	ytextractor/core/cookies.html#$,Cookies	cookies: `$`(cookies: Cookies): string	
 save	ytextractor/core/cookies.html#save,Cookies	cookies: save(self: Cookies)	
-cookies	ytextractor/core/cookies.html#cookies	 cookies	

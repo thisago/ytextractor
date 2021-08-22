@@ -1,11 +1,20 @@
 <!--
   Created at: 08/05/2021 14:16:41 Thursday
-  Modified at: 08/18/2021 07:12:09 PM Wednesday
+  Modified at: 08/20/2021 12:56:34 PM Friday
 -->
 
 # Changelog
 
 A verbose logging of every change.
+
+## Version 0.6.3 (08/20/2021 12:56:34 Friday)
+
+- Added channel extraction example in `readme.md`
+- Added `page` parameter in `channel.extractChannel`
+- Fixed usage example of `readme.md`
+- Removed useless import
+
+---
 
 ## Version 0.6.2 (08/18/2021 19:11:49 Wednesday)
 

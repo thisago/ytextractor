@@ -1,6 +1,6 @@
 #[
   Created at: 08/09/2021 14:31:52 Monday
-  Modified at: 08/18/2021 07:09:43 PM Wednesday
+  Modified at: 08/20/2021 01:01:16 PM Friday
 ]#
 
 import std/json
@@ -22,8 +22,8 @@ proc initYoutubeVideo*(id: YoutubeVideoId): YoutubeVideo =
 
 proc updateChannel*(self: var YoutubeChannel; page: cstring; proxy = "".cstring): bool =
   channel.update(self, parseEnum[YoutubeChannelPage]($page), $proxy)
-proc extractChannel*(url: cstring; proxy = "".cstring): YoutubeChannel =
-  channel.extractChannel($url, $proxy)
+proc extractChannel*(url: cstring; page: cstring; proxy = "".cstring): YoutubeChannel =
+  channel.extractChannel($url, parseEnum[YoutubeChannelPage]($page), $proxy)
 proc initYoutubeChannel*(id: YoutubeChannelId): YoutubeChannel =
   channel.initYoutubeChannel id
 

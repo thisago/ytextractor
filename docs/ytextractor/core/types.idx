@@ -1,3 +1,4 @@
+types	ytextractor/core/types.html#types	 types	
 ExtractStatus	ytextractor/core/types.html#ExtractStatus	types: ExtractStatus	
 ExtractError	ytextractor/core/types.html#ExtractError	types: ExtractError	
 UrlAndSize	ytextractor/core/types.html#UrlAndSize	types: UrlAndSize	
@@ -8,4 +9,3 @@ YoutubeChannelIdKind	ytextractor/core/types.html#YoutubeChannelIdKind	types: You
 YoutubeChannelPreview	ytextractor/core/types.html#YoutubeChannelPreview	types: YoutubeChannelPreview	
 YoutubePlaylistPreview	ytextractor/core/types.html#YoutubePlaylistPreview	types: YoutubePlaylistPreview	
 `$`	ytextractor/core/types.html#$,YoutubeVideoId	types: `$`(id: YoutubeVideoId): string	
-types	ytextractor/core/types.html#types	 types	

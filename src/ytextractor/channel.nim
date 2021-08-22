@@ -1,6 +1,6 @@
   #[
   Created at: 08/09/2021 12:10:05 Monday
-  Modified at: 08/18/2021 06:50:11 PM Wednesday
+  Modified at: 08/20/2021 01:04:39 PM Friday
 ]#
 
 ##[
@@ -24,10 +24,6 @@ export tables
 
 import ytextractor/core/types; export types
 import ytextractor/core/core
-
-
-
-import json
 
 type
   YoutubeChannel* = object of YoutubeChannelPreview
@@ -66,7 +62,7 @@ proc initYoutubeChannel*(id: YoutubeChannelId): YoutubeChannel =
   ## Initialize a new `YoutubeChannel` instance
   YoutubeChannel(id: id)
 
-proc update*(self: var YoutubeChannel; page: YoutubeChannelPage; proxy = ""): bool =
+proc update*(self: var YoutubeChannel; page = YoutubeChannelPage.home; proxy = ""): bool =
   ## Update all `YoutubeChannel` data
   ## Returns `false` on error.
   ##
@@ -308,7 +304,7 @@ proc valid*(self: YoutubeChannelId): bool =
     return false
 
 
-proc extractChannel*(url: string; proxy = ""): YoutubeChannel =
+proc extractChannel*(url: string; page = YoutubeChannelPage.home; proxy = ""): YoutubeChannel =
   ## Extract all data from youtube video.
   ##
   ## `url` can be the video URL or id
@@ -317,11 +313,11 @@ proc extractChannel*(url: string; proxy = ""): YoutubeChannel =
   ##
   ## .. code-block:: nim
   ##   var vid = initYoutubeChannel("https://www.youtube.com/channel/UC3aGq0eFrvrjM4F1dLUo87A".channelId)
-  ##   discard vid.update():
+  ##   discard vid.update(home):
   ## **Example:**
   ##
   ## .. code-block:: nim
   ##   var vid = extractChannel("https://www.youtube.com/channel/UC3aGq0eFrvrjM4F1dLUo87A")
   ##   echo vid
   result = initYoutubeChannel(url.channelId)
-  discard result.update(YoutubeChannelPage.home, proxy = proxy)
+  discard result.update(page, proxy = proxy)
