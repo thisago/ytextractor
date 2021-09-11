@@ -3,6 +3,7 @@ updateVideo	ytextractor/exports.html#updateVideo,YoutubeVideo	exports: updateVid
 extractVideo	ytextractor/exports.html#extractVideo,cstring	exports: extractVideo(url: cstring; proxy = &quot;&quot;.cstring): YoutubeVideo	
 initYoutubeVideo	ytextractor/exports.html#initYoutubeVideo,YoutubeVideoId	exports: initYoutubeVideo(id: YoutubeVideoId): YoutubeVideo	
 updateChannel	ytextractor/exports.html#updateChannel,YoutubeChannel,cstring	exports: updateChannel(self: var YoutubeChannel; page: cstring; proxy = &quot;&quot;.cstring): bool	
+extractChannel	ytextractor/exports.html#extractChannel,cstring,cstring	exports: extractChannel(url: cstring; page: cstring; proxy = &quot;&quot;.cstring): YoutubeChannel	
 initYoutubeChannel	ytextractor/exports.html#initYoutubeChannel,YoutubeChannelId	exports: initYoutubeChannel(id: YoutubeChannelId): YoutubeChannel	
 videoJson	ytextractor/exports.html#videoJson,YoutubeVideo	exports: videoJson(self: YoutubeVideo): cstring	
 channelJson	ytextractor/exports.html#channelJson,YoutubeChannel	exports: channelJson(self: YoutubeChannel): cstring	

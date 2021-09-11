@@ -1,5 +1,5 @@
-Core	ytextractor/core/core.html#core	 Core	
 parseYoutubeJson	ytextractor/core/core.html#parseYoutubeJson,string	core: parseYoutubeJson(html: string): tuple[ytInitialPlayerResponse: JsonNode,\n                                      ytInitialData: JsonNode]	
 fetch	ytextractor/core/core.html#fetch,string	core: fetch(url: string): string	
 findInJson	ytextractor/core/core.html#findInJson,JsonNode,string	core: findInJson(nodes: JsonNode; key: string): JsonNode	
 parseSubs	ytextractor/core/core.html#parseSubs,string	core: parseSubs(str: string): string	
+Core	ytextractor/core/core.html#core	 Core	

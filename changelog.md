@@ -1,11 +1,20 @@
 <!--
   Created at: 08/05/2021 14:16:41 Thursday
-  Modified at: 08/20/2021 12:56:34 PM Friday
+  Modified at: 09/11/2021 12:02:35 AM Saturday
 -->
 
 # Changelog
 
 A verbose logging of every change.
+
+## Version 0.6.4 (09/11/2021 00:02:35 Saturday)
+
+- Added missing `json.len` import to `channel.nim`
+- Added example url into `readme.md`
+- Added [`examples/web/script/main.js`](examples/web/script/main.js) to example work
+- Added `.gitattributes`
+
+---
 
 ## Version 0.6.3 (08/20/2021 12:56:34 Friday)
 

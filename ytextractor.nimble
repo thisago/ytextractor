@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.6.3"
+version       = "0.6.4"
 author        = "Thiago Navarro"
 description   = "Youtube data extractor"
 license       = "MIT"
