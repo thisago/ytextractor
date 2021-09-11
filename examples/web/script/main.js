@@ -10,7 +10,7 @@ const
     outEl.innerHTML = vidData
   },
   parseChannel = () => {
-    const vidData = channelJson(extractChannel(urlEl.value, "https://api.allorigins.win/raw?url="))
+    const vidData = channelJson(extractChannel(urlEl.value, "home", "https://api.allorigins.win/raw?url="))
     outEl.innerHTML = vidData
   }
 
