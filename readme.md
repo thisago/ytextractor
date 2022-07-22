@@ -12,7 +12,7 @@ but more will be added soon!
 
 The objective is extract every data that don't need authentication
 
-This lib is WIP, but quite usable.
+This lib is WIP, but ~~quite usable~~ **isn't working**, soon I will fix it.
 
 ---
 
@@ -183,14 +183,6 @@ A online docs is hosted in [Github Pages](https://thisago.github.io/ytextractor/
 
 Python3 parser\
 With a "How it works" section
-
----
-
-## FAQ
-
-### What is these videos?
-
-Is a recently initiated cooking channel from one of my relatives
 
 ---
 
