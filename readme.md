@@ -12,7 +12,7 @@ but more will be added soon!
 
 The objective is extract every data that don't need authentication
 
-This lib is WIP, but ~~quite usable~~ **isn't working**, soon I will fix it.
+<!-- This lib is WIP, but ~~quite usable~~ **isn't working**, soon I will fix it. -->
 
 ---
 
