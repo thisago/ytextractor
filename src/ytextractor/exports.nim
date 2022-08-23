@@ -1,8 +1,3 @@
-#[
-  Created at: 08/09/2021 14:31:52 Monday
-  Modified at: 08/20/2021 01:01:16 PM Friday
-]#
-
 import std/json
 from std/times import DateTime, `$`
 from std/strutils import parseEnum

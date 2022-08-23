@@ -1,14 +1,4 @@
-#[
-  Created at: 08/09/2021 12:10:05 Monday
-  Modified at: 08/17/2021 02:14:34 PM Tuesday
-]#
-
-##[
-  video
-  -----
-
-  Parser for "https://www.youtube.com/watch?v=VIDEOID"
-]##
+## Parser for "https://www.youtube.com/watch?v=VIDEOID"
 
 {.experimental: "codeReordering".}
 
@@ -151,15 +141,16 @@ proc update*(self: var YoutubeVideo; proxy = ""): bool =
         findInJson("videoPrimaryInfoRenderer"){"videoActions", "menuRenderer",
             "topLevelButtons"}
       proc get(data: JsonNode; i: int): int {.inline.} =
-        data{i}{"toggleButtonRenderer", "defaultText", "accessibility",
-                "accessibilityData", "label"}.
-          getStr.multiReplace({
-            ",": "",
-            " likes": "",
-            " dislikes": "",
-            "No dislikes": "0",
-            "No likes": "0"
-          }).parseInt
+        let s = data{i}{"toggleButtonRenderer", "defaultText", "accessibility",
+                "accessibilityData", "label"}.getStr.multiReplace({
+                                                ",": "",
+                                                " likes": "",
+                                                " dislikes": "",
+                                                "No dislikes": "0",
+                                                "No likes": "0"
+                                              })
+        if s.len > 0:
+          result = s.parseInt
       self.likes = data.get 0
       self.dislikes = data.get 1
 
@@ -174,7 +165,7 @@ proc update*(self: var YoutubeVideo; proxy = ""): bool =
     self.status.error = ExtractError.None
   except:
     self.status.error = ExtractError.ParseError
-    # doAssert false, getCurrentExceptionMsg()
+    doAssert false, getCurrentExceptionMsg()
     return false
 
 

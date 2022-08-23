@@ -1,14 +1,4 @@
-  #[
-  Created at: 08/09/2021 12:10:05 Monday
-  Modified at: 09/10/2021 11:43:48 PM Friday
-]#
-
-##[
-  video
-  -----
-
-  Parser for "https://www.youtube.com/channel/CHANNELID"
-]##
+## Parser for "https://www.youtube.com/channel/CHANNELID"
 
 {.experimental: "codeReordering".}
 

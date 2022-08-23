@@ -2,4 +2,3 @@ parseYoutubeJson	ytextractor/core/core.html#parseYoutubeJson,string	core: parseY
 fetch	ytextractor/core/core.html#fetch,string	core: fetch(url: string): string	
 findInJson	ytextractor/core/core.html#findInJson,JsonNode,string	core: findInJson(nodes: JsonNode; key: string): JsonNode	
 parseSubs	ytextractor/core/core.html#parseSubs,string	core: parseSubs(str: string): string	
-Core	ytextractor/core/core.html#core	 Core	

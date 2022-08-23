@@ -1,14 +1,4 @@
-#[
-  Created at: 08/09/2021 12:21:27 Monday
-  Modified at: 08/14/2021 11:23:19 PM Saturday
-]#
-
-##[
-  Core
-  ----
-
-  Core functions and constants for lib
-]##
+## Core functions and constants for lib
 
 from std/strutils import find, replace, multiReplace, join, split
 from std/json import parseJson, JsonNode, newJObject, items, hasKey, `{}`, getStr, keys

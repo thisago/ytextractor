@@ -12,4 +12,3 @@ channelId	ytextractor/channel.html#channelId,string	channel: channelId(url: stri
 valid	ytextractor/channel.html#valid,YoutubeChannelId	channel: valid(self: YoutubeChannelId): bool	
 update	ytextractor/channel.html#update,YoutubeChannel,string	channel: update(self: var YoutubeChannel; page = YoutubeChannelPage.home; proxy = &quot;&quot;): bool	
 extractChannel	ytextractor/channel.html#extractChannel,string,string	channel: extractChannel(url: string; page = YoutubeChannelPage.home; proxy = &quot;&quot;): YoutubeChannel	
-video	ytextractor/channel.html#video	 video	

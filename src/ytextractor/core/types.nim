@@ -1,14 +1,4 @@
-#[
-  Created at: 08/14/2021 23:17:25 Saturday
-  Modified at: 08/17/2021 10:27:32 PM Tuesday
-]#
-
-##[
-  types
-  -----
-
-  The base types of ytextractor
-]##
+## The base types of ytextractor
 
 from std/times import DateTime
 

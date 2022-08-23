@@ -6,4 +6,3 @@ valid	ytextractor/video.html#valid,YoutubeVideoId	video: valid(id: YoutubeVideoI
 update	ytextractor/video.html#update,YoutubeVideo,string	video: update(self: var YoutubeVideo; proxy = &quot;&quot;): bool	
 videoId	ytextractor/video.html#videoId,string	video: videoId(url: string): YoutubeVideoId	
 extractVideo	ytextractor/video.html#extractVideo,string,string	video: extractVideo(url: string; proxy = &quot;&quot;): YoutubeVideo	
-video	ytextractor/video.html#video	 video	

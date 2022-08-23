@@ -1,11 +1,13 @@
-<!--
-  Created at: 08/05/2021 14:16:41 Thursday
-  Modified at: 09/11/2021 12:02:35 AM Saturday
--->
-
 # Changelog
 
 A verbose logging of every change.
+
+## Version 0.7.0 (Aug 22, 2022)
+
+- Improved docs generation
+- Fixed video extraction due dislikes removal
+
+---
 
 ## Version 0.6.4 (09/11/2021 00:02:35 Saturday)
 

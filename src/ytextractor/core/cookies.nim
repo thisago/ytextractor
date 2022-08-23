@@ -1,12 +1,4 @@
-#[
-  Created at: 08/14/2021 22:33:42 Saturday
-  Modified at: 08/15/2021 07:23:55 PM Sunday
-]#
-
 ##[
-  cookies
-  -------
-
   TODO: Transform this as a module
 ]##
 

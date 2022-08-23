@@ -15,4 +15,4 @@ requires "nim >= 1.2.2"
 requires "ajax >= 0.1.1"
 
 task genDocs, "Generate documentations":
-  exec "nim doc --project -d:ssl --out:docs ./src/ytextractor.nim"
+  exec "rm -r docs; nim doc -d:usestd --git.commit:master --git.url:https://github.com/thisago/ytextractor --project -d:ssl --out:docs ./src/ytextractor.nim"

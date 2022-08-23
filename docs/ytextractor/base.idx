@@ -1,8 +1,0 @@
-parseYoutubeJson	ytextractor/base.html#parseYoutubeJson,string	base: parseYoutubeJson(html: string): tuple[ytInitialPlayerResponse: JsonNode,\n                                      ytInitialData: JsonNode]	
-fetch	ytextractor/base.html#fetch,string	base: fetch(url: string): string	
-ExtractStatus	ytextractor/base.html#ExtractStatus	base: ExtractStatus	
-ExtractError	ytextractor/base.html#ExtractError	base: ExtractError	
-findInJson	ytextractor/base.html#findInJson,JsonNode,string	base: findInJson(nodes: JsonNode; key: string): JsonNode	
-parseSubs	ytextractor/base.html#parseSubs,string	base: parseSubs(str: string): string	
-UrlAndSize	ytextractor/base.html#UrlAndSize	base: UrlAndSize	
-base	ytextractor/base.html#base	 base	
