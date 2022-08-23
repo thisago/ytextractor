@@ -1,11 +1,18 @@
 # Changelog
 
-A verbose logging of every change.
+## Version 0.8.0 (Aug 23, 2022)
+
+- Fixed channel extraction
+- Added extraction for video badges at channel page
+- Fixed tests
+
+---
 
 ## Version 0.7.0 (Aug 22, 2022)
 
 - Improved docs generation
 - Fixed video extraction due dislikes removal
+- Cleaning
 
 ---
 

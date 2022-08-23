@@ -165,7 +165,7 @@ proc update*(self: var YoutubeVideo; proxy = ""): bool =
     self.status.error = ExtractError.None
   except:
     self.status.error = ExtractError.ParseError
-    doAssert false, getCurrentExceptionMsg()
+    echo "Error: " & getCurrentExceptionMsg()
     return false
 
 

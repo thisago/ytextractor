@@ -37,6 +37,9 @@ type
     home, videos, playlists, community, channels, about
   YoutubeChannelVideo* = object of YoutubeVideoPreview
     roundedPublishedDate*: string
+    badges*: seq[YoutubeChannelVideoBadge]
+  YoutubeChannelVideoBadge* = object
+    name*, style*, icon*, iconType*: string
   YoutubeChannelHighlightVideo* = object of YoutubeChannelVideo
     description*: string
   YoutubeChannelPlaylist* = object of YoutubePlaylistPreview
@@ -95,10 +98,12 @@ proc update*(self: var YoutubeChannel; page = YoutubeChannelPage.home; proxy = "
   self.status.lastUpdate = now()
 
   proc parseViews(views: string): int =
-    views.multiReplace({
+    let s = views.multiReplace({
       " views": "",
       ",": "",
-    }).parseInt
+    })
+    if s.len > 0:
+      result = s.parseInt
   proc parseYtTrackingUrl(url: string): string =
     const toFind = "&q="
     let
@@ -166,10 +171,21 @@ proc update*(self: var YoutubeChannel; page = YoutubeChannelPage.home; proxy = "
             width: thumb{"width"}.getInt,
             height: thumb{"height"}.getInt,
           )
+        var badges: seq[YoutubeChannelVideoBadge]
+        if video.hasKey "badges":
+          for b in video{"badges"}:
+            let badge = b{"metadataBadgeRenderer"}
+            badges.add YoutubeChannelVideoBadge(
+              name: badge{"label"}.getStr,
+              style: badge{"style"}.getStr,
+              iconType: badge{"icon", "iconType"}.getStr,
+              icon: badge{"iconSourceUrl"}.getStr
+            )
         playlist.videos.add YoutubeChannelVideo(
           title: video{"title", "simpleText"}.getStr,
           roundedPublishedDate: video{"publishedTimeText", "simpleText"}.getStr,
           views: video{"viewCountText", "simpleText"}.getStr.parseViews,
+          badges: badges,
           id: video{"videoId"}.getStr.YoutubeVideoId,
           thumbnails: thumbs
         )
@@ -226,6 +242,7 @@ proc update*(self: var YoutubeChannel; page = YoutubeChannelPage.home; proxy = "
       doAssert false, "Page not implemented."
   except:
     self.status.error = ExtractError.ParseError
+    # echo "Error: " & getCurrentExceptionMsg()
     doAssert false, getCurrentExceptionMsg()
     return false
 

@@ -7,15 +7,15 @@ when isMainModule and not defined js:
   # import ytextractor/exports
   # import std/json
 
-  # var vid = initYoutubeVideo "jjEQ-yKVPMg".videoId
+  # var vid = initYoutubeVideo "4zRK0t4caOg".videoId
   # discard vid.update()
 
   # echo "Video data:"
   # echo vid
 
-  # echo extractVideo("https://www.youtube.com/watch?v=u8ZP9g-RKA8")
+  # echo extractVideo("https://www.youtube.com/watch?v=4zRK0t4caOg")
 
-  var chan = initYoutubeChannel "https://www.youtube.com/channel/UC3aGq0eFrvrjM4F1dLUo87A".channelId
+  var chan = initYoutubeChannel "https://www.youtube.com/c/taofledermaus".channelId
   discard chan.update(home)
 
   echo "\nChannel data:"
