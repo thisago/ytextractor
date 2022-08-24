@@ -11,6 +11,7 @@
 # const evt = "addEventListener"
 # const html = "innerHTML"
 # const echo = "console.log"
+# const corsProxy = "https://api.allorigins.win/raw?url="
 #
 const
   urlEl = $qid("url"),
@@ -20,11 +21,11 @@ urlEl.value = "https://www.youtube.com/watch?v=4zRK0t4caOg"
 
 const
   parseVideo = () => {
-    const vidData = videoJson(extractVideo(urlEl.value, "https://api.allorigins.win/raw?url="))
+    const vidData = videoJson(extractVideo(urlEl.value, corsProxy))
     outEl.$html = vidData
   },
   parseChannel = () => {
-    const vidData = channelJson(extractChannel(urlEl.value, "home", "https://api.allorigins.win/raw?url="))
+    const vidData = channelJson(extractChannel(urlEl.value, "home", corsProxy))
     outEl.$html = vidData
   }
 
