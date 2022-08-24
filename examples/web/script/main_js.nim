@@ -16,9 +16,9 @@
 const
   urlEl = $qid("url"),
   outEl = $qid("out")
-
+#
 urlEl.value = "https://www.youtube.com/watch?v=4zRK0t4caOg"
-
+#
 const
   parseVideo = () => {
     const vidData = videoJson(extractVideo(urlEl.value, corsProxy))
@@ -28,6 +28,6 @@ const
     const vidData = channelJson(extractChannel(urlEl.value, "home", corsProxy))
     outEl.$html = vidData
   }
-
+#
 $qid("parseVideo").$evt("click", parseVideo)
 $qid("parseChannel").$evt("click", parseChannel)
