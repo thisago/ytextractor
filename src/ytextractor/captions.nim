@@ -88,7 +88,7 @@ proc extractCaptions*(url: string; proxy = ""): YoutubeCaptions =
   result = initYoutubeCaptions()
   discard result.update(url, proxy)
 
-proc toSeconds*(texts: YoutubeCaptionTexts; newLines = false): YoutubeCaptionTextSeconds =
+proc captionsBySeconds*(texts: YoutubeCaptionTexts; newLines = false): YoutubeCaptionTextSeconds =
   ## Organize the captions to match with seconds
   var
     lastSec = 0'i64
@@ -118,4 +118,4 @@ when isMainModule:
   var captions = initYoutubeCaptions()
   if not captions.update vid.captions[0].url:
     echo "error"
-  echo captions.texts.toSeconds
+  echo captions.texts.captionsBySeconds
