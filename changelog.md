@@ -4,6 +4,7 @@
 
 - Added captions extraction
   - Added tests
+- Added chapters parsing
 
 ---
 
