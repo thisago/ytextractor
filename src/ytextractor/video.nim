@@ -25,6 +25,10 @@ type
     category*: YoutubeVideoCategories
     likes*, dislikes*: int
     keywords*: seq[string]
+    captions*: seq[YoutubeVideoCaption] ## Expires
+  YoutubeVideoCaption* = object
+    translatable*: bool
+    langCode*, langName*, url*, kind*: string
   YoutubeVideoCategories* {.pure.} = enum
     ## Youtube video categories
     Unknown, FilmAndAnimation, AutosAndVehicles, Music, PetsAndAnimals, Sports,
@@ -89,6 +93,17 @@ proc update*(self: var YoutubeVideo; proxy = ""): bool =
   try:
     self.title = microformat{"title", "simpleText"}.getStr
     self.description = microformat{"description", "simpleText"}.getStr
+    
+    block captions:
+      for capt in jsonData.ytInitialPlayerResponse{"captions", "playerCaptionsTracklistRenderer", "captionTracks"}:
+        self.captions.add YoutubeVideoCaption(
+          langCode: capt{"languageCode"}.getStr,
+          langName: capt{"name", "simpleText"}.getStr,
+          translatable: capt{"isTranslatable"}.getBool,
+          kind: capt{"kind"}.getStr,
+          url: capt{"baseUrl"}.getStr,
+        )
+
     block thumbnail:
       for thumb in videoDetails{"thumbnail", "thumbnails"}:
         self.thumbnails.add UrlAndSize(

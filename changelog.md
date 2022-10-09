@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.9.0 (Oct 9, 2022)
+
+- Added captions extraction
+  - Added tests
+
+---
+
 ## Version 0.8.0 (Aug 23, 2022)
 
 - Fixed channel extraction

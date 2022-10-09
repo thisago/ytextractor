@@ -1,5 +1,6 @@
 import ytextractor/video; export video
 import ytextractor/channel; export channel
+import ytextractor/captions; export captions
 
 when isMainModule and not defined js:
   # debug purposes

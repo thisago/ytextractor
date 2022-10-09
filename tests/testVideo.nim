@@ -13,9 +13,9 @@ from std/strutils import contains
 
 import ytextractor
 
-suite "Youtube video":
-  var videoData = initYoutubeVideo("https://www.youtube.com/watch?v=7on15IWC2u4".videoId)
+var videoData = initYoutubeVideo("https://www.youtube.com/watch?v=7on15IWC2u4".videoId)
 
+suite "Youtube video":
   test "Video Id": check "7on15IWC2u4" == $videoData.id
   test "Get data":
     check videoData.update()
@@ -49,3 +49,24 @@ suite "Youtube video":
 
   test "Publish date": check $videoData.publishDate == "2021-07-05T00:00:00+00:00"
   test "Upload date": check $videoData.uploadDate == "2021-07-05T00:00:00+00:00"
+
+  test "Captions url":
+    for capt in videoData.captions:
+      check capt.langCode.len >= 2
+      check capt.langName.len >= 5
+      check "api/timedtext" in capt.url
+      check capt.kind.len >= 2
+
+suite "Youtube video captions":
+  var captions = initYoutubeCaptions()
+  test "Get data":
+    check captions.update videoData.captions[0].url
+    check captions.status.error == ExtractError.None
+  test "Words":
+    check captions.texts.len == 1217
+  test "toSeconds":
+    let tosec = captions.texts.toSeconds
+    check toSec.len == 184
+    check toSec[0].text == "in this video we're going to explain"
+    check toSec[^1].second == 492
+  
