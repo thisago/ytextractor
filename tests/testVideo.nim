@@ -64,8 +64,8 @@ suite "Youtube video captions":
     check captions.status.error == ExtractError.None
   test "Words":
     check captions.texts.len == 1217
-  test "toSeconds":
-    let tosec = captions.texts.toSeconds
+  test "captionsBySeconds":
+    let toSec = captions.texts.captionsBySeconds
     check toSec.len == 184
     check toSec[0].text == "in this video we're going to explain"
     check toSec[^1].second == 492
