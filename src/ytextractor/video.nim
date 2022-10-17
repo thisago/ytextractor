@@ -64,7 +64,7 @@ proc initYoutubeVideo*(id: YoutubeVideoId): YoutubeVideo =
   ## Initialize a new `YoutubeVideo` instance
   YoutubeVideo(id: id)
 
-proc update*(self: var YoutubeVideo; proxy = ""): bool =
+proc htmlUpdate*(self: var YoutubeVideo; html: string): bool {.discardable.}  =
   ## Update all `YoutubeVideo` data
   ## Returns `false` on error.
   ##
@@ -80,8 +80,7 @@ proc update*(self: var YoutubeVideo; proxy = ""): bool =
     return false
 
   let
-    jsonData = fetch(fmt"{proxy}https://www.youtube.com/watch?v={self.id}").
-      parseYoutubeJson()
+    jsonData = html.parseYoutubeJson()
     microformat = jsonData.ytInitialPlayerResponse{"microformat", "playerMicroformatRenderer"}
     videoDetails = jsonData.ytInitialPlayerResponse{"videoDetails"}
     contents = jsonData.ytInitialData{"contents"}
@@ -103,7 +102,7 @@ proc update*(self: var YoutubeVideo; proxy = ""): bool =
           langName: capt{"name", "simpleText"}.getStr,
           translatable: capt{"isTranslatable"}.getBool,
           kind: capt{"kind"}.getStr,
-          url: capt{"baseUrl"}.getStr,
+          url: capt{"baseUrl"}.getStr & "&fmt=json3",
         )
 
     block thumbnail:
@@ -186,6 +185,18 @@ proc update*(self: var YoutubeVideo; proxy = ""): bool =
     return false
 
 
+proc update*(self: var YoutubeVideo; proxy = ""): bool {.discardable.}  =
+  ## Update all `YoutubeVideo` data
+  ## Returns `false` on error.
+  ##
+  ## .. code-block:: nim
+  ##   var vid = initYoutubeVideo("Dx4eelwPGaQ".videoId)
+  ##   if not vid.update():
+  ##     echo "Error to update: " & $vid.status.error
+  ##   echo vid
+  let html = fetch(fmt"{proxy}https://www.youtube.com/watch?v={self.id}")
+  self.htmlUpdate html
+
 proc videoId*(url: string): YoutubeVideoId =
   ## Parses the video ID from url
   ## If gave a code instead url, it will return itself
@@ -244,6 +255,13 @@ proc extractVideo*(url: string; proxy = ""): YoutubeVideo =
   result = initYoutubeVideo(url.videoId)
   discard result.update(proxy)
 
+proc extractVideoHtml*(vid, html: string): YoutubeVideo =
+  ## Extract all data from youtube video HTML
+  ## 
+  ## The `vid` is to get the video ID
+  result = initYoutubeVideo(vid.videoId)
+  discard result.update html
+
 type
   YoutubeVideoChapters* = seq[tuple[second: int; name: string]]
 
@@ -261,5 +279,9 @@ proc parseChapters*(desc: string): YoutubeVideoChapters =
         )
 
 when isMainModule:
-  let desc = "What are YouTube chapters? How are they different from timestamps? How to add chapters to YouTube videos? If you are confused and want to learn how to use the new YouTube feature, watch this video where Jan from @So geht YouTube discusses all of these topics. \n\n▬ Contents of this video  ▬▬▬▬▬▬▬▬▬▬\n\n0:00 - Intro\n0:10 - YouTube Chapters\n0:45 - What are YouTube chapters?\n1:17 - How to add chapter markers?\n2:42 - When are changes updated?\n3:02 - How to disable chapters?\n3:21 - Are chapters available in my country?\n\n\nYou probably know this problem: it’s hard to keep the attention of viewers, especially with longer videos. There might be a part later in the video that is interesting to viewers but how should they know? This is where the new YouTube chapter markers can help.\n\nWhat are YouTube chapters?\n\nChapters are generated based on the timestamps that creators include in their video's description.\nTimestamps have pretty much always been on YouTube. But what's new is that you can see certain parts of a video once you hover over the timeline of a video. This feature has been tested for some time and is now officially rolled out to everyone. \n\nHow do I add chapter markers to my videos? \n\n1) You need to add timestamps to your description. You can do this while uploading your video or later when editing it. It’s possible to add timestamps directly on YouTube or you can use tubics video editor (sign up for a 14-day free trial here: https://app.tubics.com/sign-up). The structure for timestamps is the following: \n\n00:XX - Text\n00:XX - Text \n00:XX - Text\n\nIt's very important that you put the zero timestamp first. Otherwise, it's not going to work. This needs to be the first timestamp! \n\nThese are the exact timestamps when each chapter starts. You can put little dashes afterward or you can just do a single space. This doesn't matter because YouTube will just take the text afterward.\n\n2) Update changes on YouTube. \nOnce you open a video on YouTube, you will see the chapters. \n\nWhen are changes updated? \n\nUsually immediately after you made them. If they don't update immediately, YouTube says that they will update in the next 24 hours. If they don't, make sure you formatted your timestamps correctly. \n\nCan I disable YouTube chapters? \n\nYes, you can! Just change the first time code from zero seconds to something else.\n\nAre chapter markers available in every country? \n\nAccording to YouTube, yes, they are. They are available in every country and every language. Warning! The chapter text will only be in the language of the creator. They are not going to be translated.\n\n▬ About tubics ▬▬▬▬▬▬▬▬▬▬▬▬\n\n#tubics is a Video Marketing software that helps businesses and YouTube creators to rank their videos better on search engines like YouTube and Google. This works in a similar way to search engine optimization (SEO) for websites, but just for YouTube videos. Users receive concrete suggestions for optimizing their videos and can implement them directly in the software.\n\nWhy tubics? Companies and creators invest a lot of money and time in their YouTube channels. Yet many are struggling with low video views. Better video metadata helps to make the video easier to find and thus reach more viewers.\n\nSign up free at https://www.tubics.com\n\n\n▬ More Videos  ▬▬▬▬▬▬▬▬▬▬▬▬\n\nSubscribe to @tubics : https://goo.gl/u73XvP\nAll tubics videos: https://goo.gl/cgGiDX\nJan's @So geht YouTube  Channel: https://goo.gl/4HNJUw\n\n\n▬ Social Media ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n► Facebook: https://www.facebook.com/tubicsteam/\n► LinkedIn: https://www.linkedin.com/company/tubics\n\n\n▬ Imprint ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\nImprint: https://goo.gl/DHpT3E"
-  echo desc.parseChapters
+  # let desc = "What are YouTube chapters? How are they different from timestamps? How to add chapters to YouTube videos? If you are confused and want to learn how to use the new YouTube feature, watch this video where Jan from @So geht YouTube discusses all of these topics. \n\n▬ Contents of this video  ▬▬▬▬▬▬▬▬▬▬\n\n0:00 - Intro\n0:10 - YouTube Chapters\n0:45 - What are YouTube chapters?\n1:17 - How to add chapter markers?\n2:42 - When are changes updated?\n3:02 - How to disable chapters?\n3:21 - Are chapters available in my country?\n\n\nYou probably know this problem: it’s hard to keep the attention of viewers, especially with longer videos. There might be a part later in the video that is interesting to viewers but how should they know? This is where the new YouTube chapter markers can help.\n\nWhat are YouTube chapters?\n\nChapters are generated based on the timestamps that creators include in their video's description.\nTimestamps have pretty much always been on YouTube. But what's new is that you can see certain parts of a video once you hover over the timeline of a video. This feature has been tested for some time and is now officially rolled out to everyone. \n\nHow do I add chapter markers to my videos? \n\n1) You need to add timestamps to your description. You can do this while uploading your video or later when editing it. It’s possible to add timestamps directly on YouTube or you can use tubics video editor (sign up for a 14-day free trial here: https://app.tubics.com/sign-up). The structure for timestamps is the following: \n\n00:XX - Text\n00:XX - Text \n00:XX - Text\n\nIt's very important that you put the zero timestamp first. Otherwise, it's not going to work. This needs to be the first timestamp! \n\nThese are the exact timestamps when each chapter starts. You can put little dashes afterward or you can just do a single space. This doesn't matter because YouTube will just take the text afterward.\n\n2) Update changes on YouTube. \nOnce you open a video on YouTube, you will see the chapters. \n\nWhen are changes updated? \n\nUsually immediately after you made them. If they don't update immediately, YouTube says that they will update in the next 24 hours. If they don't, make sure you formatted your timestamps correctly. \n\nCan I disable YouTube chapters? \n\nYes, you can! Just change the first time code from zero seconds to something else.\n\nAre chapter markers available in every country? \n\nAccording to YouTube, yes, they are. They are available in every country and every language. Warning! The chapter text will only be in the language of the creator. They are not going to be translated.\n\n▬ About tubics ▬▬▬▬▬▬▬▬▬▬▬▬\n\n#tubics is a Video Marketing software that helps businesses and YouTube creators to rank their videos better on search engines like YouTube and Google. This works in a similar way to search engine optimization (SEO) for websites, but just for YouTube videos. Users receive concrete suggestions for optimizing their videos and can implement them directly in the software.\n\nWhy tubics? Companies and creators invest a lot of money and time in their YouTube channels. Yet many are struggling with low video views. Better video metadata helps to make the video easier to find and thus reach more viewers.\n\nSign up free at https://www.tubics.com\n\n\n▬ More Videos  ▬▬▬▬▬▬▬▬▬▬▬▬\n\nSubscribe to @tubics : https://goo.gl/u73XvP\nAll tubics videos: https://goo.gl/cgGiDX\nJan's @So geht YouTube  Channel: https://goo.gl/4HNJUw\n\n\n▬ Social Media ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n► Facebook: https://www.facebook.com/tubicsteam/\n► LinkedIn: https://www.linkedin.com/company/tubics\n\n\n▬ Imprint ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\nImprint: https://goo.gl/DHpT3E"
+  # echo desc.parseChapters
+
+  import std/httpclient
+  let client = newHttpClient()
+  extractVideoHtml 

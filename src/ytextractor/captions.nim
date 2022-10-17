@@ -1,6 +1,6 @@
 from std/times import DateTime, Duration, initDuration, now
 from std/tables import Table
-from std/json import parseJson, items, getStr, getInt, `{}`
+from std/json import parseJson, items, getStr, getInt, `{}`, JsonNode
 
 import ytextractor/core/core
 from ytextractor/core/types import ExtractError
@@ -24,28 +24,17 @@ proc initYoutubeCaptions*: YoutubeCaptions =
   ## Initialize a new `YoutubeCaptions` table
   YoutubeCaptions()
 
-
-proc update*(self: var YoutubeCaptions; url: string; proxy = ""): bool =
+  
+proc update*(self: var YoutubeCaptions; jsonData: JsonNode): bool {.discardable.} =
   ## Returns `false` on error.
   ##
-  ## .. code-block:: nim
-  ##   var vid = extractVideo "Dx4eelwPGaQ"
-  ##   if not vid.update():
-  ##     echo "Error to update: " & $vid.status.error
-  ##   let captions = initYoutubeCaptions()
-  ##   captions.update vid.captions[0].url
-  ##   echo captions
+  runnableExamples:
+    from std/json import parseJson
+    var cc = initYoutubeCaptions()
+    cc.update parseJson "{\"events\":[]}" # JSON returned from Youtube captions
+    echo cc
   result = true
-
-  let
-    jsonData = parseJson fetch(proxy & url & "&fmt=json3")
-
-  if jsonData.isNil:
-    self.status.error = ExtractError.FetchError
-    return false
-
   self.status.lastUpdate = now()
-
   try:
     var currMs = 0'i64
     for part in jsonData{"events"}:
@@ -62,12 +51,27 @@ proc update*(self: var YoutubeCaptions; url: string; proxy = ""): bool =
             word
           )
           currMs += tOffsetMs
-
     self.status.error = ExtractError.None
   except:
     self.status.error = ExtractError.ParseError
     echo "Error: " & getCurrentExceptionMsg()
     return false
+
+proc update*(self: var YoutubeCaptions; url: string; proxy = ""): bool {.discardable.} =
+  ## Returns `false` on error.
+  runnableExamples:
+    from pkg/ytextractor/video import extractVideo, update
+    var vid = extractVideo "Dx4eelwPGaQ"
+    if not vid.update():
+      echo "Error to update: " & $vid.status.error
+    var cc = initYoutubeCaptions()
+    cc.update vid.captions[0].url
+    echo cc
+  let jsonData = parseJson fetch(proxy & url)
+  if jsonData.isNil:
+    self.status.error = ExtractError.FetchError
+    return false
+  result = self.update jsonData
 
 
 proc extractCaptions*(url: string; proxy = ""): YoutubeCaptions =

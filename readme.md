@@ -93,7 +93,7 @@ This parser gets:
 
 An example can be found in [`examples/web`](examples/web).
 
-Unfortunately the implementation isn't async, soon will be fixed
+Unfortunately the implementation isn't async, soon it will be fixed
 
 **TODO:** Add captions extraction to JS example
 

@@ -1,2 +1,2 @@
---define:ssl
---path:src
+switch("define", "ssl")
+switch("path", "src")

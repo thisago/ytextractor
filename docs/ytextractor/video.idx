@@ -1,8 +1,13 @@
+YoutubeVideoCaption	ytextractor/video.html#YoutubeVideoCaption	video: YoutubeVideoCaption	
 YoutubeVideoCategories	ytextractor/video.html#YoutubeVideoCategories	video: YoutubeVideoCategories	
 YoutubeVideo	ytextractor/video.html#YoutubeVideo	video: YoutubeVideo	
 parseCategory	ytextractor/video.html#parseCategory,string	video: parseCategory(str: string): YoutubeVideoCategories	
 initYoutubeVideo	ytextractor/video.html#initYoutubeVideo,YoutubeVideoId	video: initYoutubeVideo(id: YoutubeVideoId): YoutubeVideo	
 valid	ytextractor/video.html#valid,YoutubeVideoId	video: valid(id: YoutubeVideoId): bool	
+htmlUpdate	ytextractor/video.html#htmlUpdate,YoutubeVideo,string	video: htmlUpdate(self: var YoutubeVideo; html: string): bool	
 update	ytextractor/video.html#update,YoutubeVideo,string	video: update(self: var YoutubeVideo; proxy = &quot;&quot;): bool	
 videoId	ytextractor/video.html#videoId,string	video: videoId(url: string): YoutubeVideoId	
 extractVideo	ytextractor/video.html#extractVideo,string,string	video: extractVideo(url: string; proxy = &quot;&quot;): YoutubeVideo	
+extractVideoHtml	ytextractor/video.html#extractVideoHtml,string,string	video: extractVideoHtml(vid, html: string): YoutubeVideo	
+YoutubeVideoChapters	ytextractor/video.html#YoutubeVideoChapters	video: YoutubeVideoChapters	
+parseChapters	ytextractor/video.html#parseChapters,string	video: parseChapters(desc: string): YoutubeVideoChapters	

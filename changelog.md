@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 1.0.0 (Oct 16, 2022)
+
+- Added procs to extract without request (providing the request result)
+- Fixed examples
+
+---
+
 ## Version 0.9.0 (Oct 9, 2022)
 
 - Added captions extraction
