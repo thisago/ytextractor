@@ -6,6 +6,7 @@
 - Fixed likes extraction
 - Fixed channel tests
 - Cleaned `core.parseYoutubeJson`
+- Fixed JS example
 
 ## Version 1.0.0 (Oct 16, 2022)
 

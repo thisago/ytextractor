@@ -11,13 +11,13 @@
 # const evt = "addEventListener"
 # const html = "innerHTML"
 # const echo = "console.log"
-# const corsProxy = "\"https://api.allorigins.win/raw?url=\""
+# const corsProxy = "\"https://corsproxy.io/?\""
 #
 const
   urlEl = $qid("url"),
   outEl = $qid("out")
 #
-urlEl.value = "https://www.youtube.com/watch?v=4zRK0t4caOg"
+urlEl.value = "https://www.youtube.com/watch?v=7HPxeASxXW0"
 #
 const
   parseVideo = () => {
