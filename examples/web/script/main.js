@@ -1,7 +1,7 @@
 const
   urlEl = document.getElementById("url"),
   outEl = document.getElementById("out")
-urlEl.value = "https://www.youtube.com/watch?v=4zRK0t4caOg"
+urlEl.value = "https://www.youtube.com/watch?v=7HPxeASxXW0"
 const
   parseVideo = () => {
     const vidData = videoJson(extractVideo(urlEl.value, "https://corsproxy.io/?"))
