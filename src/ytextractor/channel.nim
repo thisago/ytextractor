@@ -264,6 +264,7 @@ proc channelId*(url: string): YoutubeChannelId =
     doAssert "http://www.youtube.com/partnersupport".channelId.id == "partnersupport"
     doAssert "https://youtube.com/partnersupport".channelId.id == "partnersupport"
     doAssert "http://youtube.com/partnersupport".channelId.id == "partnersupport"
+    doAssert "http://youtube.com/@partnersupport".channelId.id == "@partnersupport"
   var
     id = ""
     uri = url.parseUri

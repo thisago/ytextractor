@@ -3,6 +3,8 @@
 from std/strutils import find, replace, multiReplace, join, split
 from std/json import parseJson, JsonNode, newJObject, items, hasKey, `{}`, getStr, keys
 
+from pkg/util/forStr import between
+
 import ytextractor/core/cookies
 import ytextractor/core/types; export types
 
@@ -11,24 +13,10 @@ proc parseYoutubeJson*(
 ): tuple[ytInitialPlayerResponse: JsonNode, ytInitialData: JsonNode] =
   ## Parses the html to get `ytInitialPlayerResponse` and `ytInitialData`
   try:
-  # echo html
-  # block:
-    block ytInitialData:
-      const
-        startIndexFinder = "var ytInitialData = "
-        endIndexFinder = "};"
-      let
-        startIndex = startIndexFinder.len + html.find startIndexFinder
-        endIndex = startIndex + html[startIndex..^1].find endIndexFinder
-      result.ytInitialData = html[startIndex..endIndex].parseJson
-    block ytInitialPlayerResponse:
-      const
-        startIndexFinder = "var ytInitialPlayerResponse = "
-        endIndexFinder = "};"
-      let
-        startIndex = startIndexFinder.len + html.find startIndexFinder
-        endIndex = startIndex + html[startIndex..^1].find endIndexFinder
-      result.ytInitialPlayerResponse = html[startIndex..endIndex].parseJson
+    result.ytInitialData = parseJson html.
+      between("var ytInitialData = ", "};", catchAll = true)[19..^2]
+    result.ytInitialPlayerResponse = parseJson html.
+      between("var ytInitialPlayerResponse = ", "};", catchAll = true)[29..^2]
   except: discard
 
 const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"

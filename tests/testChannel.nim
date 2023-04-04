@@ -36,7 +36,7 @@ suite "Youtube channel":
   test "Home playlists":
     check channelData.videos.homePlaylists.len >= 1
     let playlist = channelData.videos.homePlaylists[0]
-    check playlist.name == "Uploads"
+    check playlist.name == "Videos"
     check playlist.videos.len > 3
     let video = playlist.videos[^1]
     check video.title.len > 0

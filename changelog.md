@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 1.1.0 (04/04/2023)
+
+- Removed dislikes
+- Fixed likes extraction
+- Fixed channel tests
+- Cleaned `core.parseYoutubeJson`
+
 ## Version 1.0.0 (Oct 16, 2022)
 
 - Added procs to extract without request (providing the request result)

@@ -39,12 +39,11 @@ suite "Youtube video":
 
   test "Category": check videoData.category == YoutubeVideoCategories.ScienceAndTechnology
   test "Channel name": check videoData.channel.name == "TAOFLEDERMAUS"
-  test "Channel id": check videoData.channel.id.id == "taofledermaus"
+  test "Channel id": check videoData.channel.id.id == "@taofledermaus"
   test "Channel subscribers": check videoData.channel.subscribers > 1440000
   test "Channel hiddenSubscribers": check videoData.channel.hiddenSubscribers == false
   test "Channel icons": check videoData.channel.icons.len == 3
   test "Likes": check videoData.likes > 25
-  test "Dislikes": check videoData.dislikes == 0 # disabled
   test "Keywords": check "12ga" in videoData.keywords
 
   test "Publish date": check $videoData.publishDate == "2021-07-05T00:00:00+00:00"
