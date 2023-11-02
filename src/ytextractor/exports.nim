@@ -1,10 +1,8 @@
+when defined js: import std/asyncjs
+else: import std/asyncdispatch
 import std/json
 from std/times import DateTime, `$`
 from std/strutils import parseEnum
-when defined js:
-  import std/asyncjs
-else:
-  import std/asyncdispatch
 
 import ytextractor/[video, channel]
 
