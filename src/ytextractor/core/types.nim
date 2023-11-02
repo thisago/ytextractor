@@ -10,34 +10,34 @@ type
   ExtractError* {.pure.} = enum
     ## Parsing error
     None, FetchError, ParseError, InvalidId
-  UrlAndSize* = object
+  UrlAndSize* = ref object
     ## Stores thee url, width and height of image/frame
     url*: string
     width*, height*: int
   YoutubeVideoId* = distinct string
     ## Video Id is a distinct string just for disallow pass any string to parser
-  YoutubeVideoPreview* = object of RootObj
+  YoutubeVideoPreview* = ref object of RootObj
     ## Simple data of video extracted from channel
     id*: YoutubeVideoId
     title*: string
     views*: int
     thumbnails*: seq[UrlAndSize]
 
-  YoutubeChannelId* = object
+  YoutubeChannelId* = ref object
     ## Channel Id is a object
     id*: string
     kind*: YoutubeChannelIdKind
   YoutubeChannelIdKind* {.pure.} = enum
     ## The type of the channel id
     invalid, root, user, channel, c
-  YoutubeChannelPreview* = object of RootObj
+  YoutubeChannelPreview* = ref object of RootObj
     ## Simple data of channel extracted from video
     id*: YoutubeChannelId
     name*: string
     subscribers*: int ## This value is not prescise, the Youtube round the value
     icons*: seq[UrlAndSize]
     hiddenSubscribers*: bool
-  YoutubePlaylistPreview* = object of RootObj
+  YoutubePlaylistPreview* = ref object of RootObj
     name*: string
 
 proc `$`*(id: YoutubeVideoId): string =

@@ -2,6 +2,8 @@
 
 {.experimental: "codeReordering".}
 
+when defined js: import std/asyncjs
+else: import std/asyncdispatch
 from std/times import DateTime, Duration, initDuration, now
 from std/json import JsonNode, items, hasKey, `{}`, getStr, getInt, getBool, len
 from std/strformat import fmt
@@ -16,7 +18,7 @@ import ytextractor/core/types; export types
 import ytextractor/core/core
 
 type
-  YoutubeChannel* = object of YoutubeChannelPreview
+  YoutubeChannel* = ref object of YoutubeChannelPreview
     ## Youtube channel object
     status*: ExtractStatus
     description*: string
@@ -25,9 +27,9 @@ type
     tags*: seq[string]
     videos*: YoutubeChannelVideos
     links*: YoutubeChannelLinks
-  YoutubeChannelLinks* = object
+  YoutubeChannelLinks* = ref object
     primary*, secondary*: seq[string]
-  YoutubeChannelBanners* = object
+  YoutubeChannelBanners* = ref object
     ## Channel banners
     desktop*, mobile*, tv*: seq[UrlAndSize]
   YoutubeChannelPage* {.pure.} = enum
@@ -35,27 +37,28 @@ type
     ##
     ## Available: home
     home, videos, playlists, community, channels, about
-  YoutubeChannelVideo* = object of YoutubeVideoPreview
+  YoutubeChannelVideo* = ref object of YoutubeVideoPreview
     roundedPublishedDate*: string
     badges*: seq[YoutubeChannelVideoBadge]
-  YoutubeChannelVideoBadge* = object
+  YoutubeChannelVideoBadge* = ref object
     name*, style*, icon*, iconType*: string
-  YoutubeChannelHighlightVideo* = object of YoutubeChannelVideo
+  YoutubeChannelHighlightVideo* = ref object of YoutubeChannelVideo
     description*: string
-  YoutubeChannelPlaylist* = object of YoutubePlaylistPreview
+  YoutubeChannelPlaylist* = ref object of YoutubePlaylistPreview
     videos*: seq[YoutubeChannelVideo]
-  YoutubeChannelVideos* = object
+  YoutubeChannelVideos* = ref object
     ## The extracted videos of channel
     all*: seq[YoutubeChannelVideo]
     playlists*: seq[YoutubeChannelPlaylist]
     homePlaylists*: seq[YoutubeChannelPlaylist]
     highlighted*: YoutubeChannelHighlightVideo
 
-proc initYoutubeChannel*(id: YoutubeChannelId): YoutubeChannel =
+proc newYoutubeChannel*(id: YoutubeChannelId): YoutubeChannel =
   ## Initialize a new `YoutubeChannel` instance
-  YoutubeChannel(id: id)
+  new result
+  result.id = id
 
-proc update*(self: var YoutubeChannel; page = YoutubeChannelPage.home; proxy = ""): bool =
+proc update*(self: var YoutubeChannel; page = YoutubeChannelPage.home; proxy = ""): Future[bool] {.async.} =
   ## Update all `YoutubeChannel` data
   ## Returns `false` on error.
   ##
@@ -74,7 +77,7 @@ proc update*(self: var YoutubeChannel; page = YoutubeChannelPage.home; proxy = "
   ## =================    =========  ===========  ==============  ==============  =============  ==========
   ##
   ## .. code-block:: nim
-  ##   var channel = initYoutubeChannel("UC3aGq0eFrvrjM4F1dLUo87A".channelId)
+  ##   var channel = newYoutubeChannel("UC3aGq0eFrvrjM4F1dLUo87A".channelId)
   ##   if not channel.update():
   ##     echo "Error to update: " & $channel.status.error
   ##   echo channel
@@ -85,7 +88,8 @@ proc update*(self: var YoutubeChannel; page = YoutubeChannelPage.home; proxy = "
     return false
 
   let
-    jsonData = self.id.getUrl(page, proxy).fetch().parseYoutubeJson().ytInitialData
+    url = self.id.getUrl(page, proxy)
+    jsonData = (parseYoutubeJson await fetch url).ytInitialData
     contents = jsonData{"contents"}
     header = jsonData{"header", "c4TabbedHeaderRenderer"}
     metadata = jsonData{"metadata", "channelMetadataRenderer"}
@@ -265,6 +269,7 @@ proc channelId*(url: string): YoutubeChannelId =
     doAssert "https://youtube.com/partnersupport".channelId.id == "partnersupport"
     doAssert "http://youtube.com/partnersupport".channelId.id == "partnersupport"
     doAssert "http://youtube.com/@partnersupport".channelId.id == "@partnersupport"
+  new result
   var
     id = ""
     uri = url.parseUri
@@ -307,9 +312,9 @@ proc valid*(self: YoutubeChannelId): bool =
     doAssert YoutubeChannelId(id: "Dx4eelwPGaQ").valid == false
   result = true
   if self.id.len != self.id.strip.len:
-    return false
+    result = false
   if self.kind == YoutubeChannelIdKind.invalid:
-    return false
+    result = false
 
 
 proc extractChannel*(url: string; page = YoutubeChannelPage.home; proxy = ""): YoutubeChannel =
@@ -320,12 +325,12 @@ proc extractChannel*(url: string; page = YoutubeChannelPage.home; proxy = ""): Y
   ## Just an alias of:
   ##
   ## .. code-block:: nim
-  ##   var vid = initYoutubeChannel("https://www.youtube.com/channel/UC3aGq0eFrvrjM4F1dLUo87A".channelId)
+  ##   var vid = newYoutubeChannel("https://www.youtube.com/channel/UC3aGq0eFrvrjM4F1dLUo87A".channelId)
   ##   discard vid.update(home):
   ## **Example:**
   ##
   ## .. code-block:: nim
   ##   var vid = extractChannel("https://www.youtube.com/channel/UC3aGq0eFrvrjM4F1dLUo87A")
   ##   echo vid
-  result = initYoutubeChannel(url.channelId)
+  result = newYoutubeChannel(url.channelId)
   discard result.update(page, proxy = proxy)

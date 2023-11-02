@@ -108,7 +108,7 @@ echo extractVideo "7on15IWC2u4"
 or
 ```nim
 import ytextractor
-var vid = initYoutubeVideo "7on15IWC2u4".videoId
+var vid = newYoutubeVideo "7on15IWC2u4".videoId
 discard vid.update()
 echo vid
 ```
@@ -124,7 +124,7 @@ echo extractChannel "https://www.youtube.com/c/taofledermaus"
 or
 ```nim
 import ytextractor
-var channel = initYoutubeChannel "https://www.youtube.com/c/taofledermaus".channelId
+var channel = newYoutubeChannel "https://www.youtube.com/c/taofledermaus".channelId
 discard channel.update(home)
 echo channel
 ```

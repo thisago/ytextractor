@@ -1,19 +1,10 @@
-#[
-  Created at: 08/04/2021 16:25:48 Wednesday
-  Modified at: 08/18/2021 06:00:08 PM Wednesday
-]#
-
-##[
-  test Video
-]##
-
 import unittest
 from std/times import initDuration, `$`
 from std/strutils import contains
 
 import ytextractor
 
-var videoData = initYoutubeVideo("https://www.youtube.com/watch?v=7on15IWC2u4".videoId)
+var videoData = newYoutubeVideo("https://www.youtube.com/watch?v=7on15IWC2u4".videoId)
 
 suite "Youtube video":
   test "Video Id": check "7on15IWC2u4" == $videoData.id

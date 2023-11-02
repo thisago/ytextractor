@@ -8,7 +8,7 @@ when isMainModule and not defined js:
   # import ytextractor/exports
   # import std/json
 
-  # var vid = initYoutubeVideo "4zRK0t4caOg".videoId
+  # var vid = newYoutubeVideo "4zRK0t4caOg".videoId
   # discard vid.update()
 
   # echo "Video data:"
@@ -16,8 +16,8 @@ when isMainModule and not defined js:
 
   # echo extractVideo("https://www.youtube.com/watch?v=4zRK0t4caOg")
 
-  var chan = initYoutubeChannel "https://www.youtube.com/c/taofledermaus".channelId
-  discard chan.update(home)
+  var chan = newYoutubeChannel "https://www.youtube.com/c/taofledermaus".channelId
+  discard await chan.update(home)
 
   echo "\nChannel data:"
-  echo chan
+  echo chan[]

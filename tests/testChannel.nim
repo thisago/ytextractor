@@ -1,12 +1,3 @@
-#[
-  Created at: 08/15/2021 19:03:47 Sunday
-  Modified at: 08/18/2021 06:54:07 PM Wednesday
-]#
-
-##[
-  Tests for channel extractor
-]##
-
 import unittest
 from std/times import initDuration, `$`
 from std/strutils import contains
@@ -14,7 +5,7 @@ from std/strutils import contains
 import ytextractor
 
 suite "Youtube channel":
-  var channelData = initYoutubeChannel("https://www.youtube.com/c/taofledermaus".channelId)
+  var channelData = newYoutubeChannel("https://www.youtube.com/c/taofledermaus".channelId)
 
   test "Channel Id": check "taofledermaus" == $channelData.id.id
   test "Get data":

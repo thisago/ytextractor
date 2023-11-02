@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 1.2.0 (02/10/2023)
+
+- Fixes in general
+- Async implementation
+- Implemented requests in Unifetch (NodeJS is now supported and JS asynchronous requests!)
+- All data objects are now `ref object`
+
 ## Version 1.1.0 (04/04/2023)
 
 - Removed dislikes

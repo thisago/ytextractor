@@ -2,6 +2,8 @@
 
 {.experimental: "codeReordering".}
 
+when defined js: import std/asyncjs
+else: import std/asyncdispatch
 from std/times import DateTime, Duration, initDuration, now
 from std/json import JsonNode, items, hasKey, `{}`, getStr, getInt, getBool
 from std/strformat import fmt
@@ -17,7 +19,7 @@ import ytextractor/core/types; export types
 from std/json import `$`
 
 type
-  YoutubeVideo* = object of YoutubeVideoPreview
+  YoutubeVideo* = ref object of YoutubeVideoPreview
     ## Youtube video object
     status*: ExtractStatus
     description*: string
@@ -30,7 +32,7 @@ type
     likes*: int
     keywords*: seq[string]
     captions*: seq[YoutubeVideoCaption] ## Expires
-  YoutubeVideoCaption* = object
+  YoutubeVideoCaption* = ref object
     translatable*: bool
     langCode*, langName*, url*, kind*: string
   YoutubeVideoCategories* {.pure.} = enum
@@ -62,16 +64,17 @@ proc parseCategory*(str: string): YoutubeVideoCategories =
   of "Nonprofits & Activism": NonprofitsAndActivism
   else: Unknown
 
-proc initYoutubeVideo*(id: YoutubeVideoId): YoutubeVideo =
+proc newYoutubeVideo*(id: YoutubeVideoId): YoutubeVideo =
   ## Initialize a new `YoutubeVideo` instance
-  YoutubeVideo(id: id)
+  new result
+  result.id = id
 
-proc htmlUpdate*(self: var YoutubeVideo; html: string): bool {.discardable.}  =
+proc htmlUpdate*(self: YoutubeVideo; html: string): bool {.discardable.} =
   ## Update all `YoutubeVideo` data
   ## Returns `false` on error.
   ##
   ## .. code-block:: nim
-  ##   var vid = initYoutubeVideo("Dx4eelwPGaQ".videoId)
+  ##   var vid = newYoutubeVideo("Dx4eelwPGaQ".videoId)
   ##   if not vid.update():
   ##     echo "Error to update: " & $vid.status.error
   ##   echo vid
@@ -98,45 +101,51 @@ proc htmlUpdate*(self: var YoutubeVideo; html: string): bool {.discardable.}  =
   try:
     self.title = microformat{"title", "simpleText"}.getStr
     self.description = microformat{"description", "simpleText"}.getStr
-    
+
     block captions:
       for capt in jsonData.ytInitialPlayerResponse{"captions", "playerCaptionsTracklistRenderer", "captionTracks"}:
-        self.captions.add YoutubeVideoCaption(
-          langCode: capt{"languageCode"}.getStr,
-          langName: capt{"name", "simpleText"}.getStr,
-          translatable: capt{"isTranslatable"}.getBool,
-          kind: capt{"kind"}.getStr,
-          url: capt{"baseUrl"}.getStr & "&fmt=json3",
-        )
+        let youtubeVideoCaption = new YoutubeVideoCaption
+        youtubeVideoCaption.langCode = capt{"languageCode"}.getStr
+        youtubeVideoCaption.langName = capt{"name", "simpleText"}.getStr
+        youtubeVideoCaption.translatable = capt{"isTranslatable"}.getBool
+        youtubeVideoCaption.kind = capt{"kind"}.getStr
+        youtubeVideoCaption.url = capt{"baseUrl"}.getStr & "&fmt=json3"
+
+        self.captions.add youtubeVideoCaption
 
     block thumbnail:
       for thumb in videoDetails{"thumbnail", "thumbnails"}:
-        self.thumbnails.add UrlAndSize(
-          url: thumb{"url"}.getStr,
-          width: thumb{"width"}.getInt,
-          height: thumb{"height"}.getInt,
-        )
+        let urlAndSize = new UrlAndSize
+        urlAndSize.url = thumb{"url"}.getStr
+        urlAndSize.width = thumb{"width"}.getInt
+        urlAndSize.height = thumb{"height"}.getInt
+
+        self.thumbnails.add urlAndSize
+
     block embed:
       let data = microformat{"embed"}
+      new self.embed
       self.embed.url = data{"iframeUrl"}.getStr
       self.embed.width = data{"width"}.getInt
       self.embed.height = data{"height"}.getInt
-    self.publishDate = times.parse(microformat{"publishDate"}.getStr, "yyyy-MM-dd")
-    self.uploadDate = times.parse(microformat{"uploadDate"}.getStr, "yyyy-MM-dd")
-    self.length =
-      initDuration(seconds = microformat{"lengthSeconds"}.getStr.parseInt)
+
+    self.publishDate = times.parse(microformat{"publishDate"}.getStr, "yyyy-MM-dd'T'HH:mm:ss")
+    self.uploadDate = times.parse(microformat{"uploadDate"}.getStr, "yyyy-MM-dd'T'HH:mm:ss")
+    self.length = initDuration(seconds = microformat{"lengthSeconds"}.getStr.parseInt)
     self.views = microformat{"viewCount"}.getStr.parseInt
     self.familyFriendly = microformat{"isFamilySafe"}.getBool
     self.unlisted = microformat{"isUnlisted"}.getBool
     self.category = microformat{"category"}.getStr.parseCategory
+
     block channel:
+      new self.channel
       self.channel.id = microformat{"ownerProfileUrl"}.getStr.channelId
       self.channel.name = microformat{"ownerChannelName"}.getStr
 
       let subs = twoColumnWatchNextResults.
-        findInJson("videoSecondaryInfoRenderer"){"owner", "videoOwnerRenderer",
-            "subscriberCountText", "simpleText"}.
-          getStr.parseSubs
+        findInJson("videoSecondaryInfoRenderer"){
+          "owner", "videoOwnerRenderer", "subscriberCountText", "simpleText"}.
+            getStr.parseSubs
 
       if subs.len == 0:
         self.channel.hiddenSubscribers = true
@@ -147,11 +156,12 @@ proc htmlUpdate*(self: var YoutubeVideo; html: string): bool {.discardable.}  =
         for icon in twoColumnWatchNextResults.
           findInJson("videoSecondaryInfoRenderer"){"owner", "videoOwnerRenderer",
               "thumbnail", "thumbnails"}:
-          self.channel.icons.add UrlAndSize(
-            url: icon{"url"}.getStr,
-            width: icon{"width"}.getInt,
-            height: icon{"height"}.getInt,
-          )
+          let urlAndSize = new UrlAndSize
+          urlAndSize.url = icon{"url"}.getStr
+          urlAndSize.width = icon{"width"}.getInt
+          urlAndSize.height = icon{"height"}.getInt
+
+          self.channel.icons.add urlAndSize
 
     block likes:
       var data = twoColumnWatchNextResults.
@@ -187,16 +197,16 @@ proc htmlUpdate*(self: var YoutubeVideo; html: string): bool {.discardable.}  =
     return false
 
 
-proc update*(self: var YoutubeVideo; proxy = ""): bool {.discardable.}  =
+proc update*(self: YoutubeVideo; proxy = ""): Future[bool] {.async.}  =
   ## Update all `YoutubeVideo` data
   ## Returns `false` on error.
   ##
   ## .. code-block:: nim
-  ##   var vid = initYoutubeVideo("Dx4eelwPGaQ".videoId)
+  ##   var vid = newYoutubeVideo("Dx4eelwPGaQ".videoId)
   ##   if not vid.update():
   ##     echo "Error to update: " & $vid.status.error
   ##   echo vid
-  let html = fetch(fmt"{proxy}https://www.youtube.com/watch?v={self.id}")
+  let html = await fetch(fmt"{proxy}https://www.youtube.com/watch?v={self.id}")
   self.htmlUpdate html
 
 proc videoId*(url: string): YoutubeVideoId =
@@ -239,7 +249,7 @@ proc valid*(id: YoutubeVideoId): bool =
   result = check(strId) and
            check(strId.strip)
 
-proc extractVideo*(url: string; proxy = ""): YoutubeVideo =
+proc extractVideo*(url: string; proxy = ""): Future[YoutubeVideo] {.async.} =
   ## Extract all data from youtube video.
   ##
   ## `url` can be the video URL or id
@@ -247,22 +257,22 @@ proc extractVideo*(url: string; proxy = ""): YoutubeVideo =
   ## Just an alias of:
   ##
   ## .. code-block:: nim
-  ##   var vid = initYoutubeVideo("jjEQ-yKVPMg".videoId)
+  ##   var vid = newYoutubeVideo("jjEQ-yKVPMg".videoId)
   ##   discard vid.update():
   ## **Example:**
   ##
   ## .. code-block:: nim
   ##   var vid = extractVideo("jjEQ-yKVPMg")
   ##   echo vid
-  result = initYoutubeVideo(url.videoId)
-  discard result.update(proxy)
+  result = newYoutubeVideo url.videoId
+  discard await result.update proxy
 
-proc extractVideoHtml*(vid, html: string): YoutubeVideo =
+proc extractVideoHtml*(vid, html: string): Future[YoutubeVideo] {.async.} =
   ## Extract all data from youtube video HTML
-  ## 
+  ##
   ## The `vid` is to get the video ID
-  result = initYoutubeVideo(vid.videoId)
-  discard result.update html
+  result = newYoutubeVideo vid.videoId
+  discard await result.update html
 
 type
   YoutubeVideoChapters* = seq[tuple[second: int; name: string]]
@@ -281,4 +291,4 @@ proc parseChapters*(desc: string): YoutubeVideoChapters =
         )
 
 when isMainModule:
-  echo extractVideo("7on15IWC2u4").likes
+  echo extractVideo("7on15IWC2u4").waitfor[]
