@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.1.1 (02/11/2023)
+
+- Fixed `publishDate` and `uploadDate` time parsing
+
 ## Version 1.1.0 (04/04/2023)
 
 - Removed dislikes

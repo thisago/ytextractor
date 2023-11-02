@@ -1,9 +1,8 @@
-<!--
-  Created at: 08/03/2021 17:17:54 Tuesday
-  Modified at: 09/10/2021 11:39:54 PM Friday
--->
-
 # ytextractor
+
+> **Note**:
+> An new version with async, NodeJS support and more fixes are in development
+> at branch `dev-v1.2`
 
 **Y**ou**t**ube data **extractor**
 
@@ -16,8 +15,10 @@ The objective is extract every data that don't need authentication
 
 ## Features
 
-This parser gets:
-- Video url
+<details>
+<summary>Extracted Info</summary>
+
+- **Video url**
   - Video info
     - [x] Id (video code)
     - [x] Title
@@ -44,7 +45,7 @@ This parser gets:
     - [x] Subscribers
     - [x] Channel icons
     - [x] Hidden subscribers (bool)
-- Channel url
+- **Channel url**
   - [x] Id
   - [x] Url
   - [x] Name
@@ -74,7 +75,7 @@ This parser gets:
 
 - [x] Video captions
 
-- Video data
+- **Video data**
   - [ ] Subtitles
   - [ ] Comments
     - [ ] Comments of comments
@@ -84,6 +85,7 @@ This parser gets:
 - [ ] Search results
 - [ ] All videos from channel/user
 - [ ] All videos of playlist (a seq of videos)
+</details>
 
 ### JS (browser) target avaliable!
 
